@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Новый документ 1">
+  <defs
+     id="defs4">
+    <filter
+       id="filter4039"
+       y="-0.25"
+       height="1.5"
+       inkscape:menu-tooltip="Darkens the edge with an inner blur and adds a flexible glow"
+       inkscape:menu="Shadows and Glows"
+       inkscape:label="Dark and Glow"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur4041"
+         stdDeviation="5"
+         result="result6" />
+      <feComposite
+         id="feComposite4043"
+         in2="result6"
+         result="result8"
+         in="SourceGraphic"
+         operator="atop" />
+      <feComposite
+         id="feComposite4045"
+         in2="SourceAlpha"
+         result="result9"
+         operator="over"
+         in="result8" />
+      <feColorMatrix
+         id="feColorMatrix4047"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result10" />
+      <feBlend
+         id="feBlend4049"
+         in2="result6"
+         in="result10"
+         mode="normal" />
+    </filter>
+    <filter
+       id="filter4039-8"
+       y="-0.25"
+       height="1.5"
+       inkscape:menu-tooltip="Darkens the edge with an inner blur and adds a flexible glow"
+       inkscape:menu="Shadows and Glows"
+       inkscape:label="Dark and Glow"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur4041-6"
+         stdDeviation="5"
+         result="result6" />
+      <feComposite
+         id="feComposite4043-8"
+         in2="result6"
+         result="result8"
+         in="SourceGraphic"
+         operator="atop" />
+      <feComposite
+         id="feComposite4045-0"
+         in2="SourceAlpha"
+         result="result9"
+         operator="over"
+         in="result8" />
+      <feColorMatrix
+         id="feColorMatrix4047-0"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result10" />
+      <feBlend
+         id="feBlend4049-4"
+         in2="result6"
+         in="result10"
+         mode="normal" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.3195979"
+     inkscape:cx="372.04724"
+     inkscape:cy="836.8245"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-bbox="true"
+     inkscape:object-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1065"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g6951"
+       transform="matrix(1.7293292,0,0,1.7293292,-954.4068,-454.48808)"
+       inkscape:export-filename="/home/sherzod/work/android/games/assets/images/hexatlas.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(0.40574569,0,0,0.40574569,465.1218,326.65221)"
+         d="m 404.90608,170.06666 -35.03694,20.22858 -35.03694,-20.22858 0,-40.45717 35.03694,-20.22858 35.03694,20.22858 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.0471976"
+         sodipodi:arg1="0.52359878"
+         sodipodi:r2="35.036938"
+         sodipodi:r1="40.457169"
+         sodipodi:cy="149.83807"
+         sodipodi:cx="369.86914"
+         sodipodi:sides="6"
+         id="path6953"
+         style="fill:none;stroke:#00ff00;stroke-width:2.23292565;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter4039)"
+         sodipodi:type="star" />
+      <path
+         sodipodi:type="star"
+         style="fill:#008000;fill-opacity:0.4649447;stroke:#00ff00;stroke-width:1.49354637;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path6955"
+         sodipodi:sides="6"
+         sodipodi:cx="369.86914"
+         sodipodi:cy="149.83807"
+         sodipodi:r1="40.457169"
+         sodipodi:r2="35.036938"
+         sodipodi:arg1="0.52359878"
+         sodipodi:arg2="1.0471976"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 404.90608,170.06666 -35.03694,20.22858 -35.03694,-20.22858 0,-40.45717 35.03694,-20.22858 35.03694,20.22858 z"
+         transform="matrix(0.40574569,0,0,0.40574569,465.1218,326.65221)" />
+    </g>
+    <g
+       id="g15525"
+       transform="matrix(1.7163969,0,0,1.7163969,-882.45094,-449.47747)"
+       style="fill:#ff5555;stroke:#ffaaaa"
+       inkscape:export-filename="/home/sherzod/work/android/games/assets/images/hexatlas.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(0.40574569,0,0,0.40574569,465.1218,326.65221)"
+         d="m 404.90608,170.06666 -35.03694,20.22858 -35.03694,-20.22858 0,-40.45717 35.03694,-20.22858 35.03694,20.22858 z"
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="true"
+         sodipodi:arg2="1.0471976"
+         sodipodi:arg1="0.52359878"
+         sodipodi:r2="35.036938"
+         sodipodi:r1="40.457169"
+         sodipodi:cy="149.83807"
+         sodipodi:cx="369.86914"
+         sodipodi:sides="6"
+         id="path15527"
+         style="fill:#ff5555;stroke:#ffaaaa;stroke-width:2.23292565;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter4039-8)"
+         sodipodi:type="star" />
+      <path
+         sodipodi:type="star"
+         style="fill:#ff5555;fill-opacity:0.4649447;stroke:#ffaaaa;stroke-width:1.49354637;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="path15529"
+         sodipodi:sides="6"
+         sodipodi:cx="369.86914"
+         sodipodi:cy="149.83807"
+         sodipodi:r1="40.457169"
+         sodipodi:r2="35.036938"
+         sodipodi:arg1="0.52359878"
+         sodipodi:arg2="1.0471976"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 404.90608,170.06666 -35.03694,20.22858 -35.03694,-20.22858 0,-40.45717 35.03694,-20.22858 35.03694,20.22858 z"
+         transform="matrix(0.31783183,0,0,0.31783183,497.63843,339.82505)" />
+    </g>
+  </g>
+</svg>

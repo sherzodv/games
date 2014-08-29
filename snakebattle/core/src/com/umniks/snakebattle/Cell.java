@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 class Cell {
 
@@ -19,7 +20,7 @@ class Cell {
 	private Color dark			= new Color(0.0f, 0.0f, 1.0f, 0.0f);
 	private Color darkYellow	= new Color(0.1f, 0.1f, 0.0f, 1.0f);
 	private Color darkGreen		= new Color(0.0f, 0.6f, 0.0f, 1.0f);
-	private Color lightGreen	= new Color(0.0f, 0.8f, 0.0f, 1.0f);
+	private Color lightGreen	= new Color(0.0f, 1.0f, 0.0f, 1.0f);
 	private Color darkRed		= new Color(0.4f, 0.0f, 0.0f, 1.0f);
 	private Color darkTail		= new Color(0.4f, 0.0f, 0.4f, 1.0f);
 	private Color red			= new Color(0.4f, 0.0f, 0.0f, 1.0f);
@@ -36,10 +37,18 @@ class Cell {
 	private Sprite germ;
 
 	private SpriteBatch batch;
+	private ShaderProgram shader;
 
 	private interface Entity {
 		public void draw(int x, int y);
 	};
+
+	private void createShader() {
+		String vrtxBlur = Gdx.files.internal("blur_vrtx.glsl").readString();
+		String fragBlur = Gdx.files.internal("blur_frag.glsl").readString();
+		shader = new ShaderProgram(vrtxBlur, fragBlur);
+		shader.pedantic = false;
+	}
 
 	private void createAtlas() {
 
@@ -125,10 +134,12 @@ class Cell {
 	public Cell(int cellW, int cellH) {
 		this.cellW = cellW;
 		this.cellH = cellH;
+		createShader();
 		createAtlas();
 		createSprites();
 		batch = new SpriteBatch();
 		spriteAtlas = new Sprite(atlas);
+		batch.setShader(shader);
 	}
 
 	public void drawAtlas() {
