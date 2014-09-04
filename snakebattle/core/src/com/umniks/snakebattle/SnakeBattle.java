@@ -25,8 +25,12 @@ public class SnakeBattle extends ApplicationAdapter {
 	class Input extends InputAdapter {
 		@Override
 		public boolean keyDown(int keyCode) {
-			for (Entity ent: ents) { ent.handleKeyDown(keyCode); }
-			for (Fruit f: fruits) { f.handleKeyDown(keyCode); }
+			for (Entity ent: ents) {
+				ent.handleKeyDown(keyCode);
+			}
+			for (Fruit f: fruits) {
+				f.handleKeyDown(keyCode);
+			}
 			return true;
 		}
 	}
@@ -85,8 +89,13 @@ public class SnakeBattle extends ApplicationAdapter {
 	@Override
 	public void render () {
 		cell.startDraw();
-		for (Entity ent: ents) { ent.put(); }
-		for (Fruit f: fruits) { f.put(); }
+		for (Entity ent: ents) {
+			ent.put();
+		}
+
+		for (Fruit f: fruits) {
+			f.put();
+		}
 		cell.endDraw();
 	}
 
