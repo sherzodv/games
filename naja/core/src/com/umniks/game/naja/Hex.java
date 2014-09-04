@@ -1,5 +1,5 @@
 
-package com.umniks.game.hexasnake;
+package com.umniks.game.naja;
 
 import java.util.*;
 import java.lang.Math;
@@ -93,40 +93,47 @@ class Hex {
 		shape.end();
 	}
 
-	public void putGerm(int x, int y) {
+	public int cellX(int x) {
+		return (int)Math.floor(x / (Height * 2));
+	}
+
+	public int cellY(int y) {
+		return y / Radius;
+	}
+
+	public void drawGerm(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(1.0f, 1.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void putSnakeHeadUp(int x, int y) {
+	public void drawSnakeHeadUp(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void putSnakeBodyUp(int x, int y) {
+	public void drawSnakeBodyUp(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void putSnakeTailUp(int x, int y) {
+	public void drawSnakeTailUp(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void putFruit(int x, int y) {
+	public void drawFruit(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(0.0f, 1.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void putFieldEmpty(int x, int y) {
+	public void drawEmptyCell(int x, int y) {
 		calc(V, x, y);
 		shape.setColor(0.1f, 0.1f, 0.1f, 0.0f);
 		shape.polygon(V);
 	}
-
 }

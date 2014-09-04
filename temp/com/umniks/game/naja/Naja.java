@@ -1,5 +1,5 @@
 
-package com.umniks.game.hexasnake;
+package com.umniks.game.naja;
 
 import java.util.*;
 import com.badlogic.gdx.Gdx;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
-public class HexaSnake extends ApplicationAdapter {
+public class Naja extends ApplicationAdapter {
 
 	int fruitCount = 5;
 

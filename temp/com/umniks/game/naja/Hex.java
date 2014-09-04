@@ -1,5 +1,5 @@
 
-package com.umniks.game.hexasnake;
+package com.umniks.game.naja;
 
 import java.util.*;
 import java.lang.Math;
