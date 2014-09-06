@@ -4,9 +4,7 @@ package com.umniks.game.naja;
 import java.util.*;
 
 public abstract class Entity {
-
 	protected int maxKeys = 3;
-
 	protected int cycles;
 	protected int inertia;
 
@@ -20,7 +18,8 @@ public abstract class Entity {
 		return false;
 	}
 
-	public boolean nextStep() {
+	public boolean nextStep()
+	{
 		if (cycles > inertia) {
 			cycles = 0;
 			if (!keyQueue.isEmpty()) {
@@ -60,3 +59,4 @@ public abstract class Entity {
 	public abstract void draw(Hex h);
 	public abstract String getType();
 }
+

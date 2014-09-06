@@ -6,11 +6,14 @@ import com.badlogic.gdx.Input.Keys;
 
 class Snake extends Entity {
 
-	private enum Type { HEAD, BODY, TAIL };
-	private enum D { UPRIGHT, UPLEFT, DOWNRIGHT,
-		DOWNLEFT, UP, DOWN, LEFT, RIGHT };
+	private enum Type
+	{ HEAD, BODY, TAIL };
 
-	class Part {
+	private enum D
+	{ UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT };
+
+	class Part
+	{
 		protected int x, y;
 		protected Type type;
 		protected D dir;
@@ -28,7 +31,8 @@ class Snake extends Entity {
 	private Part head;
 	private List<Part> snake;
 
-	private void bearAt(int x, int y) {
+	private void bearAt(int x, int y)
+	{
 		snake = new LinkedList<Part>();
 		snake.add(new Part(x, y, Type.HEAD, D.UP));
 		for (int i = 0; i < 2; ++i)
@@ -36,14 +40,17 @@ class Snake extends Entity {
 		snake.add(new Part(x, y, Type.TAIL, D.UP));
 	}
 
-	private void put() {
-		for (Part part: snake) {
+	private void put()
+	{
+		for (Part part: snake)
+		{
 			world.put(part.x, part.y, this);
 		}
 	}
 
 	@Override
-	protected boolean handleKey(int keyCode) {
+	protected boolean handleKey(int keyCode)
+	{
 		if (snake.isEmpty()) { return false; }
 		Part head = snake.get(0);
 		switch (head.dir) {
@@ -109,8 +116,8 @@ class Snake extends Entity {
 	}
 
 	@Override
-	public boolean nextStep() {
-
+	public boolean nextStep()
+	{
 		if (!super.nextStep()) {
 			return false;
 		}
@@ -204,7 +211,6 @@ class Snake extends Entity {
 	}
 
 	public Snake(World w, int x, int y) {
-
 		dir = D.LEFT;
 		world = w;
 
@@ -213,7 +219,7 @@ class Snake extends Entity {
 
 		bearAt(x, y);
 		put();
-		world.add(this);
+		//world.add(this);
 	}
 
 	public void grow() {
@@ -228,3 +234,4 @@ class Snake extends Entity {
 
 	public String getType() { return "snake"; }
 }
+

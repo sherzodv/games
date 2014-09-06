@@ -15,8 +15,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 class Hex {
-
 	private int Radius;
+	private int RadiusSqr;
 	private ShapeRenderer shape;
 
 	float[] V = new float[12];
@@ -41,73 +41,96 @@ class Hex {
 	private float DeltaY;
 	private float CorrX;
 
-	private void calc(float[] v, int x, int y) {
-
-		if (y % 2 != 0) {
-			CorrX = -DeltaX / 2;
-		} else {
+	private void calc(float[] v, int x, int y)
+	{
+		if (y % 2 != 0)
+			CorrX = -Height;
+		else
 			CorrX = 0;
-		}
 
-		/* Right Down */
 		v[X1] = Height		+ x * DeltaX		+ CorrX;
 		v[Y1] = -HalfRadius	+ y * DeltaY;
 
-		/* Right Up */
 		v[X2] = Height		+ x * DeltaX		+ CorrX;
 		v[Y2] = HalfRadius	+ y * DeltaY;
 
-		/* Up */
 		v[X3] = 0.0f		+ x * DeltaX		+ CorrX;
 		v[Y3] = Radius		+ y * DeltaY;
 
-		/* Left Up */
 		v[X4] = -Height		+ x * DeltaX		+ CorrX;
 		v[Y4] = HalfRadius	+ y * DeltaY;
 
-		/* Left Down */
 		v[X5] = -Height		+ x * DeltaX		+ CorrX;
 		v[Y5] = -HalfRadius	+ y * DeltaY;
 
-		/* Down */
 		v[X6] = 0.0f		+ x * DeltaX		+ CorrX;
 		v[Y6] = -Radius		+ y * DeltaY;
 	}
 
-	public Hex(int Radius) {
+	protected void getHexCoord(int x, int y, int[] hcoord)
+	{
+		if (y % 2 != 0)
+			CorrX = -DeltaX / 2;
+		else
+			CorrX = 0;
+
+		for (int i = 0; i < 100; ++i) {
+			for (int j = 0; j < 100; ++j) {
+				/* Getting coordinates of c of hex[i][j] */
+				int xc = (int) (i * DeltaX + CorrX);
+				int yc = (int) (j * DeltaY);
+
+				if ((xc-x)*(xc-x) + (yc-y)*(yc-y) <= RadiusSqr) {
+					hcoord[0] = i;
+					hcoord[1] = j;
+					return;
+				}
+			}
+		}
+	}
+
+	public Hex(int Radius)
+	{
 		this.Radius = Radius;
-		this.Height = (float)(3 * Radius / Math.PI);
+		this.RadiusSqr = Radius*Radius;
+		this.Height = (float)(Math.sqrt(3) * Radius / 2.0);
 		this.HalfRadius = Radius / 2;
 		this.DeltaX = Height * 2;
 		this.DeltaY = Radius * 1.5f;
 		this.shape = new ShapeRenderer();
 	}
 
-	public void start() {
+	public void start()
+	{
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeType.Line);
 	}
 
-	public void end() {
+	public void end()
+	{
 		shape.end();
 	}
 
-	public int cellX(int x) {
+	public int cellX(int x)
+	{
 		return (int)Math.floor(x / (Height * 2));
 	}
 
-	public int cellY(int y) {
+	public int cellY(int y)
+	{
 		return y / Radius;
 	}
 
-	public void drawGerm(int x, int y) {
+	public void drawGerm(int x, int y)
+	{
 		calc(V, x, y);
 		shape.setColor(1.0f, 1.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
-	public void drawSnakeHeadUp(int x, int y) {
+	public void drawSnakeHeadUp(int x, int y)
+	{
 		calc(V, x, y);
 		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
 		shape.polygon(V);
@@ -131,9 +154,18 @@ class Hex {
 		shape.polygon(V);
 	}
 
-	public void drawEmptyCell(int x, int y) {
+	public void drawButton(int x, int y)
+	{
+		calc(V, x, y);
+		shape.setColor(0.0f, 0.0f, 1.0f, 0.0f);
+		shape.polygon(V);
+	}
+
+	public void drawOnGrid(int x, int y)
+	{
 		calc(V, x, y);
 		shape.setColor(0.1f, 0.1f, 0.1f, 0.0f);
 		shape.polygon(V);
 	}
 }
+
