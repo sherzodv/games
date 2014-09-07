@@ -33,12 +33,12 @@ class World
 		H = h;
 
 		snd = new Snd();
-		hex = new Hex(20);
+		hex = new Hex(30);
 		//rand = new Random();
 		ents = new HashSet<Entity>();
 		//field = new EntityInt[W][H];
 		snake = new Snake(this, randX, randY);
-		joystick = new Joystick(snake, 32, 2);
+		joystick = new Joystick(snake, W-2, 2);
 
 		ents.add(snake);
 		findRandomCell();

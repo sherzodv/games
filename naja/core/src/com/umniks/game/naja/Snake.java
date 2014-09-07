@@ -56,58 +56,60 @@ class Snake extends Entity
 		switch (head.dir) {
 			case RIGHT:
 				switch (keyCode) {
-					case Keys.DOWN:		dir = D.DOWNRIGHT;	return true;
-					case Keys.UP:		dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
 			case LEFT:
 				switch (keyCode) {
-					case Keys.DOWN:		dir = D.DOWNLEFT;	return true;
-					case Keys.UP:		dir = D.UPLEFT;		return true;
+					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
+			/*
 			case DOWN:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.DOWNRIGHT;	return true;
-					case Keys.LEFT:		dir = D.DOWNLEFT;	return true;
 					default: return false;
 				}
 			case UP:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.UPRIGHT;	return true;
-					case Keys.LEFT:		dir = D.UPLEFT;		return true;
 					default: return false;
 				}
+			*/
 			case DOWNRIGHT:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.RIGHT;		return true;
-					case Keys.LEFT:		dir = D.DOWNLEFT;	return true;
-					case Keys.DOWN:		dir = D.DOWN;		return true;
-					case Keys.UP:		dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					default: return false;
 				}
 			case DOWNLEFT:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.DOWNRIGHT;	return true;
-					case Keys.LEFT:		dir = D.LEFT;		return true;
-					case Keys.DOWN:		dir = D.DOWN;		return true;
-					case Keys.UP:		dir = D.UPLEFT;		return true;
+					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
+					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
 			case UPRIGHT:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.RIGHT;		return true;
-					case Keys.LEFT:		dir = D.UPLEFT;		return true;
-					case Keys.UP:		dir = D.UP;			return true;
-					case Keys.DOWN:		dir = D.DOWNRIGHT;	return true;
+					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
+					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
 			case UPLEFT:
 				switch (keyCode) {
-					case Keys.RIGHT:	dir = D.UPRIGHT;	return true;
-					case Keys.LEFT:		dir = D.LEFT;		return true;
-					case Keys.UP:		dir = D.UP;			return true;
-					case Keys.DOWN:		dir = D.DOWNLEFT;	return true;
+					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
+					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					default: return false;
 				}
 
