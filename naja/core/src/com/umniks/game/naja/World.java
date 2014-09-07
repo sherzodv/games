@@ -62,6 +62,9 @@ class World
 
 		for (Entity ent: ents)
 			ent.nextStep();
+
+
+		/* Collision handling: will be separate function */
 	}
 
 	public void put(int x, int y, Entity ent)

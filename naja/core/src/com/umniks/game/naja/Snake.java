@@ -17,7 +17,8 @@ class Snake extends Entity
 		protected int x, y;
 		protected Type type;
 		protected D dir;
-		public Part(int x, int y, Type t, D d) {
+		public Part(int x, int y, Type t, D d)
+		{
 			this.x = x;
 			this.y = y;
 			this.type = t;
@@ -43,9 +44,7 @@ class Snake extends Entity
 	private void put()
 	{
 		for (Part part: snake)
-		{
 			world.put(part.x, part.y, this);
-		}
 	}
 
 	@Override
