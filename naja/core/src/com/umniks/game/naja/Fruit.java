@@ -3,12 +3,13 @@ package com.umniks.game.naja;
 
 import java.util.*;
 
-class Fruit extends Entity {
-
+class Fruit extends Entity
+{
 	private int x, y;
 	private World world;
 
-	public Fruit(World w, int x, int y) {
+	public Fruit(World w, int x, int y)
+	{
 		this.x = x;
 		this.y = y;
 		this.world = w;
@@ -17,10 +18,13 @@ class Fruit extends Entity {
 		world.add(this);
 	}
 
-	public void draw(Hex hex) {
+	public void draw(Hex hex)
+	{
 		hex.drawFruit(x, y);
 	}
 
+	public int getx() { return x; }
+	public int gety() { return y; }
 	public String getType() { return "fruit"; }
 
 	@Override
@@ -34,3 +38,4 @@ class Fruit extends Entity {
 	}
 
 }
+

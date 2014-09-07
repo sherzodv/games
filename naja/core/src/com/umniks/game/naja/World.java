@@ -112,9 +112,8 @@ class World
 
 	public void enqueTouchDown(int x, int y)
 	{
-		y = Gdx.graphics.getHeight() - y;
-		/* h[0] = x, h[1] = y (x, y) */
-		int[] h = new int[2];
+		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
+		int[] h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
 		hex.getHexCoord(x, y, h);
 		if (h[0] < W && h[1] < H)
 			joystick.handleTouch(h[0], h[1]);
