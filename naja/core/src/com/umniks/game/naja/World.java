@@ -38,7 +38,7 @@ class World
 		ents = new HashSet<Entity>();
 		//field = new EntityInt[W][H];
 		snake = new Snake(this, randX, randY);
-		joystick = new Joystick(snake, W-2, 2);
+		joystick = new Joystick(snake, W-4, 4);
 
 		ents.add(snake);
 		findRandomCell();
