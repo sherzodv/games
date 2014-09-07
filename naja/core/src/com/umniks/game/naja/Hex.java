@@ -21,6 +21,7 @@ class Hex {
 
 	float[] V = new float[12];
 
+	private final static float EPS = 0.1f;
 	private final static int X1 = 0;
 	private final static int X2 = 2;
 	private final static int X3 = 4;
@@ -35,6 +36,7 @@ class Hex {
 	private final static int Y5 = 9;
 	private final static int Y6 = 11;
 
+	private float Area;
 	private float Height;
 	private float HalfRadius;
 	private float DeltaX;
@@ -44,9 +46,9 @@ class Hex {
 	private void calc(float[] v, int x, int y)
 	{
 		if (y % 2 != 0)
-			CorrX = -Height;
+			CorrX = Radius + Height;
 		else
-			CorrX = 0;
+			CorrX = Radius;
 
 		v[X1] = Height		+ x * DeltaX		+ CorrX;
 		v[Y1] = -HalfRadius	+ y * DeltaY;
@@ -67,37 +69,94 @@ class Hex {
 		v[Y6] = -Radius		+ y * DeltaY;
 	}
 
+	private float geron(float X1, float Y1, float X2, float Y2, float X3, float Y3)
+	{
+		float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
+		float b = (float) Math.sqrt( (X2-X3)*(X2-X3) + (Y2-Y3)*(Y2-Y3) );
+		float c = (float) Math.sqrt( (X1-X3)*(X1-X3) + (Y1-Y3)*(Y1-Y3) );
+		float p = (a+b+c)/2f;
+		float s = (float) Math.sqrt( p*(p-a)*(p-b)*(p-c) );
+
+		//Gdx.app.log("Area (Triangle)", s+"");
+		return s;
+	}
+
 	protected void getHexCoord(int x, int y, int[] hcoord)
 	{
-		if (y % 2 != 0)
-			CorrX = -DeltaX / 2;
-		else
-			CorrX = 0;
+		if (y % 2 != 0) CorrX = Height;
+		else CorrX = 0;
 
+		Gdx.app.log("(x, y)", x+" "+y);
+
+		int a = (int) ((x-CorrX) / DeltaX);
+		int b = (int) (y / DeltaY);
+
+		Gdx.app.log("(a, b)", a+" "+b);
+
+		for (int i = -1; i <= 1; ++i)
+			for (int j = -1; j <= 1; ++j)
+			{
+				if (a+i < 0 || b+j < 0) continue;
+				calc(V, a+i, b+j);
+
+				if (Math.abs(
+					geron(x, y, V[X1], V[Y1], V[X2], V[Y2]) +
+					geron(x, y, V[X2], V[Y2], V[X3], V[Y3]) +
+					geron(x, y, V[X3], V[Y3], V[X4], V[Y4]) +
+					geron(x, y, V[X4], V[Y4], V[X5], V[Y5]) +
+					geron(x, y, V[X5], V[Y5], V[X6], V[Y6]) +
+					geron(x, y, V[X6], V[Y6], V[X1], V[Y1]) -
+					this.Area) < this.EPS)
+				{
+					hcoord[0] = a+i;
+					hcoord[1] = b+j;
+					return;
+				}
+			}
+
+		/*
 		for (int i = 0; i < 100; ++i) {
 			for (int j = 0; j < 100; ++j) {
-				/* Getting coordinates of c of hex[i][j] */
+				//Gdx.app.log("(i, j)", i+" "+j);
+				//computing center of hexagon 
 				int xc = (int) (i * DeltaX + CorrX);
 				int yc = (int) (j * DeltaY);
 
-				if ((xc-x)*(xc-x) + (yc-y)*(yc-y) <= RadiusSqr) {
+				Gdx.app.log("(xc, yc)", xc+" "+yc);
+
+				// computing six dots coordinates of hexagon 
+				calc(V, i, j);
+
+				if (Math.abs(
+					geron(x, y, V[X1], V[Y1], V[X2], V[Y2]) +
+					geron(x, y, V[X2], V[Y2], V[X3], V[Y3]) +
+					geron(x, y, V[X3], V[Y3], V[X4], V[Y4]) +
+					geron(x, y, V[X4], V[Y4], V[X5], V[Y5]) +
+					geron(x, y, V[X5], V[Y5], V[X6], V[Y6]) +
+					geron(x, y, V[X6], V[Y6], V[X1], V[Y1]) -
+					this.Area) < this.EPS)
+				{
 					hcoord[0] = i;
 					hcoord[1] = j;
 					return;
 				}
 			}
 		}
+		*/
 	}
 
 	public Hex(int Radius)
 	{
 		this.Radius = Radius;
 		this.RadiusSqr = Radius*Radius;
-		this.Height = (float)(Math.sqrt(3) * Radius / 2.0);
+		this.Height = (float) (Math.sqrt(3) * Radius / 2.0);
 		this.HalfRadius = Radius / 2;
 		this.DeltaX = Height * 2;
 		this.DeltaY = Radius * 1.5f;
 		this.shape = new ShapeRenderer();
+		this.Area = (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
+
+		//Gdx.app.log("Area", this.Area+"");
 	}
 
 	public void start()

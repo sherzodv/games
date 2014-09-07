@@ -7,32 +7,24 @@ import java.util.*;
 
 class World
 {
-	private enum EntityInt
-	{ VOID, FRUIT, SNAKE
-	, KEY_LEFT, KEY_RIGHT
-	, KEY_LEFTUP, KEY_LEFTDOWN
-	, KEY_RIGHTUP, KEY_RIGHTDOWN };
-
-	private Random rand;
-
 	private Hex hex;
 	private Snd snd;
+	private Snake snake;
 
 	private int W, H, randX, randY;
 
 	private Joystick joystick;
-	private EntityInt[][] field;
 	private Set<Entity> ents;
 
 	private void findRandomCell()
 	{
-		randX = rand.nextInt(W);
-		randY = rand.nextInt(H);
+		/*
 		while (field[randX][randY] == EntityInt.VOID)
 		{
 			randX = rand.nextInt(W);
 			randY = rand.nextInt(H);
 		}
+		*/
 	}
 
 	public World(int w, int h)
@@ -42,13 +34,14 @@ class World
 
 		snd = new Snd();
 		hex = new Hex(20);
-		rand = new Random();
+		//rand = new Random();
 		ents = new HashSet<Entity>();
-		field = new EntityInt[W][H];
+		//field = new EntityInt[W][H];
+		snake = new Snake(this, randX, randY);
+		joystick = new Joystick(snake, 32, 2);
 
+		ents.add(snake);
 		findRandomCell();
-
-		ents.add(new Snake(this, randX, randY));
 
 		for (int i = 0; i < 1; ++i)
 		{
@@ -61,9 +54,11 @@ class World
 	int getH() { return H; }
 
 	public void nextStep() {
+		/*
 		for (int x = 0; x < W; ++x)
 			for (int y = 0; y < H; ++y)
 				field[x][y] = EntityInt.VOID;
+				*/
 
 		for (Entity ent: ents)
 			ent.nextStep();
@@ -73,8 +68,6 @@ class World
 	{
 		if (x < 0 || x >= W || y < 0 || y >= H)
 			throw new IndexOutOfBoundsException();
-
-		field[x][y] = EntityInt.FRUIT;
 	}
 
 	public void add(Entity ent)
@@ -92,19 +85,10 @@ class World
 		hex.start();
 
 		for (int x = 0; x < W; ++x)
-			for (int y = 0; y < H; ++y) {
-				switch (field[x][y]) {
-					case VOID:	hex.drawOnGrid(x, y); break;
-					case FRUIT:	hex.drawFruit(x, y); break;
+			for (int y = 0; y < H; ++y)
+				hex.drawOnGrid(x, y);
 
-					case KEY_LEFT:		case KEY_RIGHT:
-					case KEY_LEFTUP:	case KEY_LEFTDOWN:
-					case KEY_RIGHTUP:	case KEY_RIGHTDOWN:
-						hex.drawButton(x, y);
-					break;
-				}	
-			}
-
+		joystick.draw(hex);
 		for (Entity ent: ents)
 			ent.draw(hex);
 
@@ -125,10 +109,12 @@ class World
 
 	public void enqueTouchDown(int x, int y)
 	{
+		y = Gdx.graphics.getHeight() - y;
 		/* h[0] = x, h[1] = y (x, y) */
 		int[] h = new int[2];
 		hex.getHexCoord(x, y, h);
-		new Fruit(this, h[0], h[1]);
+		if (h[0] < W && h[1] < H)
+			joystick.handleTouch(h[0], h[1]);
 	}
 }
 

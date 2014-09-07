@@ -4,8 +4,8 @@ package com.umniks.game.naja;
 import java.util.*;
 import com.badlogic.gdx.Input.Keys;
 
-class Snake extends Entity {
-
+class Snake extends Entity
+{
 	private enum Type
 	{ HEAD, BODY, TAIL };
 
@@ -126,6 +126,34 @@ class Snake extends Entity {
 		int tmpX = 0, tmpY = 0;
 		D tmpD = D.UP;
 
+		Part head = snake.get(0);
+		switch (dir) {
+			case RIGHT:	if (++head.x > world.getW() - 1) { head.x = 0; } break;
+			case LEFT:	if (--head.x < 0) { head.x = world.getW() - 1; } break;
+			case DOWN:	if (--head.y < 0) { head.y = world.getH() - 1; } break;
+			case UP:	if (++head.y > world.getH() - 1) { head.y = 0; } break;
+			case DOWNRIGHT:
+				if (head.y % 2 == 1)			++head.x;
+				if (head.x > world.getW() - 1)	{ head.x = 0; }
+				if (--head.y < 0)				{ head.y = world.getH() - 1; }
+			break;
+			case DOWNLEFT:
+				if (head.y % 2 == 0)			--head.x;
+				if (head.x < 0)					{ head.x = world.getW() - 1; }
+				if (--head.y < 0)				{ head.y = world.getH() - 1; }
+			break;
+			case UPRIGHT:
+				if (head.y % 2 == 1)			++head.x;
+				if (head.x > world.getW() - 1)	{ head.x = 0; }
+				if (++head.y > world.getH() - 1){ head.y = 0; }
+			break;
+			case UPLEFT:
+				if (head.y % 2 == 0)			--head.x;
+				if (head.x < 0)					{ head.x = world.getW() - 1; }
+				if (++head.y > world.getH() - 1){ head.y = 0; }
+			break;
+		}
+
 		for (Part part: snake) {
 			if (first) {
 				first = false;
@@ -133,48 +161,6 @@ class Snake extends Entity {
 				tmpY = part.y;
 				tmpD = part.dir;
 				part.dir = dir;
-				switch (dir) {
-					case RIGHT:
-						++part.x;
-						if (part.x > world.getW() - 1) { part.x = 0; }
-						break;
-					case LEFT:
-						--part.x;
-						if (part.x < 0) { part.x = world.getW() - 1; }
-						break;
-					case DOWN:
-						--part.y;
-						if (part.y < 0) { part.y = world.getH() - 1; }
-						break;
-					case UP:
-						++part.y;
-						if (part.y > world.getH() - 1) { part.y = 0; }
-						break;
-					case DOWNRIGHT:
-						if (part.y % 2 == 0) ++part.x;
-						--part.y;
-						if (part.x > world.getW() - 1) { part.x = 0; }
-						if (part.y < 0) { part.y = world.getH() - 1; }
-						break;
-					case DOWNLEFT:
-						if (part.y % 2 != 0) --part.x;
-						--part.y;
-						if (part.x < 0) { part.x = world.getW() - 1; }
-						if (part.y < 0) { part.y = world.getH() - 1; }
-						break;
-					case UPRIGHT:
-						if (part.y % 2 == 0) ++part.x;
-						++part.y;
-						if (part.x > world.getW() - 1) { part.x = 0; }
-						if (part.y > world.getH() - 1) { part.y = 0; }
-						break;
-					case UPLEFT:
-						if (part.y % 2 != 0) --part.x;
-						++part.y;
-						if (part.x < 0) { part.x = world.getW() - 1; }
-						if (part.y > world.getH() - 1) { part.y = 0; }
-						break;
-				}
 			} else {
 				int ttmpX = part.x;
 				int ttmpY = part.y;
