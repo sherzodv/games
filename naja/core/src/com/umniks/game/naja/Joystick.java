@@ -6,20 +6,17 @@ import com.badlogic.gdx.Input.Keys;
 import java.util.*;
 
 public class Joystick extends InputAdapter
-{
-	private Snake snake;
+{	private Snake snake;
 	private int x, y;
 
 	Joystick(Snake s, int x, int y)
-	{
-		this.snake = s;
+	{	this.snake = s;
 		this.x = x;
 		this.y = y;
 	}
 
 	void draw(Hex hex)
-	{
-		hex.drawButton(x, y+1);
+	{	hex.drawButton(x, y+1);
 		hex.drawButton(x+1, y);
 		hex.drawButton(x, y-1);
 
@@ -29,8 +26,7 @@ public class Joystick extends InputAdapter
 	}
 
 	void handleTouch(int x, int y)
-	{
-		if (x == this.x && y == this.y+1) {
+	{	if (x == this.x && y == this.y+1) {
 			snake.enqueKeyDown(Keys.NUMPAD_9);
 		} else
 		if (x == this.x+1 && y == this.y) {
@@ -48,6 +44,6 @@ public class Joystick extends InputAdapter
 		if (x == this.x-1 && y == this.y-1) {
 			snake.enqueKeyDown(Keys.NUMPAD_1);
 		}
-	}	
+	}
 }
 

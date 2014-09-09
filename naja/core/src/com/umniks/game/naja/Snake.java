@@ -106,7 +106,7 @@ class Snake extends Entity
 
 	@Override
 	public boolean nextStep()
-	{	if (!super.nextStep()) { return false; } 
+	{	if (!super.nextStep()) { return false; }
 
 		Part head = snake.get(0);
 
@@ -130,17 +130,23 @@ class Snake extends Entity
 			break;
 			case direct:
 				if (head.x > world.getW() - 1)	{ head.x = 0; }
+				if (head.x < 0)					{ head.x = world.getW() - 1; }
+
 				if (head.y > world.getH() - 1)
 				{	head.y = 0;
 					switch (dir)
 					{	case UPLEFT:
 							head.x += 8;
+							if (head.x > world.getW() - 1) {
+								head.x = world.getW() - 1;
+							}
 						break;
-						case UPRIGHT:	head.x -= 7; break;
+						case UPRIGHT:
+							head.x -= 7;
+						break;
 					}
 					head.x %= world.getW();
 				}
-				if (head.x < 0)					{ head.x = world.getW() - 1; }
 				if (head.y < 0)					{ head.y = world.getH() - 1; }
 			break;
 		}
@@ -173,6 +179,13 @@ class Snake extends Entity
 			}
 		}
 		put();
+
+		for (int i = 3; i < snake.size(); ++i)
+		{	if (snake.get(i).x == head.x && snake.get(i).y == head.y)
+			{	for (; i < snake.size(); )
+					snake.remove(i);
+		} }
+
 		return true;
 	}
 
@@ -190,7 +203,7 @@ class Snake extends Entity
 		world = w;
 		cycles = 0;
 		inertia = 10;
-		crossing = BorderCrossType.direct;
+		crossing = BorderCrossType.oblique;
 
 		bearAt(x, y);
 		put();
@@ -203,9 +216,10 @@ class Snake extends Entity
 			snake.add(1, new Part(head.x, head.y, Type.BODY, head.dir));
 	} }
 
-	public int headX() { return snake.isEmpty() ? -1 : snake.get(0).x; }
-	public int headY() { return snake.isEmpty() ? -1 : snake.get(0).y; }
+	public int headx() { return snake.isEmpty() ? -1 : snake.get(0).x; }
+	public int heady() { return snake.isEmpty() ? -1 : snake.get(0).y; }
 
 	public String getType() { return "snake"; }
+	public int length() { return snake.size(); }
 }
 
