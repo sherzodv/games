@@ -6,6 +6,9 @@ import java.util.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.Timer.Task;
 
 class World
 {	private int W, H;
@@ -17,8 +20,12 @@ class World
 	private Set<Entity> ents;
 	private BitmapFont text;
 	private SpriteBatch batch;
-
 	private Dictionary scoreBoard;
+	private Preferences prefs;// = Gdx.files.classpath("myfile.txt");
+	private GameStates gameState;
+
+	enum GameStates
+	{ PLAY, PAUSE, EXITING };
 
 	public World(int w, int h)
 	{	W = w;
@@ -37,9 +44,11 @@ class World
 
 		text.setColor(Color.GREEN);
 		text.scale(2.0f);
-
 		ents.add(snake);
 		ents.add(fruit);
+
+		prefs = Gdx.app.getPreferences("HighScore");
+		gameState = GameStates.PLAY;
 	}
 
 	int getW() { return W; }
@@ -67,20 +76,56 @@ class World
 	}
 
 	public void draw()
-	{	hex.start();
-		for (int x = 0; x < W; ++x)
-			for (int y = 0; y < H; ++y)
-				hex.drawOnGrid(x, y);
+	{	switch(gameState)
+		{	case PLAY:
+				hex.start();
+					for (int x = 0; x < W; ++x)
+					for (int y = 0; y < H; ++y)
+						hex.drawOnGrid(x, y);
 
-		joystick.draw(hex);
-		for (Entity ent: ents)
-			ent.draw(hex);
+					joystick.draw(hex);
+					for (Entity ent: ents)
+						ent.draw(hex);
 
-		batch.begin();
-		text.draw(batch, snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
-		batch.end();
+					batch.begin();
+						text.draw(batch, "YourScore: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
+						text.draw(batch, "HighScore: "+prefs.getInteger("HighScore")+" $", 30, Gdx.graphics.getHeight()-60);
+					batch.end();
+				hex.end();
+			break;
 
-		hex.end();
+			case EXITING:
+				hex.start();
+					for (int x = 0; x < W; ++x)
+					for (int y = 0; y < H; ++y)
+						hex.drawOnGrid(x, y);
+
+					joystick.draw(hex);
+					for (Entity ent: ents)
+						ent.draw(hex);
+
+					batch.begin();
+						if (snake.length() >= prefs.getInteger("HighScore"))
+						{	text.draw(batch, "SNAKE MASTER!"
+								, Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+							prefs.putInteger("HighScore", this.snake.length());
+							prefs.flush();
+						} else
+						{	text.draw(batch, "NOT YET MASTER"
+								, Gdx.graphics.getWidth()/2-180, Gdx.graphics.getHeight()/2);
+						}
+					batch.end();
+				hex.end();
+
+				Timer.schedule(new Task(){
+					@Override
+					public void run() { Gdx.app.exit(); }
+				}, 2.5f);
+			break;
+
+			case PAUSE:
+			break;
+		}
 	}
 
 	public void enqueKeyDown(int keyCode)
@@ -98,7 +143,9 @@ class World
 		int[] h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
 		hex.getHexCoord(x, y, h);
 		if (h[0] < W && h[1] < H)
-			joystick.handleTouch(h[0], h[1]);
+			if (joystick.handleTouch(h[0], h[1]) == false)
+			{	gameState = GameStates.EXITING;
+			}
 	}
 }
 
