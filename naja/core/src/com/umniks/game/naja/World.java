@@ -32,7 +32,7 @@ class World
 		H = h;
 
 		snd = new Snd();
-		hex = new Hex(30);
+		hex = new Hex(47);
 		//rand = new Random();
 		text = new BitmapFont();
 		ents = new HashSet<Entity>();
@@ -47,7 +47,7 @@ class World
 		ents.add(snake);
 		ents.add(fruit);
 
-		prefs = Gdx.app.getPreferences("HighScore");
+		prefs = Gdx.app.getPreferences("MasterScore");
 		gameState = GameStates.PLAY;
 	}
 
@@ -83,13 +83,13 @@ class World
 					for (int y = 0; y < H; ++y)
 						hex.drawOnGrid(x, y);
 
-					joystick.draw(hex);
+					//joystick.draw(hex);
 					for (Entity ent: ents)
 						ent.draw(hex);
 
 					batch.begin();
 						text.draw(batch, "YourScore: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
-						text.draw(batch, "HighScore: "+prefs.getInteger("HighScore")+" $", 30, Gdx.graphics.getHeight()-60);
+						text.draw(batch, "MasterScore: "+prefs.getInteger("MasterScore")+" $", 30, Gdx.graphics.getHeight()-60);
 					batch.end();
 				hex.end();
 			break;
@@ -100,15 +100,15 @@ class World
 					for (int y = 0; y < H; ++y)
 						hex.drawOnGrid(x, y);
 
-					joystick.draw(hex);
+					//joystick.draw(hex);
 					for (Entity ent: ents)
 						ent.draw(hex);
 
 					batch.begin();
-						if (snake.length() >= prefs.getInteger("HighScore"))
+						if (snake.length() >= prefs.getInteger("MasterScore"))
 						{	text.draw(batch, "SNAKE MASTER!"
 								, Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
-							prefs.putInteger("HighScore", this.snake.length());
+							prefs.putInteger("MasterScore", this.snake.length());
 							prefs.flush();
 						} else
 						{	text.draw(batch, "NOT YET MASTER"
@@ -140,12 +140,26 @@ class World
 
 	public void enqueTouchDown(int x, int y)
 	{	y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
+		joystick.handleTouchDown(x, y);
+
 		int[] h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
 		hex.getHexCoord(x, y, h);
+		Gdx.app.log("pressed hex", h[0]+" "+h[1]);
+		//Gdx.app.log("pressed pixel", x+" "+y);
 		if (h[0] < W && h[1] < H)
-			if (joystick.handleTouch(h[0], h[1]) == false)
-			{	gameState = GameStates.EXITING;
+			if (joystick.handleHexDown(h[0], h[1]) == false)
+			{	//gameState = GameStates.EXITING;
 			}
+	}
+
+	public void enqueTouchUp(int x, int y)
+	{	y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
+		joystick.handleTouchUp(x, y);
+	}
+
+	public void enqueTouchDrag(int x, int y)
+	{	y = Gdx.graphics.getHeight() - y;
+		joystick.handleTouchDrag(x, y);
 	}
 }
 

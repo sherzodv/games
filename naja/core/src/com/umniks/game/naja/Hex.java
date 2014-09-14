@@ -113,6 +113,7 @@ class Hex {
 					return;
 				}
 			}
+		Gdx.app.log("(a, b)", a+" "+b);
 	}
 
 	public Hex(int Radius)

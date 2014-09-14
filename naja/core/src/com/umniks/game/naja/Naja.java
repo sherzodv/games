@@ -29,8 +29,21 @@ public class Naja extends ApplicationAdapter
 
 		@Override
 		public boolean touchDown(int x, int y, int pointer, int button)
-		{	world.enqueTouchDown(x, y);
+		{	Gdx.input.vibrate(10);
+			world.enqueTouchDown(x, y);
 			return true;
+		}
+
+		@Override
+		public boolean touchUp(int x, int y, int pointer, int button)
+		{	world.enqueTouchUp(x, y);
+			return true;
+		}
+
+		@Override
+		public boolean touchDragged(int x, int y, int pointer)
+		{	world.enqueTouchDrag(x, y);
+			return false;
 		}
 	}
 
@@ -40,10 +53,11 @@ public class Naja extends ApplicationAdapter
 
 	@Override
 	public void create()
-	{	world = new World(24, 15);
+	{	world = new World(15, 9);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);
+		//input.setTapSquareSize(50f);
 
 		Timer.schedule(
 			new Task()
