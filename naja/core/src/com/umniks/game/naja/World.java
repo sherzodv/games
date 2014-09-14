@@ -148,7 +148,7 @@ class World
 		//Gdx.app.log("pressed pixel", x+" "+y);
 		if (h[0] < W && h[1] < H)
 			if (joystick.handleHexDown(h[0], h[1]) == false)
-			{	//gameState = GameStates.EXITING;
+			{	gameState = GameStates.EXITING;
 			}
 	}
 

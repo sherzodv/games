@@ -91,8 +91,8 @@ class Hex {
 		int a = (int) ((x-CorrX) / DeltaX);
 		int b = (int) (y / DeltaY);
 
-		Gdx.app.log("(a, b)", a+" "+b);
-
+		hcoord[0] = a;
+		hcoord[1] = b;
 		for (int i = -1; i <= 1; ++i)
 			for (int j = -1; j <= 1; ++j)
 			{
@@ -113,7 +113,6 @@ class Hex {
 					return;
 				}
 			}
-		Gdx.app.log("(a, b)", a+" "+b);
 	}
 
 	public Hex(int Radius)
