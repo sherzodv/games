@@ -32,7 +32,7 @@ class World
 		H = h;
 
 		snd = new Snd();
-		hex = new Hex(47);
+		hex = new Hex(30);
 		//rand = new Random();
 		text = new BitmapFont();
 		ents = new HashSet<Entity>();
