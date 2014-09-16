@@ -13,11 +13,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 class Hex {
 	private int Radius;
 	private int RadiusSqr;
 	private ShapeRenderer shape;
+	private TextureRegion sprite;
+	private SpriteBatch batch;
 
 	float[] V = new float[12];
 
@@ -44,8 +48,7 @@ class Hex {
 	private float CorrX;
 
 	private void calc(float[] v, int x, int y)
-	{
-		if (y % 2 != 0)
+	{	if (y % 2 != 0)
 			CorrX = Radius + Height;
 		else
 			CorrX = Radius;
@@ -70,8 +73,7 @@ class Hex {
 	}
 
 	private float geron(float X1, float Y1, float X2, float Y2, float X3, float Y3)
-	{
-		float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
+	{	float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
 		float b = (float) Math.sqrt( (X2-X3)*(X2-X3) + (Y2-Y3)*(Y2-Y3) );
 		float c = (float) Math.sqrt( (X1-X3)*(X1-X3) + (Y1-Y3)*(Y1-Y3) );
 		float p = (a+b+c)/2f;
@@ -82,8 +84,7 @@ class Hex {
 	}
 
 	protected void getHexCoord(int x, int y, int[] hcoord)
-	{
-		if (y % 2 != 0) CorrX = Height;
+	{	if (y % 2 != 0) CorrX = Height;
 		else CorrX = 0;
 
 		Gdx.app.log("(x, y)", x+" "+y);
@@ -95,8 +96,7 @@ class Hex {
 		hcoord[1] = b;
 		for (int i = -1; i <= 1; ++i)
 			for (int j = -1; j <= 1; ++j)
-			{
-				if (a+i < 0 || b+j < 0) continue;
+			{	if (a+i < 0 || b+j < 0) continue;
 				calc(V, a+i, b+j);
 
 				if (Math.abs(
@@ -107,17 +107,15 @@ class Hex {
 					geron(x, y, V[X5], V[Y5], V[X6], V[Y6]) +
 					geron(x, y, V[X6], V[Y6], V[X1], V[Y1]) -
 					this.Area) < this.EPS)
-				{
-					hcoord[0] = a+i;
+				{	hcoord[0] = a+i;
 					hcoord[1] = b+j;
 					return;
 				}
 			}
 	}
 
-	public Hex(int Radius)
-	{
-		this.Radius = Radius;
+	public Hex(int Radius, TextureRegion s)
+	{	this.Radius = Radius;
 		this.RadiusSqr = Radius*Radius;
 		this.Height = (float) (Math.sqrt(3) * Radius / 2.0);
 		this.HalfRadius = Radius / 2;
@@ -125,42 +123,30 @@ class Hex {
 		this.DeltaY = Radius * 1.5f;
 		this.shape = new ShapeRenderer();
 		this.Area = (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
+		this.batch = new SpriteBatch();
+		this.sprite = s;
 
 		//Gdx.app.log("Area", this.Area+"");
 	}
 
 	public void start()
-	{
-		Gdx.gl.glClearColor(0, 0, 0, 0);
+	{	Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeType.Line);
 	}
 
 	public void end()
-	{
-		shape.end();
-	}
-
-	public int cellX(int x)
-	{
-		return (int)Math.floor(x / (Height * 2));
-	}
-
-	public int cellY(int y)
-	{
-		return y / Radius;
+	{	shape.end();
 	}
 
 	public void drawGerm(int x, int y)
-	{
-		calc(V, x, y);
+	{	calc(V, x, y);
 		shape.setColor(1.0f, 1.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
 
 	public void drawSnakeHeadUp(int x, int y)
-	{
-		calc(V, x, y);
+	{	calc(V, x, y);
 		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
 		shape.polygon(V);
 	}
@@ -193,8 +179,16 @@ class Hex {
 	public void drawOnGrid(int x, int y)
 	{
 		calc(V, x, y);
+		batch.begin();
+		batch.draw(sprite, V[X4], V[Y6], DeltaX, HalfRadius*4);
+		//batch.draw(sprite, V[X4], V[Y4], 10, 10);
+		//batch.draw(sprite, V[X5], V[Y5], 10, 10);
+		//batch.draw(sprite, V[X6], V[Y6], 10, 10);
+		batch.end();
+		/*
 		shape.setColor(0.1f, 0.1f, 0.1f, 0.0f);
 		shape.polygon(V);
+		*/
 	}
 }
 

@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 class World
 {	private int W, H;
@@ -17,12 +19,13 @@ class World
 	private Snake snake;
 	private Fruit fruit;
 	private Joystick joystick;
-	private Set<Entity> ents;
+	//private Set<Entity> ents;
 	private BitmapFont text;
 	private SpriteBatch batch;
 	private Dictionary scoreBoard;
 	private Preferences prefs;// = Gdx.files.classpath("myfile.txt");
 	private GameStates gameState;
+	private Texture texture;
 
 	enum GameStates
 	{ PLAY, PAUSE, EXITING };
@@ -31,11 +34,12 @@ class World
 	{	W = w;
 		H = h;
 
+		texture = new Texture(Gdx.files.internal("naja-atlas.png"));
 		snd = new Snd();
-		hex = new Hex(30);
+		hex = new Hex(30, new TextureRegion(texture, 0, 48, 64, 76));
 		//rand = new Random();
 		text = new BitmapFont();
-		ents = new HashSet<Entity>();
+		//ents = new HashSet<Entity>();
 		//field = new EntityInt[W][H];
 		fruit = new Fruit(W/2, H/2);
 		batch = new SpriteBatch();
@@ -44,19 +48,22 @@ class World
 
 		text.setColor(Color.GREEN);
 		text.scale(2.0f);
-		ents.add(snake);
-		ents.add(fruit);
+		//ents.add(snake);
+		//ents.add(fruit);
 
 		prefs = Gdx.app.getPreferences("MasterScore");
 		gameState = GameStates.PLAY;
+
 	}
 
 	int getW() { return W; }
 	int getH() { return H; }
 
 	public void nextStep()
-	{	for (Entity ent: ents)
-			ent.nextStep();
+	{	//for (Entity ent: ents)
+		//	ent.nextStep();
+		fruit.nextStep();
+		snake.nextStep();
 
 		/* Collision handling: will be separate function */
 		if (snake.headx() == fruit.getx()
@@ -72,51 +79,38 @@ class World
 	}
 
 	public void remove(Entity ent)
-	{	ents.remove(ent);
+	{	//ents.remove(ent);
 	}
 
 	public void draw()
-	{	switch(gameState)
+	{	hex.start();
+		batch.begin();
+
+		for (int x = 0; x < W; ++x)
+		for (int y = 0; y < H; ++y)
+			hex.drawOnGrid(x, y);
+
+		//for (Entity ent: ents)
+		//	ent.draw(hex);
+		fruit.draw(hex);
+		snake.draw(hex);
+
+		switch(gameState)
 		{	case PLAY:
-				hex.start();
-					for (int x = 0; x < W; ++x)
-					for (int y = 0; y < H; ++y)
-						hex.drawOnGrid(x, y);
-
-					//joystick.draw(hex);
-					for (Entity ent: ents)
-						ent.draw(hex);
-
-					batch.begin();
-						text.draw(batch, "YourScore: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
-						text.draw(batch, "MasterScore: "+prefs.getInteger("MasterScore")+" $", 30, Gdx.graphics.getHeight()-60);
-					batch.end();
-				hex.end();
+				text.draw(batch, "YourScore: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
+				text.draw(batch, "MasterScore: "+prefs.getInteger("MasterScore")+" $", 30, Gdx.graphics.getHeight()-60);
 			break;
 
 			case EXITING:
-				hex.start();
-					for (int x = 0; x < W; ++x)
-					for (int y = 0; y < H; ++y)
-						hex.drawOnGrid(x, y);
-
-					//joystick.draw(hex);
-					for (Entity ent: ents)
-						ent.draw(hex);
-
-					batch.begin();
-						if (snake.length() >= prefs.getInteger("MasterScore"))
-						{	text.draw(batch, "SNAKE MASTER!"
-								, Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
-							prefs.putInteger("MasterScore", this.snake.length());
-							prefs.flush();
-						} else
-						{	text.draw(batch, "NOT YET MASTER"
-								, Gdx.graphics.getWidth()/2-180, Gdx.graphics.getHeight()/2);
-						}
-					batch.end();
-				hex.end();
-
+				if (snake.length() >= prefs.getInteger("MasterScore"))
+				{	text.draw(batch, "SNAKE MASTER!"
+						, Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+					prefs.putInteger("MasterScore", this.snake.length());
+					prefs.flush();
+				} else
+				{	text.draw(batch, "NOT YET MASTER"
+						, Gdx.graphics.getWidth()/2-180, Gdx.graphics.getHeight()/2);
+				}
 				Timer.schedule(new Task(){
 					@Override
 					public void run() { Gdx.app.exit(); }
@@ -126,16 +120,17 @@ class World
 			case PAUSE:
 			break;
 		}
+
+		hex.end();
+		batch.end();
 	}
 
 	public void enqueKeyDown(int keyCode)
-	{	for (Entity ent: ents)
-			ent.enqueKeyDown(keyCode);
+	{	snake.enqueKeyDown(keyCode);
 	}
 
 	public void enqueKeyUp(int keyCode)
-	{	for (Entity ent: ents)
-			ent.enqueKeyUp(keyCode);
+	{	snake.enqueKeyUp(keyCode);
 	}
 
 	public void enqueTouchDown(int x, int y)
