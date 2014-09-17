@@ -79,7 +79,6 @@ class Hex {
 		float p = (a+b+c)/2f;
 		float s = (float) Math.sqrt( p*(p-a)*(p-b)*(p-c) );
 
-		//Gdx.app.log("Area (Triangle)", s+"");
 		return s;
 	}
 
@@ -125,8 +124,6 @@ class Hex {
 		this.Area = (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
 		this.batch = new SpriteBatch();
 		this.sprite = s;
-
-		//Gdx.app.log("Area", this.Area+"");
 	}
 
 	public void start()
@@ -181,14 +178,7 @@ class Hex {
 		calc(V, x, y);
 		batch.begin();
 		batch.draw(sprite, V[X4], V[Y6], DeltaX, HalfRadius*4);
-		//batch.draw(sprite, V[X4], V[Y4], 10, 10);
-		//batch.draw(sprite, V[X5], V[Y5], 10, 10);
-		//batch.draw(sprite, V[X6], V[Y6], 10, 10);
 		batch.end();
-		/*
-		shape.setColor(0.1f, 0.1f, 0.1f, 0.0f);
-		shape.polygon(V);
-		*/
 	}
 }
 
