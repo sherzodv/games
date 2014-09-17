@@ -9,8 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 class World
 {	private int W, H;
@@ -25,7 +23,6 @@ class World
 	private Dictionary scoreBoard;
 	private Preferences prefs;// = Gdx.files.classpath("myfile.txt");
 	private GameStates gameState;
-	private Texture texture;
 
 	enum GameStates
 	{ PLAY, PAUSE, EXITING };
@@ -34,9 +31,9 @@ class World
 	{	W = w;
 		H = h;
 
-		texture = new Texture(Gdx.files.internal("naja-atlas.png"));
 		snd = new Snd();
-		hex = new Hex(30, new TextureRegion(texture, 0, 48, 64, 76));
+		hex = new Hex(30);
+
 		//rand = new Random();
 		text = new BitmapFont();
 		//ents = new HashSet<Entity>();
@@ -84,8 +81,6 @@ class World
 
 	public void draw()
 	{	hex.start();
-		batch.begin();
-
 		for (int x = 0; x < W; ++x)
 		for (int y = 0; y < H; ++y)
 			hex.drawOnGrid(x, y);
@@ -97,11 +92,14 @@ class World
 
 		switch(gameState)
 		{	case PLAY:
-				text.draw(batch, "YourScore: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-10);
-				text.draw(batch, "MasterScore: "+prefs.getInteger("MasterScore")+" $", 30, Gdx.graphics.getHeight()-60);
+			batch.begin();
+				text.draw(batch, "your score: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-20);
+				text.draw(batch, "master score: "+prefs.getInteger("MasterScore")+" $", Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight()-20);
+			batch.end();
 			break;
 
 			case EXITING:
+			batch.begin();
 				if (snake.length() >= prefs.getInteger("MasterScore"))
 				{	text.draw(batch, "SNAKE MASTER!"
 						, Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
@@ -115,6 +113,7 @@ class World
 					@Override
 					public void run() { Gdx.app.exit(); }
 				}, 2.5f);
+			batch.end();
 			break;
 
 			case PAUSE:
@@ -122,7 +121,6 @@ class World
 		}
 
 		hex.end();
-		batch.end();
 	}
 
 	public void enqueKeyDown(int keyCode)

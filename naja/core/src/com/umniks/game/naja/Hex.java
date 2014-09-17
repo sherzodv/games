@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -20,8 +21,16 @@ class Hex {
 	private int Radius;
 	private int RadiusSqr;
 	private ShapeRenderer shape;
-	private TextureRegion sprite;
+
+	private Texture texture;
 	private SpriteBatch batch;
+
+	/* Texture regions for all sprites */
+	private TextureRegion groundTile;
+	private TextureRegion snakePartTile;
+	private TextureRegion[] fruitType = new TextureRegion[8];
+
+	private final int spaceTile = 20;
 
 	float[] V = new float[12];
 
@@ -113,7 +122,7 @@ class Hex {
 			}
 	}
 
-	public Hex(int Radius, TextureRegion s)
+	public Hex(int Radius)
 	{	this.Radius = Radius;
 		this.RadiusSqr = Radius*Radius;
 		this.Height = (float) (Math.sqrt(3) * Radius / 2.0);
@@ -123,7 +132,19 @@ class Hex {
 		this.shape = new ShapeRenderer();
 		this.Area = (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
 		this.batch = new SpriteBatch();
-		this.sprite = s;
+
+		texture = new Texture(Gdx.files.internal("naja-atlas.png"));
+
+		groundTile = new TextureRegion(texture, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile);
+		snakePartTile = new TextureRegion(texture, 13, 12, 231, 259);
+		fruitType[0] = new TextureRegion(texture, 2763, 9, 238, 266);
+		fruitType[1] = new TextureRegion(texture, 1846, 9, 238, 266);
+		fruitType[2] = new TextureRegion(texture, 1540, 9, 238, 266);
+		fruitType[3] = new TextureRegion(texture, 1232, 9, 238, 266);
+		fruitType[4] = new TextureRegion(texture, 926, 9, 238, 266);
+		fruitType[5] = new TextureRegion(texture, 620, 9, 238, 266);
+		fruitType[6] = new TextureRegion(texture, 2153, 9, 238, 266);
+		fruitType[7] = new TextureRegion(texture, 2460, 9, 238, 266);
 	}
 
 	public void start()
@@ -144,26 +165,30 @@ class Hex {
 
 	public void drawSnakeHeadUp(int x, int y)
 	{	calc(V, x, y);
-		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
-		shape.polygon(V);
+		batch.begin();
+		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.end();
 	}
 
-	public void drawSnakeBodyUp(int x, int y) {
-		calc(V, x, y);
-		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
-		shape.polygon(V);
+	public void drawSnakeBodyUp(int x, int y)
+	{	calc(V, x, y);
+		batch.begin();
+		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.end();
 	}
 
-	public void drawSnakeTailUp(int x, int y) {
-		calc(V, x, y);
-		shape.setColor(1.0f, 0.0f, 0.0f, 0.0f);
-		shape.polygon(V);
+	public void drawSnakeTailUp(int x, int y)
+	{	calc(V, x, y);
+		batch.begin();
+		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.end();
 	}
 
-	public void drawFruit(int x, int y) {
-		calc(V, x, y);
-		shape.setColor(0.0f, 1.0f, 0.0f, 0.0f);
-		shape.polygon(V);
+	public void drawFruit(int x, int y, int i)
+	{	calc(V, x, y);
+		batch.begin();
+		batch.draw(fruitType[i], V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.end();
 	}
 
 	public void drawButton(int x, int y)
@@ -177,7 +202,7 @@ class Hex {
 	{
 		calc(V, x, y);
 		batch.begin();
-		batch.draw(sprite, V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.draw(groundTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
 		batch.end();
 	}
 }

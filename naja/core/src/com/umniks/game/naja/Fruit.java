@@ -4,7 +4,7 @@ package com.umniks.game.naja;
 import java.util.*;
 
 class Fruit extends Entity
-{	private int x, y;
+{	private int x, y, i;
 	private Random rand;
 
 	public Fruit(int x, int y)
@@ -14,7 +14,7 @@ class Fruit extends Entity
 	}
 
 	public void draw(Hex hex)
-	{	hex.drawFruit(x, y);
+	{	hex.drawFruit(x, y, i);
 	}
 
 	public int getx() { return x; }
@@ -25,6 +25,7 @@ class Fruit extends Entity
 	public void reborn(int W, int H)
 	{	x = rand.nextInt(W);
 		y = rand.nextInt(H);
+		i = rand.nextInt(8);
 	}
 
 	@Override
