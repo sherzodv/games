@@ -24,8 +24,9 @@ class World {
 
 	private int			W, H;
 	private final int	startButtonX, startButtonY;
-	private final int	speedIncButtonX, speedIncButtonY;
-	private final int	speedDecButtonX, speedDecButtonY;
+	private final int	inertiaIncButtonX, inertiaIncButtonY;
+	private final int	inertiaDecButtonX, inertiaDecButtonY;
+	private final int	closeButtonX, closeButtonY;
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
@@ -45,11 +46,14 @@ class World {
 		startButtonX= W/2-1;
 		startButtonY= H/2;
 
-		speedIncButtonX = startButtonX-1;
-		speedIncButtonY = startButtonY-1;
+		inertiaIncButtonX = startButtonX-1;
+		inertiaIncButtonY = startButtonY;
 
-		speedDecButtonX = startButtonX+1;
-		speedDecButtonY = startButtonY-1;
+		inertiaDecButtonX = startButtonX-3;
+		inertiaDecButtonY = startButtonY;
+
+		closeButtonX = startButtonX+1;
+		closeButtonY = startButtonY;
 
 		text.setColor(Color.GREEN);
 		text.scale(1.4f);
@@ -83,6 +87,10 @@ class World {
 		case MENU:
 			hex.start();
 			hex.drawSnakeBodyUp(startButtonX, startButtonY);
+			hex.drawFruit(inertiaIncButtonX, inertiaIncButtonY, 0);
+			hex.drawWithStr(inertiaIncButtonX-1, inertiaDecButtonY, snake.getInertia()+"");
+			hex.drawFruit(inertiaDecButtonX, inertiaDecButtonY, 1);
+			hex.drawFruit(closeButtonX, closeButtonY, 2);
 			hex.end();
 			break;
 
@@ -136,7 +144,12 @@ class World {
 
 			if (h[0] == startButtonX && h[1] == startButtonY)
 				gameState = GameStates.PLAY;
-
+			else if (h[0] == inertiaIncButtonX && h[1] == inertiaIncButtonY)
+				snake.incInertia();
+			else if (h[0] == inertiaDecButtonX && h[1] == inertiaDecButtonY)
+				snake.decInertia();
+			else if (h[0] == closeButtonX && h[1] == closeButtonY)
+				gameState = GameStates.EXITING;
 			break;
 
 		case PLAY:
@@ -147,10 +160,9 @@ class World {
 			hex.getHexCoord(x, y, h);
 			//Gdx.app.log("pressed hex", h[0]+" "+h[1]);
 			//Gdx.app.log("pressed pixel", x+" "+y);
-			if (h[0] < W && h[1] < H)
-				if (joystick.handleHexDown(h[0], h[1]) == false) {
-					gameState = GameStates.EXITING;
-				}
+			if (h[0] == W-1 && h[1] == H-1) {
+				gameState = GameStates.MENU;
+			}
 			break;
 	}}
 

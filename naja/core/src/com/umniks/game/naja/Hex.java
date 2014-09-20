@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -21,6 +22,7 @@ class Hex {
 	private int Radius;
 	private int RadiusSqr;
 	private ShapeRenderer shape;
+	private BitmapFont	text;
 
 	private Texture texture;
 	private SpriteBatch batch;
@@ -145,6 +147,10 @@ class Hex {
 		fruitType[5] = new TextureRegion(texture, 620, 9, 238, 266);
 		fruitType[6] = new TextureRegion(texture, 2153, 9, 238, 266);
 		fruitType[7] = new TextureRegion(texture, 2460, 9, 238, 266);
+
+		text = new BitmapFont();
+		text.setColor(Color.GREEN);
+		text.scale(1.4f);
 	}
 
 	public void start() {
@@ -182,6 +188,13 @@ class Hex {
 		calc(V, x, y);
 		batch.begin();
 		batch.draw(fruitType[i], V[X4], V[Y6], DeltaX, HalfRadius*4);
+		batch.end();
+	}
+
+	public void drawWithStr(int x, int y, String s) {
+		calc(V, x, y);
+		batch.begin();
+		text.draw(batch, s, V[X4]+HalfRadius/3, V[Y2]);
 		batch.end();
 	}
 

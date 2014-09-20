@@ -190,6 +190,12 @@ class Snake extends Entity {
 		}
 	}
 
+	private final int maxInertia = 200;
+	private final int minInertia = 50;
+	public void incInertia() { inertia += 50; if (inertia > maxInertia) inertia = maxInertia; }
+	public void decInertia() { inertia -= 50; if (inertia < minInertia) inertia = minInertia; }
+	public int getInertia() { return inertia; }
+
 	public Snake(World w, int x, int y) {
 		dir = D.LEFT;
 		world = w;
