@@ -11,18 +11,21 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
 class World {
-	private int			W, H;
 	private Hex			hex;
 	private Snd			snd;
 	private Snake		snake;
 	private Fruit		fruit;
 	private Joystick	joystick;
-	private final int	startButtonX, startButtonY;
 	private BitmapFont	text;
 	private Dictionary	scoreBoard;
 	private GameStates	gameState;
 	private SpriteBatch	batch;
 	private Preferences	prefs;
+
+	private int			W, H;
+	private final int	startButtonX, startButtonY;
+	private final int	speedIncButtonX, speedIncButtonY;
+	private final int	speedDecButtonX, speedDecButtonY;
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
@@ -38,8 +41,16 @@ class World {
 		prefs		= Gdx.app.getPreferences("MasterScore");
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.MENU;
+
 		startButtonX= W/2-1;
 		startButtonY= H/2;
+
+		speedIncButtonX = startButtonX-1;
+		speedIncButtonY = startButtonY-1;
+
+		speedDecButtonX = startButtonX+1;
+		speedDecButtonY = startButtonY-1;
+
 		text.setColor(Color.GREEN);
 		text.scale(1.4f);
 	}
