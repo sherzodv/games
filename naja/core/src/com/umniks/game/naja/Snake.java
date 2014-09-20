@@ -5,26 +5,22 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
-class Snake extends Entity
-{	private enum BorderCrossType
-	{ oblique, direct };
+class Snake extends Entity {
+	private enum BorderCrossType { oblique, direct };
+	private enum Type { HEAD, BODY, TAIL };
+	private enum D { UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT };
 
-	private enum Type
-	{ HEAD, BODY, TAIL };
-
-	private enum D
-	{ UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT };
-
-	class Part
-	{	protected int x, y;
+	class Part {
+		protected int x, y;
 		protected Type type;
 		protected D dir;
-		public Part(int x, int y, Type t, D d)
-		{	this.x = x;
+		public Part(int x, int y, Type t, D d) {
+			this.x = x;
 			this.y = y;
 			this.type = t;
 			this.dir = d;
-	} }
+		}
+	}
 
 	private D dir;
 	private Part head;
@@ -32,26 +28,20 @@ class Snake extends Entity
 	private List<Part> snake;
 	private BorderCrossType crossing;
 
-	private void bearAt(int x, int y)
-	{	snake = new LinkedList<Part>();
+	private void bearAt(int x, int y) {
+		snake = new LinkedList<Part>();
 		snake.add(new Part(x, y, Type.HEAD, D.UP));
 		for (int i = 0; i < 2; ++i)
 			snake.add(new Part(x, y, Type.BODY, D.UP));
 		snake.add(new Part(x, y, Type.TAIL, D.UP));
 	}
 
-	private void put()
-	{	for (Part part: snake)
-			world.put(part.x, part.y, this);
-	}
-
 	@Override
-	protected boolean handleKey(int keyCode)
-	{
+	protected boolean handleKey(int keyCode) {
 		if (snake.isEmpty()) { return false; }
 		Part head = snake.get(0);
-		switch (head.dir)
-		{	case RIGHT:
+		switch (head.dir) {
+			case RIGHT:
 				switch (keyCode)
 				{	case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
 					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
@@ -105,14 +95,14 @@ class Snake extends Entity
 	}
 
 	@Override
-	public boolean nextStep()
-	{	if (!super.nextStep()) { return false; }
+	public boolean nextStep() {
+		if (!super.nextStep()) { return false; }
 
 		Part head = snake.get(0);
 
 		/* Moving head of the Snake */
-		switch (dir)
-		{	case LEFT:		--head.x; break;
+		switch (dir) {
+			case LEFT:		--head.x; break;
 			case RIGHT:		++head.x; break;
 			case UPLEFT:	if (head.y % 2 == 0) --head.x; ++head.y; break;
 			case UPRIGHT:	if (head.y % 2 == 1) ++head.x; ++head.y; break;
@@ -121,13 +111,13 @@ class Snake extends Entity
 		}
 
 		/* Checking does snake has crossed borders */
-		switch (crossing)
-		{	case oblique:
+		switch (crossing) {
+			case oblique:
 				if (head.x > world.getW() - 1)	{ head.x = 0; }
 				if (head.y > world.getH() - 1)	{ head.y = 0; }
 				if (head.x < 0)					{ head.x = world.getW() - 1; }
 				if (head.y < 0)					{ head.y = world.getH() - 1; }
-			break;
+				break;
 			case direct:
 				if (head.x > world.getW() - 1)	{ head.x = 0; }
 				if (head.x < 0)					{ head.x = world.getW() - 1; }
@@ -148,7 +138,7 @@ class Snake extends Entity
 					head.x %= world.getW();
 				}
 				if (head.y < 0)					{ head.y = world.getH() - 1; }
-			break;
+				break;
 		}
 
 		//Gdx.app.log("head.x, head.y", head.x+" "+head.y);
@@ -158,15 +148,15 @@ class Snake extends Entity
 		int tmpY = 0;
 		/* tail of snake follows it */
 		boolean first = true;
-		for (Part part: snake)
-		{	if (first)
-			{	first = false;
+		for (Part part: snake) {
+			if (first) {
+				first = false;
 				tmpX = part.x;
 				tmpY = part.y;
 				tmpD = part.dir;
 				part.dir = dir;
-			} else
-			{	D ttmpD = part.dir;
+			} else {
+				D ttmpD = part.dir;
 				int ttmpX = part.x;
 				int ttmpY = part.y;
 
@@ -178,43 +168,45 @@ class Snake extends Entity
 				tmpD = ttmpD;
 			}
 		}
-		put();
 
-		for (int i = 3; i < snake.size(); ++i)
-		{	if (snake.get(i).x == head.x && snake.get(i).y == head.y)
-			{	for (; i < snake.size(); )
+		for (int i = 3; i < snake.size(); ++i) {
+			if (snake.get(i).x == head.x && snake.get(i).y == head.y) {
+				for (; i < snake.size(); )
 					snake.remove(i);
-		} }
+			}
+		}
 
 		return true;
 	}
 
 	@Override
-	public void draw(Hex hex)
-	{	for (Part part: snake)
-		{	switch (part.type)
-			{	case HEAD: hex.drawSnakeHeadUp(part.x, part.y); break;
+	public void draw(Hex hex) {
+		for (Part part: snake) {
+			switch (part.type) {
+				case HEAD: hex.drawSnakeHeadUp(part.x, part.y); break;
 				case BODY: hex.drawSnakeBodyUp(part.x, part.y); break;
 				case TAIL: hex.drawSnakeTailUp(part.x, part.y); break;
-	} } }
+			}
+		}
+	}
 
-	public Snake(World w, int x, int y)
-	{	dir = D.LEFT;
+	public Snake(World w, int x, int y) {
+		dir = D.LEFT;
 		world = w;
 		cycles = 0;
-		inertia = 10;
+		inertia = 200;
 		crossing = BorderCrossType.oblique;
 
 		bearAt(x, y);
-		put();
 		//world.add(this);
 	}
 
-	public void grow()
-	{	if (!snake.isEmpty())
-		{	Part head = snake.get(0);
+	public void grow() {
+		if (!snake.isEmpty()) {
+			Part head = snake.get(0);
 			snake.add(1, new Part(head.x, head.y, Type.BODY, head.dir));
-	} }
+		}
+	}
 
 	public int headx() { return snake.isEmpty() ? -1 : snake.get(0).x; }
 	public int heady() { return snake.isEmpty() ? -1 : snake.get(0).y; }

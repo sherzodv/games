@@ -10,50 +10,50 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
-public class Naja extends ApplicationAdapter
-{	Input input;
+public class Naja extends ApplicationAdapter {
+	Input input;
 	World world;
 
-	class Input extends InputAdapter
-	{	@Override
-		public boolean keyDown(int keyCode)
-		{	world.enqueKeyDown(keyCode);
+	class Input extends InputAdapter {
+		@Override
+		public boolean keyDown(int keyCode) {
+			world.enqueKeyDown(keyCode);
 			return true;
 		}
 
 		@Override
-		public boolean keyUp(int keyCode)
-		{	//world.enqueKeyUp(keyCode);
+		public boolean keyUp(int keyCode) {
+			//world.enqueKeyUp(keyCode);
 			return true;
 		}
 
 		@Override
-		public boolean touchDown(int x, int y, int pointer, int button)
-		{	Gdx.input.vibrate(10);
+		public boolean touchDown(int x, int y, int pointer, int button) {
+			Gdx.input.vibrate(10);
 			world.enqueTouchDown(x, y);
 			return true;
 		}
 
 		@Override
-		public boolean touchUp(int x, int y, int pointer, int button)
-		{	world.enqueTouchUp(x, y);
+		public boolean touchUp(int x, int y, int pointer, int button) {
+			world.enqueTouchUp(x, y);
 			return true;
 		}
 
 		@Override
-		public boolean touchDragged(int x, int y, int pointer)
-		{	world.enqueTouchDrag(x, y);
+		public boolean touchDragged(int x, int y, int pointer) {
+			world.enqueTouchDrag(x, y);
 			return false;
 		}
 	}
 
-	private void nextStep()
-	{	world.nextStep();
+	private void nextStep() {
+		world.nextStep();
 	}
 
 	@Override
-	public void create()
-	{	world = new World(24, 14);
+	public void create() {
+		world = new World(18, 11);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);
@@ -65,12 +65,12 @@ public class Naja extends ApplicationAdapter
 				public void run()
 				{	nextStep();
 				}
-			}, 0, 0.01f);
+			}, 0, 0.001f);
 	}
 
 	@Override
-	public void render()
-	{	world.draw();
+	public void render() {
+		world.draw();
 	}
 }
 

@@ -56,8 +56,8 @@ class Hex {
 	private float DeltaY;
 	private float CorrX;
 
-	private void calc(float[] v, int x, int y)
-	{	if (y % 2 != 0)
+	private void calc(float[] v, int x, int y) {
+		if (y % 2 != 0)
 			CorrX = Radius + Height;
 		else
 			CorrX = Radius;
@@ -81,8 +81,8 @@ class Hex {
 		v[Y6] = -Radius		+ y * DeltaY	+ Radius;
 	}
 
-	private float geron(float X1, float Y1, float X2, float Y2, float X3, float Y3)
-	{	float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
+	private float geron(float X1, float Y1, float X2, float Y2, float X3, float Y3) {
+		float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
 		float b = (float) Math.sqrt( (X2-X3)*(X2-X3) + (Y2-Y3)*(Y2-Y3) );
 		float c = (float) Math.sqrt( (X1-X3)*(X1-X3) + (Y1-Y3)*(Y1-Y3) );
 		float p = (a+b+c)/2f;
@@ -91,11 +91,11 @@ class Hex {
 		return s;
 	}
 
-	protected void getHexCoord(int x, int y, int[] hcoord)
-	{	if (y % 2 != 0) CorrX = Height;
+	protected void getHexCoord(int x, int y, int[] hcoord) {
+		if (y % 2 != 0) CorrX = Height;
 		else CorrX = 0;
 
-		Gdx.app.log("(x, y)", x+" "+y);
+		//Gdx.app.log("(x, y)", x+" "+y);
 
 		int a = (int) ((x-CorrX) / DeltaX);
 		int b = (int) (y / DeltaY);
@@ -103,8 +103,8 @@ class Hex {
 		hcoord[0] = a;
 		hcoord[1] = b;
 		for (int i = -1; i <= 1; ++i)
-			for (int j = -1; j <= 1; ++j)
-			{	if (a+i < 0 || b+j < 0) continue;
+			for (int j = -1; j <= 1; ++j) {
+				if (a+i < 0 || b+j < 0) continue;
 				calc(V, a+i, b+j);
 
 				if (Math.abs(
@@ -114,16 +114,16 @@ class Hex {
 					geron(x, y, V[X4], V[Y4], V[X5], V[Y5]) +
 					geron(x, y, V[X5], V[Y5], V[X6], V[Y6]) +
 					geron(x, y, V[X6], V[Y6], V[X1], V[Y1]) -
-					this.Area) < this.EPS)
-				{	hcoord[0] = a+i;
+					this.Area) < this.EPS) {
+					hcoord[0] = a+i;
 					hcoord[1] = b+j;
 					return;
 				}
 			}
 	}
 
-	public Hex(int Radius)
-	{	this.Radius = Radius;
+	public Hex(int Radius) {
+		this.Radius = Radius;
 		this.RadiusSqr = Radius*Radius;
 		this.Height = (float) (Math.sqrt(3) * Radius / 2.0);
 		this.HalfRadius = Radius / 2;
@@ -136,7 +136,7 @@ class Hex {
 		texture = new Texture(Gdx.files.internal("naja-atlas.png"));
 
 		groundTile = new TextureRegion(texture, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile);
-		snakePartTile = new TextureRegion(texture, 13, 12, 231, 259);
+		snakePartTile = new TextureRegion(texture, 13, 10, 231, 261);
 		fruitType[0] = new TextureRegion(texture, 2763, 9, 238, 266);
 		fruitType[1] = new TextureRegion(texture, 1846, 9, 238, 266);
 		fruitType[2] = new TextureRegion(texture, 1540, 9, 238, 266);
@@ -147,59 +147,45 @@ class Hex {
 		fruitType[7] = new TextureRegion(texture, 2460, 9, 238, 266);
 	}
 
-	public void start()
-	{	Gdx.gl.glClearColor(0, 0, 0, 0);
+	public void start() {
+		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		shape.begin(ShapeType.Line);
 	}
 
-	public void end()
-	{	shape.end();
+	public void end() {
+		shape.end();
 	}
 
-	public void drawGerm(int x, int y)
-	{	calc(V, x, y);
-		shape.setColor(1.0f, 1.0f, 0.0f, 0.0f);
-		shape.polygon(V);
-	}
-
-	public void drawSnakeHeadUp(int x, int y)
-	{	calc(V, x, y);
+	public void drawSnakeHeadUp(int x, int y) {
+		calc(V, x, y);
 		batch.begin();
 		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
 		batch.end();
 	}
 
-	public void drawSnakeBodyUp(int x, int y)
-	{	calc(V, x, y);
+	public void drawSnakeBodyUp(int x, int y) {
+		calc(V, x, y);
 		batch.begin();
 		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
 		batch.end();
 	}
 
-	public void drawSnakeTailUp(int x, int y)
-	{	calc(V, x, y);
+	public void drawSnakeTailUp(int x, int y) {
+		calc(V, x, y);
 		batch.begin();
 		batch.draw(snakePartTile, V[X4], V[Y6], DeltaX, HalfRadius*4);
 		batch.end();
 	}
 
-	public void drawFruit(int x, int y, int i)
-	{	calc(V, x, y);
+	public void drawFruit(int x, int y, int i) {
+		calc(V, x, y);
 		batch.begin();
 		batch.draw(fruitType[i], V[X4], V[Y6], DeltaX, HalfRadius*4);
 		batch.end();
 	}
 
-	public void drawButton(int x, int y)
-	{
-		calc(V, x, y);
-		shape.setColor(0.0f, 0.0f, 1.0f, 0.0f);
-		shape.polygon(V);
-	}
-
-	public void drawOnGrid(int x, int y)
-	{
+	public void drawOnGrid(int x, int y) {
 		calc(V, x, y);
 		batch.begin();
 		batch.draw(groundTile, V[X4], V[Y6], DeltaX, HalfRadius*4);

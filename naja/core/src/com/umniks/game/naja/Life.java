@@ -34,24 +34,12 @@ class Life extends Entity {
 		}
 	}
 
-	private void put()
-		throws IllegalAccessException, IndexOutOfBoundsException {
-		for (int x = 1; x < newField.length - 1; ++x) {
-			for (int y = 1; y < newField[x].length - 1; ++y) {
-				if (newField[x][y] > 0) {
-					world.put(x, y, this);
-				}
-			}
-		}
-	}
-
-
 	@Override
 	public void draw(Hex hex) {
 		for (int x = 1; x < newField.length - 1; ++x) {
 			for (int y = 1; y < newField[x].length - 1; ++y) {
 				if (newField[x][y] > 0) {
-					hex.drawGerm(x, y);
+					//hex.drawGerm(x, y);
 				}
 			}
 		}
@@ -94,12 +82,6 @@ class Life extends Entity {
 			for (int y = 1; y < oldField[x].length - 1; ++y) {
 				oldField[x][y] = newField[x][y];
 			}
-		}
-
-		try {
-			put();
-		} catch (Exception e) {
-			// FIXME: catch me
 		}
 
 		return true;
