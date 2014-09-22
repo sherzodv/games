@@ -28,8 +28,8 @@ class Hex {
 	private SpriteBatch batch;
 
 	/* Texture regions for all sprites */
-	private TextureRegion groundTile;
-	private TextureRegion snakePartTile;
+	private TextureRegion	groundTile;
+	private TextureRegion	snakePartTile;
 	private TextureRegion[] fruitType = new TextureRegion[8];
 
 	private final int spaceTile = 20;
@@ -125,30 +125,27 @@ class Hex {
 	}
 
 	public Hex(int Radius) {
-		this.Radius = Radius;
-		this.RadiusSqr = Radius*Radius;
-		this.Height = (float) (Math.sqrt(3) * Radius / 2.0);
-		this.HalfRadius = Radius / 2;
-		this.DeltaX = Height * 2;
-		this.DeltaY = Radius * 1.5f;
-		this.shape = new ShapeRenderer();
-		this.Area = (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
-		this.batch = new SpriteBatch();
-
-		texture = new Texture(Gdx.files.internal("naja-atlas.png"));
-
-		groundTile = new TextureRegion(texture, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile);
-		snakePartTile = new TextureRegion(texture, 13, 10, 231, 261);
-		fruitType[0] = new TextureRegion(texture, 2763, 9, 238, 266);
-		fruitType[1] = new TextureRegion(texture, 1846, 9, 238, 266);
-		fruitType[2] = new TextureRegion(texture, 1540, 9, 238, 266);
-		fruitType[3] = new TextureRegion(texture, 1232, 9, 238, 266);
-		fruitType[4] = new TextureRegion(texture, 926, 9, 238, 266);
-		fruitType[5] = new TextureRegion(texture, 620, 9, 238, 266);
-		fruitType[6] = new TextureRegion(texture, 2153, 9, 238, 266);
-		fruitType[7] = new TextureRegion(texture, 2460, 9, 238, 266);
-
-		text = new BitmapFont();
+		this.Radius		= Radius;
+		this.RadiusSqr	= Radius*Radius;
+		this.Height		= (float) (Math.sqrt(3) * Radius / 2.0);
+		this.HalfRadius	= Radius / 2;
+		this.DeltaX		= Height * 2;
+		this.DeltaY		= Radius * 1.5f;
+		this.shape		= new ShapeRenderer();
+		this.Area		= (float) (3f * Math.sqrt(3) * RadiusSqr / 2f);
+		this.batch		= new SpriteBatch();
+		texture			= new Texture(Gdx.files.internal("naja-atlas.png"));
+		groundTile		= new TextureRegion(texture, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile);
+		snakePartTile	= new TextureRegion(texture, 13, 10, 231, 261);
+		fruitType[0]	= new TextureRegion(texture, 2763, 9, 238, 266);
+		fruitType[1]	= new TextureRegion(texture, 1846, 9, 238, 266);
+		fruitType[2]	= new TextureRegion(texture, 1540, 9, 238, 266);
+		fruitType[3]	= new TextureRegion(texture, 1232, 9, 238, 266);
+		fruitType[4]	= new TextureRegion(texture, 926, 9, 238, 266);
+		fruitType[5]	= new TextureRegion(texture, 620, 9, 238, 266);
+		fruitType[6]	= new TextureRegion(texture, 2153, 9, 238, 266);
+		fruitType[7]	= new TextureRegion(texture, 2460, 9, 238, 266);
+		text			= new BitmapFont();
 		text.setColor(Color.GREEN);
 		text.scale(1.4f);
 	}

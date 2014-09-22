@@ -42,48 +42,48 @@ class Snake extends Entity {
 		Part head = snake.get(0);
 		switch (head.dir) {
 			case RIGHT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
 					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
 					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
 					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
 			case LEFT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
 					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
 					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
 					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					default: return false;
 				}
 			case DOWNRIGHT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
 					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
 					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
 					default: return false;
 				}
 			case DOWNLEFT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
 					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
 					default: return false;
 				}
 			case UPRIGHT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_3:	dir = D.DOWNRIGHT;	return true;
 					case Keys.NUMPAD_7:	dir = D.UPLEFT;		return true;
 					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
 					default: return false;
 				}
 			case UPLEFT:
-				switch (keyCode)
-				{	case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
+				switch (keyCode) {
+					case Keys.NUMPAD_1:	dir = D.DOWNLEFT;	return true;
 					case Keys.NUMPAD_9:	dir = D.UPRIGHT;	return true;
 					case Keys.NUMPAD_6:	dir = D.RIGHT;		return true;
 					case Keys.NUMPAD_4:	dir = D.LEFT;		return true;
@@ -112,33 +112,36 @@ class Snake extends Entity {
 
 		/* Checking does snake has crossed borders */
 		switch (crossing) {
-			case oblique:
-				if (head.x > world.getW() - 1)	{ head.x = 0; }
-				if (head.y > world.getH() - 1)	{ head.y = 0; }
-				if (head.x < 0)					{ head.x = world.getW() - 1; }
-				if (head.y < 0)					{ head.y = world.getH() - 1; }
-				break;
-			case direct:
-				if (head.x > world.getW() - 1)	{ head.x = 0; }
-				if (head.x < 0)					{ head.x = world.getW() - 1; }
+		case oblique:
+			if (head.x > world.getW() - 1)	{ head.x = 0; }
+			if (head.y > world.getH() - 1)	{ head.y = 0; }
+			if (head.x < 0)					{ head.x = world.getW() - 1; }
+			if (head.y < 0)					{ head.y = world.getH() - 1; }
+			break;
+		case direct:
+			if (head.x > world.getW() - 1)	{ head.x = 0; }
+			if (head.x < 0)					{ head.x = world.getW() - 1; }
 
-				if (head.y > world.getH() - 1)
-				{	head.y = 0;
-					switch (dir)
-					{	case UPLEFT:
-							head.x += 8;
-							if (head.x > world.getW() - 1) {
-								head.x = world.getW() - 1;
-							}
-						break;
-						case UPRIGHT:
-							head.x -= 7;
-						break;
+			if (head.y > world.getH() - 1) {
+				head.y = 0;
+				switch (dir) {
+				case UPLEFT:
+					head.x += 8;
+					if (head.x > world.getW() - 1) {
+						head.x = world.getW() - 1;
 					}
-					head.x %= world.getW();
+					break;
+
+				case UPRIGHT:
+					head.x -= 7;
+					break;
 				}
-				if (head.y < 0)					{ head.y = world.getH() - 1; }
-				break;
+				head.x %= world.getW();
+			}
+			if (head.y < 0) {
+				head.y = world.getH() - 1;
+			}
+			break;
 		}
 
 		//Gdx.app.log("head.x, head.y", head.x+" "+head.y);
