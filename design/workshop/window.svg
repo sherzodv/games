@@ -26280,6 +26280,33 @@
        fx="602.75366"
        fy="240"
        r="0.96602541" />
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter11442-5">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2091406"
+         id="feGaussianBlur11444-5" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter11442-5-0">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2091406"
+         id="feGaussianBlur11444-5-5" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter11442-5-0-2">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2091406"
+         id="feGaussianBlur11444-5-5-8" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -26288,14 +26315,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1875"
-     inkscape:cx="640"
-     inkscape:cy="363.02655"
+     inkscape:zoom="0.8396893"
+     inkscape:cx="510.48458"
+     inkscape:cy="-85.06711"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
-     showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1065"
+     showgrid="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="747"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -26309,7 +26336,16 @@
      inkscape:snap-grids="false"
      inkscape:snap-to-guides="true"
      inkscape:snap-smooth-nodes="false"
-     inkscape:snap-midpoints="false" />
+     inkscape:snap-midpoints="false">
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid9799"
+       units="mm"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -26327,8 +26363,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline"
-     transform="translate(0,-332.36218)"
-     sodipodi:insensitive="true">
+     transform="translate(0,-332.36218)">
     <g
        style="display:inline"
        id="g23078"
@@ -72455,7 +72490,10 @@
        width="1280"
        height="720"
        x="0"
-       y="326.30908" />
+       y="326.30908"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -72501,7 +72539,10 @@
     <g
        style="display:inline"
        id="g13885"
-       transform="translate(81.315743,518.57126)">
+       transform="translate(81.315743,518.57126)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          style="fill:#3b5a98;fill-opacity:1;stroke:#3b5998;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -72538,7 +72579,10 @@
     <g
        style="display:inline"
        id="g19669"
-       transform="translate(173.0382,341.12178)">
+       transform="translate(173.0382,341.12178)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.92445676,0,0,0.92412185,-54.449243,-0.53434848)"
          d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
@@ -72575,7 +72619,10 @@
     <g
        id="g20883"
        transform="matrix(1.2781501,0,0,1.2781501,-263.77229,229.29654)"
-       style="display:inline">
+       style="display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.87644169,0,0,0.87612417,-102.74866,-306.78875)"
          inkscape:connector-curvature="0"
@@ -72606,7 +72653,10 @@
     </g>
     <g
        id="g20910"
-       transform="translate(-86.582366,647.88982)">
+       transform="translate(-86.582366,647.88982)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(1.120224,0,0,1.1198182,-391.65656,-810.71534)"
          inkscape:connector-curvature="0"
@@ -72638,7 +72688,10 @@
     <g
        style="display:inline"
        transform="matrix(1.2781501,0,0,1.2781501,-180.63385,229.29654)"
-       id="g20891">
+       id="g20891"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          style="fill:#5fd3bc;fill-opacity:1;stroke:#87decd;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -72670,7 +72723,10 @@
     <g
        style="display:inline"
        id="g13895"
-       transform="translate(200.69128,475.87196)">
+       transform="translate(200.69128,475.87196)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          sodipodi:type="star"
          style="fill:#784421;fill-opacity:0.89516129;stroke:none"
@@ -72707,7 +72763,10 @@
     <g
        style="display:inline"
        transform="matrix(1.2781501,0,0,1.2781501,-97.495407,373.29653)"
-       id="g84448">
+       id="g84448"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          style="fill:#5fd3bc;fill-opacity:1;stroke:#87decd;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -72739,7 +72798,10 @@
     <g
        id="g84456"
        transform="matrix(1.2781501,0,0,1.2781501,-14.356948,373.29653)"
-       style="display:inline">
+       style="display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.87644169,0,0,0.87612417,-102.74866,-306.78875)"
          inkscape:connector-curvature="0"
@@ -72771,7 +72833,10 @@
     <g
        style="display:inline"
        transform="matrix(1.2781501,0,0,1.2781501,68.781483,373.29653)"
-       id="g84464">
+       id="g84464"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          style="fill:#5fd3bc;fill-opacity:1;stroke:#87decd;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -72803,7 +72868,10 @@
     <g
        id="g84494"
        transform="matrix(1.2781501,0,0,1.2781501,151.91992,373.29652)"
-       style="display:inline">
+       style="display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.87644169,0,0,0.87612417,-102.74866,-306.78875)"
          inkscape:connector-curvature="0"
@@ -72834,7 +72902,10 @@
     </g>
     <g
        id="g31949"
-       transform="translate(470.78469,-28.28089)">
+       transform="matrix(1.337055,0,0,1.3270452,-12.861696,598.76142)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          transform="translate(2.52613,275.67806)"
          id="g19951">
@@ -72879,7 +72950,10 @@
     </g>
     <g
        id="g54058"
-       transform="matrix(1.1111111,0,0,1.1111111,-83.908157,-76.478776)">
+       transform="matrix(1.1111111,0,0,1.1111111,-103.0975,162.73182)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          id="g31959"
          transform="matrix(1.2423915,0,0,1.2423915,-55.615227,714.33263)">
@@ -72924,7 +72998,10 @@
     </g>
     <g
        id="g32081"
-       transform="matrix(1.3804349,0,0,1.3804349,-416.31561,231.20092)">
+       transform="matrix(1.3804349,0,0,1.3804349,-431.57711,470.41152)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          transform="translate(15.355647,352.07979)"
          id="g32015">
@@ -72969,7 +73046,10 @@
     </g>
     <g
        id="g32073"
-       transform="matrix(1.3804349,0,0,1.3804349,-820.68784,234.6831)">
+       transform="matrix(1.3804349,0,0,1.3804349,-709.27779,473.8937)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          id="g32047"
          transform="translate(127.60789,349.55727)">
@@ -73014,7 +73094,10 @@
     </g>
     <g
        id="g32123"
-       transform="matrix(1.3804349,0,0,1.3804349,-545.84398,189.3839)">
+       transform="matrix(1.3804349,0,0,1.3804349,-563.0693,428.59449)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          id="g32105"
          transform="translate(199.52655,382.37244)">
@@ -73067,10 +73150,13 @@
          sodipodi:role="line"
          id="tspan32183"
          x="34.51828"
-         y="1052.3622"> </tspan></text>
+         y="1052.3622" /></text>
     <g
        id="g54044"
-       transform="matrix(1.3804349,0,0,1.3804349,-312.44708,-320.0307)">
+       transform="matrix(1.3804349,0,0,1.3804349,-448.48832,-80.820112)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
       <g
          id="g32207"
          transform="translate(-150.22715,751.39718)">
@@ -73115,7 +73201,10 @@
     </g>
     <g
        transform="translate(121.26382,719.8898)"
-       id="g49945">
+       id="g49945"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          style="fill:#5fd3bc;fill-opacity:1;stroke:#87decd;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -73147,14 +73236,330 @@
     <text
        xml:space="preserve"
        style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#800080;fill-opacity:1;stroke:none;font-family:Elusive-Icons;-inkscape-font-specification:Elusive-Icons"
-       x="701.74872"
-       y="824.30908"
+       x="706.67694"
+       y="820.30902"
        id="text54040"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/background.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan54042"
-         x="701.74872"
-         y="824.30908"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:PowerlineSymbols;-inkscape-font-specification:PowerlineSymbols Medium">Web Snake</tspan></text>
+         x="706.67694"
+         y="820.30902"
+         style="font-size:56px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:Adobe Courier;-inkscape-font-specification:Adobe Courier">Social Snake</tspan></text>
+    <g
+       transform="matrix(1.3804349,0,0,1.3804349,-571.23212,-80.820138)"
+       id="g9820"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(-150.22715,751.39718)"
+         id="g9823">
+        <path
+           transform="matrix(0.92487175,0,0,0.92487108,46.796877,-123.03331)"
+           d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
+           inkscape:randomized="0"
+           inkscape:rounded="0"
+           inkscape:flatsided="true"
+           sodipodi:arg2="2.0943951"
+           sodipodi:arg1="1.5707963"
+           sodipodi:r2="34.504219"
+           sodipodi:r1="39.842041"
+           sodipodi:cy="298.36072"
+           sodipodi:cx="763.54828"
+           sodipodi:sides="6"
+           id="path9825"
+           style="fill:#220b28;fill-opacity:0.89516129;stroke:none"
+           sodipodi:type="star" />
+        <path
+           transform="matrix(0.87683509,0,0,0.87683446,91.23315,-400.78514)"
+           inkscape:connector-curvature="0"
+           id="path9827"
+           d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
+           style="fill:#441650;fill-opacity:1;stroke:#441650;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter11442)" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path9829"
+           d="m 752.99539,114.79734 -33.02882,19.05728 0,38.11456 33.02882,19.05726 33.00025,-19.05726 0,-38.11456 -33.00025,-19.05728 z m 0,1.22859 31.91453,18.45726 0,36.8574 -31.91453,18.4287 -31.94311,-18.4287 0,-36.8574 31.94311,-18.45726 z"
+           style="fill:#441650;fill-opacity:1;stroke:none" />
+      </g>
+      <g
+         id="g9831"
+         transform="matrix(0.01788836,0,0,-0.01788836,586.72596,915.7576)"
+         style="fill:#800080">
+        <path
+           id="path9833"
+           d="M 256,96 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 32 q -14,0 -23,9 -9,9 -9,23 V 96 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z M 640,224 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 416 q -14,0 -23,9 -9,9 -9,23 v 320 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,256 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 800 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,384 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 960 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,512 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 1472 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z"
+           inkscape:connector-curvature="0"
+           style="fill:#800080" />
+      </g>
+    </g>
+    <g
+       transform="matrix(1.3804349,0,0,1.3804349,-693.97583,-80.820112)"
+       id="g9820-6"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(-150.22715,751.39718)"
+         id="g9823-7">
+        <path
+           transform="matrix(0.92487175,0,0,0.92487108,46.796877,-123.03331)"
+           d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
+           inkscape:randomized="0"
+           inkscape:rounded="0"
+           inkscape:flatsided="true"
+           sodipodi:arg2="2.0943951"
+           sodipodi:arg1="1.5707963"
+           sodipodi:r2="34.504219"
+           sodipodi:r1="39.842041"
+           sodipodi:cy="298.36072"
+           sodipodi:cx="763.54828"
+           sodipodi:sides="6"
+           id="path9825-7"
+           style="fill:#220b28;fill-opacity:0.89516129;stroke:none"
+           sodipodi:type="star" />
+        <path
+           transform="matrix(0.87683509,0,0,0.87683446,91.23315,-400.78514)"
+           inkscape:connector-curvature="0"
+           id="path9827-2"
+           d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
+           style="fill:#441650;fill-opacity:1;stroke:#441650;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter11442-5)" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path9829-4"
+           d="m 752.99539,114.79734 -33.02882,19.05728 0,38.11456 33.02882,19.05726 33.00025,-19.05726 0,-38.11456 -33.00025,-19.05728 z m 0,1.22859 31.91453,18.45726 0,36.8574 -31.91453,18.4287 -31.94311,-18.4287 0,-36.8574 31.94311,-18.45726 z"
+           style="fill:#441650;fill-opacity:1;stroke:none" />
+      </g>
+      <g
+         id="g9831-7"
+         transform="matrix(0.01788836,0,0,-0.01788836,586.72596,915.7576)"
+         style="fill:#800080">
+        <path
+           id="path9833-8"
+           d="M 256,96 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 32 q -14,0 -23,9 -9,9 -9,23 V 96 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z M 640,224 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 416 q -14,0 -23,9 -9,9 -9,23 v 320 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,256 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 800 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,384 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 960 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,512 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 1472 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z"
+           inkscape:connector-curvature="0"
+           style="fill:#800080" />
+      </g>
+    </g>
+    <g
+       transform="matrix(1.3804349,0,0,1.3804349,-816.71959,-80.820112)"
+       id="g9820-6-7"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(-150.22715,751.39718)"
+         id="g9823-7-6">
+        <path
+           transform="matrix(0.92487175,0,0,0.92487108,46.796877,-123.03331)"
+           d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
+           inkscape:randomized="0"
+           inkscape:rounded="0"
+           inkscape:flatsided="true"
+           sodipodi:arg2="2.0943951"
+           sodipodi:arg1="1.5707963"
+           sodipodi:r2="34.504219"
+           sodipodi:r1="39.842041"
+           sodipodi:cy="298.36072"
+           sodipodi:cx="763.54828"
+           sodipodi:sides="6"
+           id="path9825-7-0"
+           style="fill:#220b28;fill-opacity:0.89516129;stroke:none"
+           sodipodi:type="star" />
+        <path
+           transform="matrix(0.87683509,0,0,0.87683446,91.23315,-400.78514)"
+           inkscape:connector-curvature="0"
+           id="path9827-2-9"
+           d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
+           style="fill:#441650;fill-opacity:1;stroke:#441650;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter11442-5-0)" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path9829-4-7"
+           d="m 752.99539,114.79734 -33.02882,19.05728 0,38.11456 33.02882,19.05726 33.00025,-19.05726 0,-38.11456 -33.00025,-19.05728 z m 0,1.22859 31.91453,18.45726 0,36.8574 -31.91453,18.4287 -31.94311,-18.4287 0,-36.8574 31.94311,-18.45726 z"
+           style="fill:#441650;fill-opacity:1;stroke:none" />
+      </g>
+      <g
+         id="g9831-7-6"
+         transform="matrix(0.01788836,0,0,-0.01788836,586.72596,915.7576)"
+         style="fill:#800080">
+        <path
+           id="path9833-8-2"
+           d="M 256,96 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 32 q -14,0 -23,9 -9,9 -9,23 V 96 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z M 640,224 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 416 q -14,0 -23,9 -9,9 -9,23 v 320 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,256 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 800 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,384 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 960 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,512 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 1472 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z"
+           inkscape:connector-curvature="0"
+           style="fill:#800080" />
+      </g>
+    </g>
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937"
+       width="29.17746"
+       height="41.682068"
+       x="10.122792"
+       y="814.0824"
+       transform="translate(0,332.36218)"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4"
+       width="29.17746"
+       height="41.682068"
+       x="10.122791"
+       y="1146.4446"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5"
+       width="19.352398"
+       height="41.682068"
+       x="143.20773"
+       y="1146.1469"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5-8"
+       width="19.352398"
+       height="41.682068"
+       x="143.20773"
+       y="1146.1469"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5-8-7"
+       width="9.8250647"
+       height="41.682068"
+       x="274.95288"
+       y="1145.8491"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5-8-7-2"
+       width="9.8250647"
+       height="41.682068"
+       x="274.95288"
+       y="1145.8491"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5-8-7-2-2"
+       width="9.8250647"
+       height="41.682068"
+       x="274.95288"
+       y="1145.8491"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-5-8-6"
+       width="19.352398"
+       height="41.682068"
+       x="143.20773"
+       y="1146.1467"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-3"
+       width="29.17746"
+       height="41.682068"
+       x="10.122791"
+       y="1146.4446"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       transform="matrix(1.3804349,0,0,1.3804349,-939.46339,-80.820138)"
+       id="g9820-6-7-6"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(-150.22715,751.39718)"
+         id="g9823-7-6-4">
+        <path
+           transform="matrix(0.92487175,0,0,0.92487108,46.796877,-123.03331)"
+           d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
+           inkscape:randomized="0"
+           inkscape:rounded="0"
+           inkscape:flatsided="true"
+           sodipodi:arg2="2.0943951"
+           sodipodi:arg1="1.5707963"
+           sodipodi:r2="34.504219"
+           sodipodi:r1="39.842041"
+           sodipodi:cy="298.36072"
+           sodipodi:cx="763.54828"
+           sodipodi:sides="6"
+           id="path9825-7-0-7"
+           style="fill:#220b28;fill-opacity:0.89516129;stroke:none"
+           sodipodi:type="star" />
+        <path
+           transform="matrix(0.87683509,0,0,0.87683446,91.23315,-400.78514)"
+           inkscape:connector-curvature="0"
+           id="path9827-2-9-1"
+           d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
+           style="fill:#441650;fill-opacity:1;stroke:#441650;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter11442-5-0-2)" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path9829-4-7-9"
+           d="m 752.99539,114.79734 -33.02882,19.05728 0,38.11456 33.02882,19.05726 33.00025,-19.05726 0,-38.11456 -33.00025,-19.05728 z m 0,1.22859 31.91453,18.45726 0,36.8574 -31.91453,18.4287 -31.94311,-18.4287 0,-36.8574 31.94311,-18.45726 z"
+           style="fill:#441650;fill-opacity:1;stroke:none" />
+      </g>
+      <g
+         id="g9831-7-6-3"
+         transform="matrix(0.01788836,0,0,-0.01788836,586.72596,915.7576)"
+         style="fill:#800080">
+        <path
+           id="path9833-8-2-0"
+           d="M 256,96 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 32 q -14,0 -23,9 -9,9 -9,23 V 96 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z M 640,224 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 416 q -14,0 -23,9 -9,9 -9,23 v 320 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,256 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 H 800 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,384 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 960 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z m 384,512 V -96 q 0,-14 -9,-23 -9,-9 -23,-9 h -192 q -14,0 -23,9 -9,9 -9,23 v 1472 q 0,14 9,23 9,9 23,9 h 192 q 14,0 23,-9 9,-9 9,-23 z"
+           inkscape:connector-curvature="0"
+           style="fill:#800080" />
+      </g>
+    </g>
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-3-6"
+       width="37.630436"
+       height="41.682068"
+       x="-121.23671"
+       y="1144.907"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-3-6-7"
+       width="37.630436"
+       height="41.682068"
+       x="-121.23671"
+       y="1144.907"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#220b28;fill-opacity:0.89411765;stroke:none"
+       id="rect9937-4-3-6-7-6"
+       width="37.630436"
+       height="41.682068"
+       x="-121.23671"
+       y="1144.907"
+       inkscape:export-filename="/home/oybek/work/android/games/naja/android/assets/menu-atlas.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
   </g>
 </svg>

@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
 class World {
-	private Hex			hexs;
+	private Hex			hex;
 	private Snd			snd;
 	private Snake		snake;
 	private Fruit		fruit;
@@ -22,11 +22,13 @@ class World {
 	private SpriteBatch	batch;
 	private Preferences	prefs;
 
-	private int			W, H;
-	private final int	startButtonX, startButtonY;
-	private final int	inertiaIncButtonX, inertiaIncButtonY;
-	private final int	inertiaDecButtonX, inertiaDecButtonY;
-	private final int	closeButtonX, closeButtonY;
+	private final int	W, H;
+	private final int	startX, startY;
+	private final int	incX, incY;
+	private final int	decX, decY;
+	private final int	indX, indY;
+	private final int	muteX, muteY;
+	private int	exitX, exitY;
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
@@ -34,7 +36,7 @@ class World {
 		W			= w;
 		H			= h;
 		snd			= new Snd();
-		hexs		= new Hex(40);
+		hex			= new Hex(40);
 		text		= new BitmapFont();
 		fruit		= new Fruit(W/2, H/2);
 		batch		= new SpriteBatch();
@@ -43,17 +45,23 @@ class World {
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.PLAY;
 
-		startButtonX= W/2-1;
-		startButtonY= H/2;
+		startX	= W/2;
+		startY	= H/6;
 
-		inertiaIncButtonX = startButtonX-1;
-		inertiaIncButtonY = startButtonY;
+		incX 	= startX-3;
+		incY 	= startY;
 
-		inertiaDecButtonX = startButtonX-3;
-		inertiaDecButtonY = startButtonY;
+		decX 	= startX-1;
+		decY 	= startY;
 
-		closeButtonX = startButtonX+1;
-		closeButtonY = startButtonY;
+		indX 	= startX-2;
+		indY 	= startY;
+
+		muteX 	= startX+3;
+		muteY 	= startY;
+
+		exitX 	= W-1;
+		exitY 	= H-1;
 
 		text.setColor(Color.GREEN);
 		text.scale(1.4f);
@@ -63,69 +71,71 @@ class World {
 	int getH() { return H; }
 
 	public void nextStep() { switch (gameState) {
-		case MENU:
-			break;
+	case MENU:
+		break;
 
-		case PAUSE:
-		case EXITING:
-			break;
+	case PAUSE:
+	case EXITING:
+		break;
 
-		case PLAY:
-			fruit.nextStep();
-			snake.nextStep();
+	case PLAY:
+		fruit.nextStep();
+		snake.nextStep();
 
-			/* Collision handling: will be separate function */
-			if (snake.headx() == fruit.getx()
-			&&	snake.heady() == fruit.gety()) {
-				fruit.reborn(W, H);
-				snake.grow();
-			}
-			break;
+		/* Collision handling: will be separate function */
+		if (snake.headx() == fruit.getx()
+		&&	snake.heady() == fruit.gety()) {
+			fruit.reborn(W, H);
+			snake.grow();
+		}
+		break;
 	} }
 
 	public void draw() { switch(gameState) {
-		case MENU:
-			hexs.start();
-			hexs.drawSnakeBodyUp(startButtonX, startButtonY);
-			hexs.drawFruit(inertiaIncButtonX, inertiaIncButtonY, 0);
-			hexs.drawWithStr(inertiaIncButtonX-1, inertiaDecButtonY, snake.getInertia()+"");
-			hexs.drawFruit(inertiaDecButtonX, inertiaDecButtonY, 1);
-			hexs.drawFruit(closeButtonX, closeButtonY, 2);
-			hexs.end();
-			break;
+	case MENU:
+		hex.start();
+		hex.drawBackground(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		hex.drawButtonStart(startX, startY);
+		hex.drawButtonUp(incX, incY);
+		hex.drawButtonLevel(indX, indY, (250-snake.getInertia())/50);
+		hex.drawButtonDown(decX, decY);
+		hex.drawButtonExit(exitX, exitY);
+		hex.end();
+		break;
 
-		case EXITING:
-			hexs.start();
-			batch.begin();
-			if (snake.length() >= prefs.getInteger("MasterScore")) {
-				text.draw(batch, "SNAKE MASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
-				prefs.putInteger("MasterScore", this.snake.length());
-				prefs.flush();
-			} else {
-				text.draw(batch, "NOT YET MASTER", Gdx.graphics.getWidth()/2-140, Gdx.graphics.getHeight()/2);
-			}
-			Timer.schedule(new Task() { @Override public void run() { Gdx.app.exit(); } }, 2.0f);
-			batch.end();
+	case EXITING:
+		hex.start();
+		batch.begin();
+		if (snake.length() >= prefs.getInteger("MasterScore")) {
+			text.draw(batch, "SNAKE MASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+			prefs.putInteger("MasterScore", this.snake.length());
+			prefs.flush();
+		} else {
+			text.draw(batch, "NOT YET MASTER", Gdx.graphics.getWidth()/2-140, Gdx.graphics.getHeight()/2);
+		}
+		Timer.schedule(new Task() { @Override public void run() { Gdx.app.exit(); } }, 2.0f);
+		batch.end();
 
-			hexs.end();
-			break;
+		hex.end();
+		break;
 
-		case PLAY: case PAUSE:
-			hexs.start();
-			for (int x = 0; x < W; ++x)
-			for (int y = 0; y < H; ++y)
-				hexs.drawOnGrid(x, y);
+	case PLAY: case PAUSE:
+		hex.start();
+		for (int x = 0; x < W; ++x)
+		for (int y = 0; y < H; ++y)
+			hex.drawOnGrid(x, y);
 
-			fruit.draw(hexs);
-			snake.draw(hexs);
+		fruit.draw(hex);
+		snake.draw(hex);
+		hex.drawButtonExit(exitX, exitY);
 
-			batch.begin();
-			text.draw(batch, "your score: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-5);
-			text.draw(batch, "master score: "+prefs.getInteger("MasterScore")+" $", Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight()-5);
-			batch.end();
+		batch.begin();
+		text.draw(batch, "your score: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-5);
+		text.draw(batch, "master score: "+prefs.getInteger("MasterScore")+" $", Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight()-5);
+		batch.end();
 
-			hexs.end();
-			break;
+		hex.end();
+		break;
 	}}
 
 	public void enqueKeyDown(int keyCode) {
@@ -140,15 +150,19 @@ class World {
 	case MENU:
 		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
 		int[] h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
-		hexs.getHexCoord(x, y, h);
+		hex.getHexCoord(x, y, h);
 
-		if (h[0] == startButtonX && h[1] == startButtonY)
+		if (h[0] == startX && h[1] == startY) {
+			hex.changeRadius(40);
+			exitX = W-1;
+			exitY = H-1;
 			gameState = GameStates.PLAY;
-		else if (h[0] == inertiaIncButtonX && h[1] == inertiaIncButtonY)
+		}
+		else if (h[0] == incX && h[1] == incY)
 			snake.incInertia();
-		else if (h[0] == inertiaDecButtonX && h[1] == inertiaDecButtonY)
+		else if (h[0] == decX && h[1] == decY)
 			snake.decInertia();
-		else if (h[0] == closeButtonX && h[1] == closeButtonY)
+		else if (h[0] == exitX && h[1] == exitY)
 			gameState = GameStates.EXITING;
 		break;
 
@@ -157,33 +171,35 @@ class World {
 		joystick.handleTouchDown(x, y);
 
 		h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
-		hexs.getHexCoord(x, y, h);
-		//Gdx.app.log("pressed hexs", h[0]+" "+h[1]);
+		hex.getHexCoord(x, y, h);
+		//Gdx.app.log("pressed hex", h[0]+" "+h[1]);
 		//Gdx.app.log("pressed pixel", x+" "+y);
-		if (h[0] == W-1 && h[1] == H-1) {
+		if (h[0] == exitX && h[1] == exitY) {
+			hex.changeRadius(47);
+			exitX = exitY = 0;
 			gameState = GameStates.MENU;
 		}
 		break;
 	}}
 
 	public void enqueTouchUp(int x, int y) { switch (gameState) {
-		case MENU:
-			break;
+	case MENU:
+		break;
 
-		case PLAY:
-			y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
-			joystick.handleTouchUp(x, y);
-			break;
+	case PLAY:
+		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
+		joystick.handleTouchUp(x, y);
+		break;
 	}}
 
 	public void enqueTouchDrag(int x, int y) { switch (gameState) {
-		case MENU:
-			break;
+	case MENU:
+		break;
 
-		case PLAY:
-			y = Gdx.graphics.getHeight() - y;
-			joystick.handleTouchDrag(x, y);
-			break;
+	case PLAY:
+		y = Gdx.graphics.getHeight() - y;
+		joystick.handleTouchDrag(x, y);
+		break;
 	}}
 }
 

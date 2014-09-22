@@ -53,7 +53,7 @@ public class Naja extends ApplicationAdapter {
 
 	@Override
 	public void create() {
-		world = new World(18, 11);
+		world = new World(16, 11);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);
