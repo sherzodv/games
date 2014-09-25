@@ -64,7 +64,7 @@ public class Naja extends ApplicationAdapter {
 				public void run()
 				{	nextStep();
 				}
-			}, 0, 0.001f);
+			}, 0, 0.01f);
 	}
 
 	@Override

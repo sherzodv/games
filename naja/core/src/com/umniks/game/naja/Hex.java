@@ -36,7 +36,8 @@ class HexPack {
 						SnakePart,
 						ButtonDown,
 						ButtonExit,
-						ButtonStart;
+						ButtonStart,
+						Border1, Border2, Border3;
 
 	private Hexagon[]	Food,
 						ButtonLevel;
@@ -70,6 +71,9 @@ class HexPack {
 		ButtonLevel[4]	= new Hexagon(30, batch, new TextureRegion(MenuAtlas, 823, 4, 160, 180));
 		SnakePart		= new Hexagon(30, batch, new TextureRegion(GameAtlas, 13, 10, 231, 261));
 		Tile			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile));
+		Border1			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 3080, 9, 230, 266));
+		Border2			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 3390, 18, 238, 266));
+		Border3			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 3690, 9, 250, 266));
 	}
 
 	Hexagon getTile()		{ return Tile; }
@@ -90,7 +94,28 @@ class HexPack {
 	public void drawButtonLevel(int x, int y, int i){ ButtonLevel[i].DrawHex(x, y); }
 	public void drawButtonDown(int x, int y)		{ ButtonDown.DrawHex(x, y); }
 	public void drawButtonUp(int x, int y)			{ ButtonUp.DrawHex(x, y); }
-	public void drawOnGrid(int x, int y)			{ Tile.DrawHex(x, y); }
+	public void drawTile(int x, int y)				{ Tile.DrawHex(x, y); }
+ 	public void drawBorderUp(int x, int y)			{ Border2.DrawHex(x, y); }
+ 	public void drawBorderDown(int x, int y) {
+		Border2.getSprite().flip(false, true);
+		Border2.DrawHex(x, y);
+		Border2.getSprite().flip(false, true);
+	}
+ 	public void drawBorderLeft(int x, int y)		{ Border3.DrawHex(x, y); }
+ 	public void drawBorderL(int x, int y)			{ Border1.DrawHex(x, y); }
+
+ 	public void drawBorderRight(int x, int y) {
+		Border3.getSprite().flip(true, false);
+		Border3.DrawHex(x, y);
+		Border3.getSprite().flip(true, false);
+	}
+
+ 	public void drawBorderR(int x, int y) {
+		Border1.getSprite().flip(true, false);
+		Border1.DrawHex(x, y);
+		Border1.getSprite().flip(true, false);
+	}
+
 	public void drawFruit(int x, int y, int i)		{ Food[i].DrawHex(x, y); }
 
 	void drawBackground(int backX, int backY) {

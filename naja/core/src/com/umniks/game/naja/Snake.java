@@ -165,8 +165,8 @@ class Snake extends Entity {
 		}
 	}
 
-	private final int maxInertia = 250;
-	private final int minInertia = 50;
+	private final int maxInertia = 50;
+	private final int minInertia = 10;
 	public void incInertia() { inertia += 50; if (inertia > maxInertia) inertia = maxInertia; }
 	public void decInertia() { inertia -= 50; if (inertia < minInertia) inertia = minInertia; }
 	public int getInertia() { return inertia; }
@@ -175,7 +175,7 @@ class Snake extends Entity {
 		dir = D.LEFT;
 		world = w;
 		cycles = 0;
-		inertia = 100;
+		inertia = 10;
 		crossing = BorderCrossType.oblique;
 
 		bearAt(x, y);

@@ -73,6 +73,10 @@ class Hexagon {
 		batch.end();
 	}
 
+	TextureRegion getSprite() {
+		return sprite;
+	}
+
 	public void DrawHex() {
 		calcDots((int)x, (int)y);
 		batch.begin();

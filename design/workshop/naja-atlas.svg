@@ -35,6 +35,87 @@
          stdDeviation="2.0152344"
          id="feGaussianBlur13512" />
     </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8-6-3"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9-1-9"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-5"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-1"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8-6"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9-1"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-5-5"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-1-9"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8-6-3-4-4"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9-1-9-6-9"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8-6-3-4"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9-1-9-6"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8-6-8"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9-1-0"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28-8"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9-9"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter13510-28"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur13512-9"
+         stdDeviation="2.0152344"
+         inkscape:collect="always" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -43,9 +124,9 @@
      borderopacity="1"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="-161.2278"
-     inkscape:cy="72.734628"
+     inkscape:zoom="0.35"
+     inkscape:cx="856.82322"
+     inkscape:cy="-315.48679"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -92,8 +173,8 @@
        id="g13554"
        transform="translate(-351.21815,789.45759)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          sodipodi:type="star"
          style="fill:#162d50;fill-opacity:0.96370963;stroke:none"
@@ -132,8 +213,8 @@
        id="g13680"
        transform="translate(-402.94595,563.03466)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          transform="matrix(0.92445676,0,0,0.92412185,-502.38002,116.16488)"
          d="m 763.54828,338.20276 -34.50422,-19.92102 0,-39.84204 34.50422,-19.92102 34.50422,19.92102 0,39.84204 z"
@@ -172,8 +253,8 @@
        id="g13895"
        transform="translate(-122.43845,958.48407)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          sodipodi:type="star"
          style="fill:#784421;fill-opacity:0.89516129;stroke:none"
@@ -212,8 +293,8 @@
        id="g15167"
        transform="translate(-592.48519,781.90397)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          style="fill:#d34836;fill-opacity:1;stroke:#d34836;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -256,8 +337,8 @@
        id="g13809"
        transform="translate(-510.74,877.91346)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          transform="matrix(0.87644169,0,0,0.87612417,-442.22749,-476.24076)"
          inkscape:connector-curvature="0"
@@ -296,8 +377,8 @@
        id="g13829"
        transform="translate(-235.09318,799.13449)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          d="m 298.30124,151.43287 c -1e-5,-1.1764 0.1869,-2.34182 0.56071,-3.49627 0.37382,-1.14341 0.96202,-2.27035 1.76463,-3.38082 0.79161,-1.08843 1.73713,-2.05046 2.83659,-2.88607 1.15443,-0.87954 2.49575,-1.5557 4.02401,-2.02849 1.60519,-0.49473 3.32034,-0.7421 5.14544,-0.74214 1.88005,4e-5 3.6117,0.31888 5.19493,0.95653 1.60518,0.64871 2.94651,1.50079 4.02401,2.55623 1.08843,1.0665 1.93501,2.29239 2.53974,3.67768 0.61566,1.39633 0.92351,2.82562 0.92354,4.28787 -3e-5,3.96905 -1.00603,7.25092 -3.018,9.84562 -2.01203,2.59472 -4.61224,3.89208 -7.80064,3.89207 -1.07748,1e-5 -2.06699,-0.24187 -2.96853,-0.72564 -0.92355,-0.49475 -1.56673,-1.08845 -1.92954,-1.78111 -0.84659,3.35334 -1.31386,5.19492 -1.4018,5.52475 -0.41781,1.57223 -1.36883,3.41931 -2.85309,5.54126 l -1.36882,0 c -0.12095,-1.13245 -0.18142,-2.18242 -0.18141,-3.14994 -10e-6,-1.35233 0.12093,-2.53974 0.36282,-3.56223 l 2.58922,-10.91759 c -0.4288,-0.85756 -0.64319,-1.92403 -0.64319,-3.19941 0,-1.45126 0.37381,-2.67716 1.12145,-3.67769 0.74762,-0.98948 1.66016,-1.48423 2.73764,-1.48426 0.86855,3e-5 1.53372,0.28588 1.99552,0.85758 0.46175,0.57174 0.69263,1.28639 0.69265,2.14393 -2e-5,0.59373 -0.0935,1.24791 -0.28036,1.96253 -0.2309,0.86859 -0.49477,1.77014 -0.79161,2.70466 -0.2419,0.75864 -0.47278,1.57223 -0.69266,2.44079 -0.066,0.28588 -0.099,0.56074 -0.099,0.82459 -10e-6,0.70367 0.23637,1.33585 0.70915,1.89656 0.64866,0.76963 1.50074,1.15444 2.55623,1.15443 1.86906,10e-6 3.3973,-1.03898 4.58473,-3.11696 1.18739,-2.07795 1.78109,-4.5957 1.78111,-7.55325 -2e-5,-2.27584 -0.73665,-4.12293 -2.2099,-5.54125 -1.47329,-1.41827 -3.51827,-2.12742 -6.13495,-2.12745 -2.95755,3e-5 -5.33787,0.93456 -7.14096,2.80361 -1.81411,1.88009 -2.72116,4.13947 -2.72116,6.77814 0,1.53925 0.43978,2.8586 1.31935,3.95804 0.20889,0.2419 0.31333,0.50576 0.31335,0.79161 -2e-5,0.099 -0.011,0.20341 -0.033,0.31334 -0.088,0.32985 -0.2199,0.86309 -0.39581,1.59971 -0.066,0.25288 -0.19241,0.4233 -0.37931,0.51124 -0.18691,0.088 -0.39581,0.088 -0.62669,0 -1.35233,-0.56071 -2.37482,-1.52823 -3.06747,-2.90256 -0.69266,-1.3743 -1.03899,-2.95751 -1.03899,-4.74964"
          style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffcc00;fill-opacity:1;stroke:none;font-family:Socicon;-inkscape-font-specification:Socicon"
@@ -336,8 +417,8 @@
        id="g13885"
        transform="translate(-66.617872,857.18336)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          style="fill:#3b5a98;fill-opacity:1;stroke:#3b5998;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -376,8 +457,8 @@
        transform="translate(110.15239,765.09683)"
        id="g13863"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          transform="matrix(0.87644169,0,0,0.87612417,-418.71512,-363.42413)"
          inkscape:connector-curvature="0"
@@ -416,8 +497,8 @@
        id="g19395-3"
        transform="translate(-626.8527,760.46268)"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          sodipodi:type="star"
          style="fill:#1a1a1a;fill-opacity:0.89516129;stroke:none"
@@ -1420,8 +1501,8 @@
        transform="translate(-1034.3345,708.46145)"
        id="g19607"
        inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947">
       <path
          style="fill:#5fd3bc;fill-opacity:1;stroke:#87decd;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter13510-2)"
          d="m 754.70059,588.26958 -37.40625,21.59375 0,43.21875 37.40625,21.59375 37.40625,-21.59375 0,-43.21875 -37.40625,-21.59375 z m 0,1.75 35.90625,20.71875 0,41.46875 -35.90625,20.71875 -35.90625,-20.71875 0,-41.46875 35.90625,-20.71875 z"
@@ -1450,5 +1531,191 @@
          id="path19613"
          inkscape:connector-curvature="0" />
     </g>
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.87644169,0,0,0.87612417,-32.738989,403.22857)"
+       inkscape:connector-curvature="0"
+       id="path13781-3"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       y="937.20465"
+       x="595.63831"
+       height="38.50473"
+       width="2.7374721"
+       id="rect28179"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.43856735,0.75882061,-0.7585457,0.43840848,776.78057,106.49354)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(0.48670752,0.87356499,-0.85766517,0.51420857,0,0)"
+       y="-103.15846"
+       x="1110.5757"
+       height="38.938538"
+       width="2.7535555"
+       id="rect28179-9"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.42669656,0.76098136,-0.76528133,0.43475143,881.99885,106.69668)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6-3"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8-6)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(0.47165126,0.88178517,-0.86355494,0.50425477,0,0)"
+       y="-205.24574"
+       x="1156.1729"
+       height="39.120853"
+       width="2.7412529"
+       id="rect28179-9-8"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(-0.43856735,0.75882061,0.7585457,0.43840848,449.31622,162.69704)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6-3-4"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8-6-8)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(-0.48670752,0.87356499,0.85766517,0.51420857,0,0)"
+       y="995.82587"
+       x="528.01587"
+       height="38.938538"
+       width="2.7535555"
+       id="rect28179-9-8-1"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.87157699,0,0,0.93918995,63.119732,363.4226)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-5"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-5)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       y="935.99097"
+       x="688.47485"
+       height="41.276405"
+       width="2.7222776"
+       id="rect28179-0"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(-0.42669656,0.76098136,0.76528133,0.43475143,562.44008,106.33037)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6-3-2"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8-6-3)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(-0.47516692,0.87989568,0.86153546,0.5076974,0,0)"
+       y="1071.7771"
+       x="422.30652"
+       height="39.120853"
+       width="2.7412529"
+       id="rect28179-9-8-11"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(-0.42669656,0.76098136,0.76528133,0.43475143,379.52056,107.39707)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6-3-2-7"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8-6-3-4)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(-0.47516692,0.87989568,0.86153546,0.5076974,0,0)"
+       y="910.58209"
+       x="516.15369"
+       height="39.120853"
+       width="2.7412529"
+       id="rect28179-9-8-11-4"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.42669656,0.76098136,-0.76528133,0.43475143,699.17299,107.06781)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-6-3-2-7-7"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-8-6-3-4-4)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       transform="matrix(0.47516692,0.87989568,-0.86153546,0.5076974,0,0)"
+       y="-38.831711"
+       x="1063.9629"
+       height="39.120853"
+       width="2.7412529"
+       id="rect28179-9-8-11-4-2"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <path
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(0.87157699,0,0,0.93918995,-212.45607,361.71471)"
+       inkscape:connector-curvature="0"
+       id="path13781-3-5-4"
+       d="m 717.86319,610.41546 -0.56885,-0.55213 0,43.21875 0.0375,0.15654 1.63147,-42.14513 -0.53131,40.9356 z m 0,1.75 -0.93115,40.73863 0.53131,-42.6856 -0.13147,41.27013 1.46246,0.71846 0,-41.46875 z"
+       style="fill:#d40000;fill-opacity:1;stroke:#1291ff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter13510-28-5-5)"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
+    <rect
+       y="934.28302"
+       x="412.89905"
+       height="41.276405"
+       width="2.7222776"
+       id="rect28179-0-4"
+       style="fill:#1291ff;fill-opacity:1;stroke:none;display:inline"
+       inkscape:export-filename="/home/oybek/work/android/games/design/workshop/naja-atlas.png"
+       inkscape:export-xdpi="299.98947"
+       inkscape:export-ydpi="299.98947" />
   </g>
 </svg>
