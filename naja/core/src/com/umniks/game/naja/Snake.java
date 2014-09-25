@@ -111,38 +111,10 @@ class Snake extends Entity {
 		}
 
 		/* Checking does snake has crossed borders */
-		switch (crossing) {
-		case oblique:
-			if (head.x > world.getW() - 1)	{ head.x = 0; }
-			if (head.y > world.getH() - 1)	{ head.y = 0; }
-			if (head.x < 0)					{ head.x = world.getW() - 1; }
-			if (head.y < 0)					{ head.y = world.getH() - 1; }
-			break;
-		case direct:
-			if (head.x > world.getW() - 1)	{ head.x = 0; }
-			if (head.x < 0)					{ head.x = world.getW() - 1; }
-
-			if (head.y > world.getH() - 1) {
-				head.y = 0;
-				switch (dir) {
-				case UPLEFT:
-					head.x += 8;
-					if (head.x > world.getW() - 1) {
-						head.x = world.getW() - 1;
-					}
-					break;
-
-				case UPRIGHT:
-					head.x -= 7;
-					break;
-				}
-				head.x %= world.getW();
-			}
-			if (head.y < 0) {
-				head.y = world.getH() - 1;
-			}
-			break;
-		}
+		if (head.x > world.getW() - 1)	{ head.x = 0; }
+		if (head.y > world.getH() - 1)	{ head.y = 0; }
+		if (head.x < 0)					{ head.x = world.getW() - 1; }
+		if (head.y < 0)					{ head.y = world.getH() - 1; }
 
 		//Gdx.app.log("head.x, head.y", head.x+" "+head.y);
 
@@ -183,7 +155,7 @@ class Snake extends Entity {
 	}
 
 	@Override
-	public void draw(Hex hex) {
+	public void draw(HexPack hex) {
 		for (Part part: snake) {
 			switch (part.type) {
 				case HEAD: hex.drawSnakeHeadUp(part.x, part.y); break;

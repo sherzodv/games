@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ApplicationAdapter;
-
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
@@ -53,7 +52,7 @@ public class Naja extends ApplicationAdapter {
 
 	@Override
 	public void create() {
-		world = new World(16, 11);
+		world = new World(24, 15);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);

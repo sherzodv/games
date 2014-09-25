@@ -56,7 +56,7 @@ public abstract class Entity {
 		return false;
 	}
 
-	public abstract void draw(Hex h);
+	public abstract void draw(HexPack h);
 	public abstract String getType();
 }
 

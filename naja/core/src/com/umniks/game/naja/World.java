@@ -1,17 +1,21 @@
 
 package com.umniks.game.naja;
 
-import com.badlogic.gdx.Gdx;
 import java.util.*;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 class World {
-	private Hex			hex;
+	private HexPack		hex;
 	private Snd			snd;
 	private Snake		snake;
 	private Fruit		fruit;
@@ -23,21 +27,27 @@ class World {
 	private Preferences	prefs;
 
 	private final int	W, H;
+	private final int	MenuW, MenuH;
 	private final int	startX, startY;
 	private final int	incX, incY;
 	private final int	decX, decY;
 	private final int	indX, indY;
 	private final int	muteX, muteY;
-	private int	exitX, exitY;
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
 	public World(int w, int h) {
 		W			= w;
 		H			= h;
+		MenuW		= 12;
+		MenuH		= 7;
 		snd			= new Snd();
-		hex			= new Hex(40);
-		text		= new BitmapFont();
+		hex			= new HexPack(60);
+		hex.getButtonExit().setx(10);
+		hex.getButtonExit().sety(10);
+
+		Texture texture = new Texture(Gdx.files.internal("myfont.png"));
+		text = new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
 		fruit		= new Fruit(W/2, H/2);
 		batch		= new SpriteBatch();
 		snake		= new Snake(this, W/2, H/2);
@@ -45,26 +55,23 @@ class World {
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.PLAY;
 
-		startX	= W/2;
-		startY	= H/6;
+		startX	= MenuW/2+4;
+		startY	= MenuH/6;
 
-		incX 	= startX-3;
-		incY 	= startY;
-
-		decX 	= startX-1;
-		decY 	= startY;
-
-		indX 	= startX-2;
+		indX 	= startX-4;
 		indY 	= startY;
+
+		incX 	= indX-2;
+		incY 	= indY;
+
+		decX 	= indX+2;
+		decY 	= indY;
 
 		muteX 	= startX+3;
 		muteY 	= startY;
 
-		exitX 	= W-1;
-		exitY 	= H-1;
 
-		text.setColor(Color.GREEN);
-		text.scale(1.4f);
+		text.setColor(Color.MAGENTA);
 	}
 
 	int getW() { return W; }
@@ -99,7 +106,7 @@ class World {
 		hex.drawButtonUp(incX, incY);
 		hex.drawButtonLevel(indX, indY, (250-snake.getInertia())/50);
 		hex.drawButtonDown(decX, decY);
-		hex.drawButtonExit(exitX, exitY);
+		hex.getButtonExit().DrawHex();
 		hex.end();
 		break;
 
@@ -127,11 +134,10 @@ class World {
 
 		fruit.draw(hex);
 		snake.draw(hex);
-		hex.drawButtonExit(exitX, exitY);
+		hex.getButtonExit().DrawHex();
 
 		batch.begin();
-		text.draw(batch, "your score: "+snake.length()+" $", 30, Gdx.graphics.getHeight()-5);
-		text.draw(batch, "master score: "+prefs.getInteger("MasterScore")+" $", Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight()-5);
+		text.draw(batch, "your score: "+snake.length()*7, 30, Gdx.graphics.getHeight()-5);
 		batch.end();
 
 		hex.end();
@@ -148,35 +154,13 @@ class World {
 
 	public void enqueTouchDown(int x, int y) { switch (gameState) {
 	case MENU:
-		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
-		int[] h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
-		hex.getHexCoord(x, y, h);
-
-		if (h[0] == startX && h[1] == startY) {
-			hex.changeRadius(40);
-			exitX = W-1;
-			exitY = H-1;
-			gameState = GameStates.PLAY;
-		}
-		else if (h[0] == incX && h[1] == incY)
-			snake.incInertia();
-		else if (h[0] == decX && h[1] == decY)
-			snake.decInertia();
-		else if (h[0] == exitX && h[1] == exitY)
-			gameState = GameStates.EXITING;
 		break;
 
 	case PLAY:
 		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
 		joystick.handleTouchDown(x, y);
 
-		h = new int[2];				/* h[0] = x, h[1] = y (x, y) */
-		hex.getHexCoord(x, y, h);
-		//Gdx.app.log("pressed hex", h[0]+" "+h[1]);
-		//Gdx.app.log("pressed pixel", x+" "+y);
-		if (h[0] == exitX && h[1] == exitY) {
-			hex.changeRadius(47);
-			exitX = exitY = 0;
+		if (hex.getButtonExit().has(x, y)) {
 			gameState = GameStates.MENU;
 		}
 		break;
