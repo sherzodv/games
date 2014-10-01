@@ -49,7 +49,6 @@ class HexPack {
 		GameAtlas		= new Texture(Gdx.files.internal("naja-atlas.png"));
 		MenuAtlas		= new Texture(Gdx.files.internal("menu-atlas.png"));
 		Background		= new Texture(Gdx.files.internal("background.png"));
-
 		Food			= new Hexagon[8];
 		Food[0]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 2763, 9, 238, 266));
 		Food[1]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 1846, 9, 238, 266));

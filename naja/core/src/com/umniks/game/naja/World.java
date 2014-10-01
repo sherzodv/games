@@ -127,23 +127,16 @@ class World {
 		break;
 
 	case PLAY: case PAUSE:
+
 		hex.start();
+
+		batch.begin();
+		batch.end();
+
 		for (int x = 0; x < W; ++x)
 		for (int y = 0; y < H; ++y) {
-			if ((y%2 == 0) && (x == 0)) {
-				hex.drawBorderL(x+1, y);
-				continue;
-			}
-
-			if (x == W-1) {
-				if (y%2 == 1) hex.drawBorderRight(x, y);
-				else hex.drawBorderR(x, y);
-			}
-			if (y == H-1) hex.drawBorderUp(x, y);
-			if (y == 0) hex.drawBorderDown(x, y);
-			if (x == 0) hex.drawBorderLeft(x, y);
-
-			hex.drawTile(x, y);
+			if ((y%2 == 0) && (x == 0));
+			else hex.drawTile(x, y);
 		}
 
 		fruit.draw(hex);

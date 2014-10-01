@@ -110,10 +110,28 @@ class Snake extends Entity {
 			case DOWNRIGHT:	if (head.y % 2 == 1) ++head.x; --head.y; break;
 		}
 
+		if ((head.y%2 == 0) && (head.x == 0)) {
+		}
+
 		/* Checking does snake has crossed borders */
-		if (head.x > world.getW() - 1)	{ head.x = 0; }
+
+		if (head.y%2 == 0) {
+			if (head.x > world.getW() - 1)
+				{ head.x = 1; }
+		} else {
+			if (head.x > world.getW() - 1)
+				{ head.x = 0; }
+		}
+
 		if (head.y > world.getH() - 1)	{ head.y = 0; }
-		if (head.x < 0)					{ head.x = world.getW() - 1; }
+
+		if (head.y%2 == 0) {
+			if (head.x < 1)
+				head.x = world.getW() - 1;
+		} else {
+			if (head.x < 0)
+				head.x = world.getW() - 1;
+		}
 		if (head.y < 0)					{ head.y = world.getH() - 1; }
 
 		//Gdx.app.log("head.x, head.y", head.x+" "+head.y);

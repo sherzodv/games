@@ -23,9 +23,11 @@ class Fruit extends Entity {
 	public String getType() { return "fruit"; }
 
 	public void reborn(int W, int H) {
-		x = rand.nextInt(W);
-		y = rand.nextInt(H);
-		i = rand.nextInt(8);
+		do {
+			x = rand.nextInt(W);
+			y = rand.nextInt(H);
+			i = rand.nextInt(8);
+		} while ((y%2 == 0) && (x == 0));
 	}
 
 	@Override
