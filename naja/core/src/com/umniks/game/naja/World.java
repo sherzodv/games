@@ -25,6 +25,7 @@ class World {
 	private GameStates	gameState;
 	private SpriteBatch	batch;
 	private Preferences	prefs;
+	private Menu		menu;
 
 	private final int	W, H;
 	private final int	MenuW, MenuH;
@@ -43,8 +44,6 @@ class World {
 		MenuH		= 7;
 		snd			= new Snd();
 		hex			= new HexPack(60);
-		hex.getButtonExit().setx(10);
-		hex.getButtonExit().sety(10);
 
 		Texture texture = new Texture(Gdx.files.internal("myfont.png"));
 		text = new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
@@ -53,7 +52,7 @@ class World {
 		snake		= new Snake(this, W/2, H/2);
 		prefs		= Gdx.app.getPreferences("MasterScore");
 		joystick	= new Joystick(snake, W-4, 4);
-		gameState	= GameStates.PLAY;
+		gameState	= GameStates.MENU;
 
 		startX	= MenuW/2+4;
 		startY	= MenuH/6;
@@ -70,6 +69,7 @@ class World {
 		muteX 	= startX+3;
 		muteY 	= startY;
 
+		menu = new Menu();
 
 		text.setColor(Color.MAGENTA);
 	}
@@ -100,14 +100,7 @@ class World {
 
 	public void draw() { switch(gameState) {
 	case MENU:
-		hex.start();
-		hex.drawBackground(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		hex.drawButtonStart(startX, startY);
-		hex.drawButtonUp(incX, incY);
-		hex.drawButtonLevel(indX, indY, (250-snake.getInertia())/50);
-		hex.drawButtonDown(decX, decY);
-		hex.getButtonExit().DrawHex();
-		hex.end();
+		menu.draw();
 		break;
 
 	case EXITING:
@@ -130,24 +123,23 @@ class World {
 
 		hex.start();
 
-		batch.begin();
-		batch.end();
-
 		for (int x = 0; x < W; ++x)
 		for (int y = 0; y < H; ++y) {
 			if ((y%2 == 0) && (x == 0));
 			else hex.drawTile(x, y);
 		}
 
+		menu.getButtonExit().DrawHex();
+
 		fruit.draw(hex);
 		snake.draw(hex);
-		hex.getButtonExit().DrawHex();
 
 		batch.begin();
 		text.draw(batch, "your score: "+snake.length()*7, 30, Gdx.graphics.getHeight()-5);
 		batch.end();
 
 		hex.end();
+
 		break;
 	}}
 
@@ -167,9 +159,6 @@ class World {
 		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
 		joystick.handleTouchDown(x, y);
 
-		if (hex.getButtonExit().has(x, y)) {
-			gameState = GameStates.MENU;
-		}
 		break;
 	}}
 
