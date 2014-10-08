@@ -129,10 +129,9 @@ class World {
 			else hex.drawTile(x, y);
 		}
 
-		menu.getButtonExit().DrawHex();
-
 		fruit.draw(hex);
 		snake.draw(hex);
+		menu.getButtonExit().DrawHex();
 
 		batch.begin();
 		text.draw(batch, "your score: "+snake.length()*7, 30, Gdx.graphics.getHeight()-5);
@@ -153,10 +152,23 @@ class World {
 
 	public void enqueTouchDown(int x, int y) { switch (gameState) {
 	case MENU:
+		Gdx.app.log(" ", x+" "+y);
+		if (menu.getButtonExit().has(x, y)) {
+			gameState = GameStates.EXITING;
+		} else
+		if (menu.getButtonStart().has(x, y)) {
+			menu.getButtonExit().setx(10);
+			menu.getButtonExit().sety(10);
+			menu.getButtonExit().setr(30);
+			gameState = GameStates.PLAY;
+		}
 		break;
 
 	case PLAY:
-		y = Gdx.graphics.getHeight() - y;	/* converting coordinate system mirroring y line */
+		if (menu.getButtonExit().has(x, y)) {
+			menu.getButtonExitDefault();
+			gameState = GameStates.MENU;
+		}
 		joystick.handleTouchDown(x, y);
 
 		break;

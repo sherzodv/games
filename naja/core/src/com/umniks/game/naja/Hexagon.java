@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 class Hexagon {
 	private float r, R; /* */
 	private float d, D; /* diameters of incircle circumcircle */
-	private float x, y; /* coordinates of center of hexagon */
+	private float x, y; /* raw coordinates of center of hexagon */
 	private float S;	/* area of hexagon */
 	private SpriteBatch batch;
 	private TextureRegion sprite;
@@ -25,14 +25,16 @@ class Hexagon {
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
 		this.d = 2*r;
-		this.x = x;
-		this.y = y;
 		this.S = 3*R*r;
+
 		this.batch = batch;
 		this.sprite = sprite;
 		this.Epsilon = 0.01f;
 
 		this.c = new Point();
+		this.c.setx(x);
+		this.c.sety(y);
+
 		this.v = new Point[6];
 		for (int i = 0; i < 6; ++i)
 			this.v[i] = new Point();
@@ -55,13 +57,13 @@ class Hexagon {
 
 	void DrawRaw() {
 		batch.begin();
-		batch.draw(sprite, x-r, y-R, d, D);
+		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
 		batch.end();
 	}
 
 	void DrawRaw(int x, int y) {
 		batch.begin();
-		batch.draw(sprite, x-r, y-R, d, D);
+		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
 		batch.end();
 	}
 
@@ -90,6 +92,26 @@ class Hexagon {
 		c.setx(x*d + (y%2 == 0 ? r : d));
 		c.sety(y*R*1.5f + R);
 
+		v[0].setx(c.getx() + r);
+		v[0].sety(c.gety() + R/2);
+
+		v[1].setx(c.getx() + r);
+		v[1].sety(c.gety() - R/2);
+
+		v[2].setx(c.getx());
+		v[2].sety(c.gety() - R);
+
+		v[3].setx(c.getx() - r);
+		v[3].sety(c.gety() - R/2);
+
+		v[4].setx(c.getx() - r);
+		v[4].sety(c.gety() + R/2);
+
+		v[5].setx(c.getx());
+		v[5].sety(c.gety() + R);
+	}
+
+	private void rawCalcDots(int x, int y) {
 		v[0].setx(c.getx() + r);
 		v[0].sety(c.gety() + R/2);
 
@@ -152,7 +174,8 @@ class Hexagon {
 	}
 
 	boolean has(int x, int y) {
-		calcDots((int)this.x, (int)this.y);
+		rawCalcDots((int)this.x, (int)this.y);
+
 		if (Math.abs(
 		Geron(x, y, v[0].getx(), v[0].gety(), v[1].getx(), v[1].gety()) +
 		Geron(x, y, v[1].getx(), v[1].gety(), v[2].getx(), v[2].gety()) +
@@ -166,7 +189,14 @@ class Hexagon {
 			return false;
 	}
 
-	void setx(float x) { this.x = x; }
-	void sety(float y) { this.y = y; }
+	void setx(float x) { c.setx(x); }
+	void sety(float y) { c.sety(y); }
+	void setr(float R) {
+		this.R = R;
+		this.r = (float) Math.cos(Math.PI / 6) * R;
+		this.D = 2*R;
+		this.d = 2*r;
+		this.S = 3*R*r;
+	}
 };
 

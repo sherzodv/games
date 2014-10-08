@@ -29,7 +29,7 @@ public class Naja extends ApplicationAdapter {
 		@Override
 		public boolean touchDown(int x, int y, int pointer, int button) {
 			Gdx.input.vibrate(10);
-			world.enqueTouchDown(x, y);
+			world.enqueTouchDown(x, Gdx.graphics.getHeight()-y);
 			return true;
 		}
 
