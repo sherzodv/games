@@ -19,6 +19,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 class Menu {
+	private int lvl; /* Level of game: speed of naja */
 	private Texture MenuAtlas;
 	private Texture Background;
 	private Hexagon		Tile,
