@@ -58,6 +58,7 @@ while true
 		puts "| set_hexn <n> - set number of hexes in a row or column"
 		puts "| wtf - show all parameters"
 		puts "| exit"
+		puts ""
 	when "gen"
 		gen
 	when "set_width"
@@ -86,6 +87,7 @@ while true
 		puts "| orientation: " + $c
 		puts "| hex number: " + $n.to_s
 		puts "| output file name: " + $filename
+		puts ""
 	when /^[Ee][Xx][Ii][Tt]/
 		break
 	end
