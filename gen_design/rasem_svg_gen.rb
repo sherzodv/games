@@ -3,13 +3,13 @@ require 'rasem'
 
 class Hex
 	def initialize
-		@r = 20
-		@h = @r * 0.87
+		@r = 0
+		@h = @r * Cos30
 	end
 
 	def setr(r)
 		@r = r
-		@h = @r * 0.87
+		@h = @r * Cos30
 	end
 
 	def r
@@ -30,26 +30,51 @@ class Hex
 	end
 end
 
-$resX = 400
-$resY = 400
+Cos30 = 0.87
+
+# distance between two hexagons
 $s = 2
 
-def gen
-	hex = Hex.new
+# image resolution
+$resX = 400
+$resY = 400
 
+# preferred hexagons number along X
+$hexX = 10
+
+# preferred hexagons number along Y
+$hexY = 0
+
+# border width
+$borderX = 0
+$borderY = 0
+
+$hex = Hex.new
+
+def recalc
+	if $hexY == 0 then
+		$borderX = $s
+		$hex.setr( ($resX - $s*($hexX+1))/($hexX*2*Cos30) )
+	else
+		$borderY = $s
+		$hex.setr( ($resY - $s*($hexY+1))/($hexY*2) )
+	end
+end
+
+def gen
 	$img = Rasem::SVGImage.new($resX, $resY) do
 		shift = false
-		y = $s + hex.r
+		y = $borderY + $hex.r
 		while y < $resY
-			x = $s + (shift ? 2*hex.h + $s/2: hex.h);
+			x = $borderX + (shift ? 2*$hex.h + $s/2: $hex.h);
 			shift = !shift;
 
 			while x < $resX do
-				polygon *hex.calc(x, y), :stroke=>"grey", :fill=>"grey"
+				polygon *$hex.calc(x, y), :stroke=>"grey", :fill=>"grey"
 
-				x += $s + 2 * hex.h
+				x += $s + 2 * $hex.h
 			end
-			y += $s*0.87 + 1.5 * hex.r
+			y += $s*Cos30 + 1.5 * $hex.r
 		end
 	end
 end
@@ -60,6 +85,7 @@ def save
 	end
 end
 
+recalc
 gen
 save
 
