@@ -8,7 +8,6 @@ $r = ($screen_height - $s * ($n + 1))/($n * 1.73)
 $h = 0.87 * $r
 $filename = "default.svg"
 
-
 def draw_hex(h, r, x, y)
 	v = [
 		[x, y - r],
@@ -47,7 +46,6 @@ while true
 
 	case str.split(' ')[0]
 	when /^[Hh][Ee][Ll][Pp]/
-		puts "| Hi man!"
 		puts "| available commands:"
 		puts "| gen"
 		puts "| set_width <pixel>"
@@ -58,7 +56,6 @@ while true
 		puts "| set_hexn <n> - set number of hexes in a row or column"
 		puts "| wtf - show all parameters"
 		puts "| exit"
-		puts ""
 	when "gen"
 		gen
 	when "set_width"
@@ -70,7 +67,6 @@ while true
 	when "set_output_file"
 		$filename = str.split(' ')[1]
 	when "toggle_orien"
-		$c = str.split(' ')[1]
 		if $c == 'v' then $c = 'h' else $c = 'v' end
 		case $c
 		when 'v'
@@ -87,7 +83,6 @@ while true
 		puts "| orientation: " + $c
 		puts "| hex number: " + $n.to_s
 		puts "| output file name: " + $filename
-		puts ""
 	when /^[Ee][Xx][Ii][Tt]/
 		break
 	end
