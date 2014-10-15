@@ -1,32 +1,28 @@
+#!/usr/local/bin/ruby
 
 require 'rasem'
 
 class Hex
+	attr_accessor :radius
+	attr_accessor :height
+
 	def initialize
-		@r = 0
-		@h = @r * Cos30
+		@radius = 0
+		@height = @radius * Cos30
 	end
 
 	def setr(r)
-		@r = r
-		@h = @r * Cos30
-	end
-
-	def r
-		@r
-	end
-
-	def h
-		@h
+		@radius = r
+		@height = @radius * Cos30
 	end
 
 	def calc(x, y)
-		v =[[x, y - @r],
-			[x + @h, y - @r / 2],
-			[x + @h, y + @r / 2],
-			[x, y + @r],
-			[x - @h, y + @r / 2],
-			[x - @h, y - @r / 2]]
+		v =[[x, y - @radius],
+			[x + @height, y - @radius / 2],
+			[x + @height, y + @radius / 2],
+			[x, y + @radius],
+			[x - @height, y + @radius / 2],
+			[x - @height, y - @radius / 2]]
 	end
 end
 
@@ -64,17 +60,17 @@ end
 def gen
 	$img = Rasem::SVGImage.new($resX, $resY) do
 		shift = false
-		y = $borderY + $hex.r
+		y = $borderY + $hex.radius
 		while y < $resY
-			x = $borderX + (shift ? 2*$hex.h + $s/2: $hex.h);
+			x = $borderX + (shift ? 2*$hex.height + $s/2: $hex.height);
 			shift = !shift;
 
 			while x < $resX do
 				polygon *$hex.calc(x, y), :stroke=>"grey", :fill=>"grey"
 
-				x += $s + 2 * $hex.h
+				x += $s + 2 * $hex.height
 			end
-			y += $s*Cos30 + 1.5 * $hex.r
+			y += $s*Cos30 + 1.5 * $hex.radius
 		end
 	end
 end
