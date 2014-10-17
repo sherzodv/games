@@ -58,27 +58,21 @@ def recalc
 		$hex.setr ($resX - $s*($hexX+1)) / ($hexX*2*Cos30)
 
 		# count number of hexes in column
-		$hexY = ($resY - $s - 0.5*$hex.radius) / ($s + 1.5 * $hex.radius)
+		$hexY = (($resY - $s - 0.5*$hex.radius) / ($s + 1.5 * $hex.radius)).to_i
+
+		$resY = $s*($hexY+1) + 1.5*($hex.radius)*$hexY + 0.5*($hex.radius)
 
 		# counting size of border
-		$borderY += ($hexY.modulo(1) * ($s + 1.5 * $hex.radius)) / 2
-
-		$hexY = $hexY.to_i
-
-		return
 	else
 		$borderX = $s
 		$borderY = $s
 
-		$hex.setr ($resY - $s*($hexY+1)) / ($hexY*2)
+		$hex.setr ($resY - $s*($hexY+1)) / (1.5*$hexY + 0.5)
 
 		# count number of hexes in row
-		$hexX = ($resX - $s) / ($s + 2*$hex.height)
+		$hexX = (($resX - $s) / ($s + 2*$hex.height)).to_i
 
-		# count size of borderX
-		$borderX += ($hexX.modulo(1) * ($s + 2*$hex.height)) / 2
-
-		$hexX = $hexX.to_i
+		$resX = $s*($hexX+1) + 2*$hex.height*$hexX;
 	end
 end
 
@@ -123,7 +117,6 @@ while true
 	when /^[Hh][Ee][Ll][Pp]/
 		puts "|"
 		puts "| gen"
-		puts "| save"
 		puts "| resolution <Xpixel> <Ypixel>"
 		puts "|"
 		puts "| X <n> - set number of hexes in a column, Y counts automatically"
@@ -143,9 +136,6 @@ while true
 
 	when "gen"
 		recalc
-		gen
-
-	when "save"
 		gen
 		save
 
