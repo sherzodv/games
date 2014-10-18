@@ -1,5 +1,6 @@
 #!/usr/local/bin/ruby
 
+# Запрашиваем Gem rasem для работы с svg
 require 'rasem'
 
 class Hex
@@ -16,13 +17,15 @@ class Hex
 		@height = @radius * Cos30
 	end
 
-	def calc(x, y)
+	def draw(img, x, y)
 		v =[[x, y - @radius],
 			[x + @height, y - @radius / 2],
 			[x + @height, y + @radius / 2],
 			[x, y + @radius],
 			[x - @height, y + @radius / 2],
 			[x - @height, y - @radius / 2]]
+
+		img.polygon *v, :stroke=>"grey", :fill=>"grey"
 	end
 end
 
@@ -77,27 +80,29 @@ def recalc
 end
 
 def gen
-	$img = Rasem::SVGImage.new($resX, $resY) do
-		shift = false
-		y = $borderY + $hex.radius
-		$hexX -= 1
+	$img = Rasem::SVGImage.new($resX, $resY)
 
-		$hexY.times do
-			x = $borderX + (shift ? 2*$hex.height + $s/2: $hex.height);
-			$hexX += (shift ? -1: +1);
-			shift = !shift;
+	shift = false
+	y = $borderY + $hex.radius
+	$hexX -= 1
 
-			$hexX.times do
-				polygon *$hex.calc(x, y), :stroke=>"grey", :fill=>"grey"
-				x += $s + 2 * $hex.height
-			end
+	$hexY.times do
+		x = $borderX + (shift ? 2*$hex.height + $s/2: $hex.height);
+		$hexX += (shift ? -1: +1);
+		shift = !shift;
 
-			y += $s*Cos30 + 1.5 * $hex.radius
+		$hexX.times do
+			$hex.draw($img, x, y);
+			# polygon *$hex.calc(x, y), :stroke=>"grey", :fill=>"grey"
+			x += $s + 2 * $hex.height
 		end
+
+		y += $s*Cos30 + 1.5 * $hex.radius
 	end
 end
 
 def save
+	$img.close
 	File.open($filename, "w") do |file|
 		file.puts $img.output
 	end
