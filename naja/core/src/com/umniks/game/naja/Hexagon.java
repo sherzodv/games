@@ -11,6 +11,7 @@ class Hexagon {
 	private float d, D; /* diameters of incircle circumcircle */
 	private float x, y; /* raw coordinates of center of hexagon */
 	private float S;	/* area of hexagon */
+	private float s;	/* distance between tow hexagons */
 	private SpriteBatch batch;
 	private TextureRegion sprite;
 
@@ -20,7 +21,8 @@ class Hexagon {
 	private Point[] v; /* Six vertices of hexagon */
 	private Point c;
 
-	public Hexagon(int x, int y, int R, SpriteBatch batch, TextureRegion sprite) {
+	public Hexagon(int x, int y, float R, SpriteBatch batch, TextureRegion sprite) {
+		this.s = 2;
 		this.R = R;
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
@@ -40,7 +42,8 @@ class Hexagon {
 			this.v[i] = new Point();
 	}
 
-	public Hexagon(int R, SpriteBatch batch, TextureRegion sprite) {
+	public Hexagon(float R, SpriteBatch batch, TextureRegion sprite) {
+		this.s = 2;
 		this.R = R;
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
@@ -89,8 +92,8 @@ class Hexagon {
 	/* Calcs coords of 6 hexagon's dots by it's hex coordinates */
 	private void calcDots(int x, int y) {
 		/* Calculating coordinates of center of hexagon */
-		c.setx(x*d + (y%2 == 0 ? d : r));
-		c.sety(y*R*1.5f + R);
+		c.setx(x*s + x*d + (y%2 == 0 ? 0 : r));
+		c.sety(y*s + y*R*1.5f + R);
 
 		v[0].setx(c.getx() + r);
 		v[0].sety(c.gety() + R/2);

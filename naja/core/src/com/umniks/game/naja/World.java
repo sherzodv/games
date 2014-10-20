@@ -45,7 +45,7 @@ class World {
 		MenuW		= 12;
 		MenuH		= 7;
 		snd			= new Snd();
-		hex			= new HexPack(60);
+		hex			= new HexPack(29.45f);
 
 		Texture texture
 					= new Texture(Gdx.files.internal("myfont.png"));
