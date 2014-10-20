@@ -89,7 +89,7 @@ class Hexagon {
 	/* Calcs coords of 6 hexagon's dots by it's hex coordinates */
 	private void calcDots(int x, int y) {
 		/* Calculating coordinates of center of hexagon */
-		c.setx(x*d + (y%2 == 0 ? r : d));
+		c.setx(x*d + (y%2 == 0 ? d : r));
 		c.sety(y*R*1.5f + R);
 
 		v[0].setx(c.getx() + r);

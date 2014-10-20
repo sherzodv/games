@@ -259,6 +259,7 @@ while true
 		puts "| resolution: " + $resX.to_s + "x" + $resY.to_s
 		puts "| hexolution: " + $hexX.to_s + "x" + $hexY.to_s
 		puts "| dist between hexes: " + $s.to_s
+		puts "| radius: " + $hex.radius.to_s
 		puts "| output file name: " + $filename
 		puts "| orien: " + $orien
 		puts "| (hole_s, hole_r, lvl_number) = (#{$hex.hole_s}, #{$hex.hole_radius}, #{$hex.lvl_number})"

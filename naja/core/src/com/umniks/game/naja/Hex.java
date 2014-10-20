@@ -42,16 +42,16 @@ class HexPack {
 
 		GameAtlas		= new Texture(Gdx.files.internal("naja-atlas.png"));
 		Food			= new Hexagon[8];
-		Food[0]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 2763, 9, 238, 266));
-		Food[1]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 1846, 9, 238, 266));
-		Food[2]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 1540, 9, 238, 266));
-		Food[3]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 1232, 9, 238, 266));
-		Food[4]			= new Hexagon(30, batch, new TextureRegion(GameAtlas,  926, 9, 238, 266));
-		Food[5]			= new Hexagon(30, batch, new TextureRegion(GameAtlas,  620, 9, 238, 266));
-		Food[6]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 2153, 9, 238, 266));
-		Food[7]			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 2460, 9, 238, 266));
-		SnakePart		= new Hexagon(30, batch, new TextureRegion(GameAtlas, 13, 10, 231, 261));
-		Tile			= new Hexagon(30, batch, new TextureRegion(GameAtlas, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile));
+		Food[0]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 2763, 9, 238, 266));
+		Food[1]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 1846, 9, 238, 266));
+		Food[2]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 1540, 9, 238, 266));
+		Food[3]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 1232, 9, 238, 266));
+		Food[4]			= new Hexagon(29, batch, new TextureRegion(GameAtlas,  926, 9, 238, 266));
+		Food[5]			= new Hexagon(29, batch, new TextureRegion(GameAtlas,  620, 9, 238, 266));
+		Food[6]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 2153, 9, 238, 266));
+		Food[7]			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 2460, 9, 238, 266));
+		SnakePart		= new Hexagon(29, batch, new TextureRegion(GameAtlas, 13, 10, 231, 261));
+		Tile			= new Hexagon(29, batch, new TextureRegion(GameAtlas, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile));
 	}
 
 	Hexagon getTile()		{ return Tile; }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -26,6 +27,7 @@ class World {
 	private SpriteBatch	batch;
 	private Preferences	prefs;
 	private Menu		menu;
+	private Texture		background;
 
 	private final int	W, H;
 	private final int	MenuW, MenuH;
@@ -45,14 +47,16 @@ class World {
 		snd			= new Snd();
 		hex			= new HexPack(60);
 
-		Texture texture = new Texture(Gdx.files.internal("myfont.png"));
-		text = new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
+		Texture texture
+					= new Texture(Gdx.files.internal("myfont.png"));
+		text 		= new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
 		fruit		= new Fruit(W/2, H/2);
 		batch		= new SpriteBatch();
 		snake		= new Snake(this, W/2, H/2);
 		prefs		= Gdx.app.getPreferences("MasterScore");
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.MENU;
+		background	= new Texture(Gdx.files.internal("game_background.png"));
 
 		startX	= MenuW/2+4;
 		startY	= MenuH/6;
@@ -123,11 +127,14 @@ class World {
 
 		hex.start();
 
-		for (int x = 0; x < W; ++x)
-		for (int y = 0; y < H; ++y) {
-			if ((y%2 == 0) && (x == 0));
-			else hex.drawTile(x, y);
-		}
+		//for (int x = 0; x < W; ++x)
+		//for (int y = 0; y < H; ++y) {
+			//if ((y%2 == 0) && (x == 0));
+			//else hex.drawTile(x, y);
+		//}
+		batch.begin();
+		batch.draw(background, 0, 0, background.getWidth(), background.getHeight());
+		batch.end();
 
 		fruit.draw(hex);
 		snake.draw(hex);
