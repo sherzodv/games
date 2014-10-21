@@ -9,6 +9,7 @@ class Snake extends Entity {
 	private enum BorderCrossType { oblique, direct };
 	private enum Type { HEAD, BODY, TAIL };
 	private enum D { UPRIGHT, UPLEFT, DOWNRIGHT, DOWNLEFT, UP, DOWN, LEFT, RIGHT };
+	private boolean died;
 
 	class Part {
 		protected int x, y;
@@ -163,9 +164,10 @@ class Snake extends Entity {
 		}
 
 		for (int i = 3; i < snake.size(); ++i) {
+			// Snake eats itself
 			if (snake.get(i).x == head.x && snake.get(i).y == head.y) {
-				for (; i < snake.size(); )
-					snake.remove(i);
+				died = true;
+				break;
 			}
 		}
 
@@ -183,13 +185,18 @@ class Snake extends Entity {
 		}
 	}
 
+	/*
 	private final int maxInertia = 50;
 	private final int minInertia = 10;
-	public void incInertia() { inertia += 50; if (inertia > maxInertia) inertia = maxInertia; }
-	public void decInertia() { inertia -= 50; if (inertia < minInertia) inertia = minInertia; }
+	public void incInertia() { inertia += 10; if (inertia > maxInertia) inertia = maxInertia; }
+	public void decInertia() { inertia -= 10; if (inertia < minInertia) inertia = minInertia; }
 	public int getInertia() { return inertia; }
+	*/
+
+	public void setInertia(int Lvl) { inertia = 15 - Lvl*3; }
 
 	public Snake(World w, int x, int y) {
+		died = false;
 		dir = D.LEFT;
 		world = w;
 		cycles = 0;
@@ -212,5 +219,7 @@ class Snake extends Entity {
 
 	public String getType() { return "snake"; }
 	public int length() { return snake.size(); }
+
+	public boolean isDead() { return died; }
 }
 

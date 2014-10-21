@@ -19,7 +19,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 class Menu {
-	private int lvl; /* Level of game: speed of naja */
+	private int Lvl; /* Level of game: speed of naja */
 	private Texture MenuAtlas;
 	private Texture Background;
 	private Hexagon		Tile,
@@ -48,6 +48,7 @@ class Menu {
 		scrCX = scrX/2;
 		scrCY = scrY/2;
 		butY = scrY/6;
+		Lvl = 3;
 
 		hexSide = (scrY*1)/10; /* hex's side length */
 		butI = hexSide/5;
@@ -71,6 +72,10 @@ class Menu {
 		ButtonExit		= new Hexagon(scrCX+4*hexSide+2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1848, 4, 160, 180));
 	}
 
+	public void incLvl() { if (++Lvl > 4) Lvl = 4; }
+	public void decLvl() { if (--Lvl < 0) Lvl = 0; }
+	public int getLvl() { return Lvl; }
+
 	public void draw() {
 		batch.begin();
 		batch.draw(Background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -80,7 +85,7 @@ class Menu {
 		ButtonDown.DrawRaw();
 		ButtonExit.DrawRaw();
 		ButtonStart.DrawRaw();
-		ButtonLevel[0].DrawRaw();
+		ButtonLevel[Lvl].DrawRaw();
 	}
 
 	public void getButtonExitDefault() {
@@ -88,7 +93,9 @@ class Menu {
 		ButtonExit.sety(butY);
 		ButtonExit.setr(hexSide);
 	}
-
+	public Texture getBackground() { return Background; }
+	public Hexagon getButtonUp() { return ButtonUp; }
+	public Hexagon getButtonDown() { return ButtonDown; }
 	public Hexagon getButtonExit() { return ButtonExit; }
 	public Hexagon getButtonStart() { return ButtonStart; }
 };

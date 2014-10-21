@@ -74,32 +74,30 @@ class Hexagon {
 
 	void DrawRaw(int x, int y) {
 		batch.begin();
-		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
+		batch.draw(sprite, x-r, y-R, d, D);
 		batch.end();
 	}
 
 	/* Drawing by hex coordinates */
 	public void DrawHex(int x, int y) {
 		calcDots(x, y);
-		shape.begin(ShapeType.Line);
-		shape.setColor(1.0f, 0.0f, 1.0f, 0.0f);
+		//shape.begin(ShapeType.Line);
+		//shape.setColor(1.0f, 0.0f, 1.0f, 0.0f);
 
-		float[] V;
-		V = new float[] {
-			v[0].getx(), v[0].gety(),
-			v[1].getx(), v[1].gety(),
-			v[2].getx(), v[2].gety(),
-			v[3].getx(), v[3].gety(),
-			v[4].getx(), v[4].gety(),
-			v[5].getx(), v[5].gety()
-		};
-		shape.polygon(V);
-		shape.end();
-		/*
+		//float[] V;
+		//V = new float[] {
+			//v[0].getx(), v[0].gety(),
+			//v[1].getx(), v[1].gety(),
+			//v[2].getx(), v[2].gety(),
+			//v[3].getx(), v[3].gety(),
+			//v[4].getx(), v[4].gety(),
+			//v[5].getx(), v[5].gety()
+		//};
+		//shape.polygon(V);
+		//shape.end();
 		batch.begin();
 		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
 		batch.end();
-		*/
 	}
 
 	TextureRegion getSprite() {

@@ -15,6 +15,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+
 class World {
 	private HexPack		hex;
 	private Snd			snd;
@@ -28,6 +32,8 @@ class World {
 	private Preferences	prefs;
 	private Menu		menu;
 	private Texture		background;
+	private int			userScore;
+	private ShapeRenderer shape;
 
 	private final int	W, H;
 	private final int	MenuW, MenuH;
@@ -37,15 +43,19 @@ class World {
 	private final int	indX, indY;
 	private final int	muteX, muteY;
 
+	private final float hex_radius = 29.454022f;
+
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
 	public World(int w, int h) {
+		userScore	= 0;
 		W			= w;
 		H			= h;
 		MenuW		= 12;
 		MenuH		= 7;
 		snd			= new Snd();
-		hex			= new HexPack(29.454022f);
+		hex			= new HexPack(hex_radius);
+		shape 		= new ShapeRenderer();
 
 		Texture texture
 					= new Texture(Gdx.files.internal("myfont.png"));
@@ -96,6 +106,7 @@ class World {
 		/* Collision handling: will be separate function */
 		if (snake.headx() == fruit.getx()
 		&&	snake.heady() == fruit.gety()) {
+			userScore += (menu.getLvl()+1);
 			fruit.reborn(W, H);
 			snake.grow();
 		}
@@ -108,23 +119,19 @@ class World {
 		break;
 
 	case EXITING:
-		hex.start();
-		batch.begin();
-		if (snake.length() >= prefs.getInteger("MasterScore")) {
-			text.draw(batch, "SNAKE MASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
-			prefs.putInteger("MasterScore", this.snake.length());
-			prefs.flush();
-		} else {
-			text.draw(batch, "NOT YET MASTER", Gdx.graphics.getWidth()/2-140, Gdx.graphics.getHeight()/2);
-		}
 		Timer.schedule(new Task() { @Override public void run() { Gdx.app.exit(); } }, 2.0f);
-		batch.end();
 
-		hex.end();
+		shape.begin(ShapeType.Filled);
+		shape.setColor(0.0f, 0.0f, 0.0f, 0.0f);
+		shape.rect(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		shape.end();
+
+		batch.begin();
+		text.draw(batch, "BYE BYE!", Gdx.graphics.getWidth()/2-50, Gdx.graphics.getHeight()/2);
+		batch.end();
 		break;
 
 	case PLAY: case PAUSE:
-
 		hex.start();
 
 		//for (int x = 0; x < W; ++x)
@@ -137,11 +144,24 @@ class World {
 		batch.end();
 
 		fruit.draw(hex);
-		snake.draw(hex);
-		menu.getButtonExit().DrawHex();
+		if (snake.isDead()) {
+			batch.begin();
+			if (userScore >= prefs.getInteger("MasterScore")) {
+				text.draw(batch, "SNAKE MASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+				prefs.putInteger("MasterScore", this.snake.length());
+				prefs.flush();
+			} else {
+				text.draw(batch, "NOT YET MASTER", Gdx.graphics.getWidth()/2-140, Gdx.graphics.getHeight()/2);
+			}
+			batch.end();
+			userScore = 0;
+		} else {
+			snake.draw(hex);
+		}
+		menu.getButtonExit().DrawRaw();
 
 		batch.begin();
-		text.draw(batch, "your score: "+snake.length()*7, 30, Gdx.graphics.getHeight()-5);
+		text.draw(batch, "your score: "+userScore, 30, Gdx.graphics.getHeight()-5);
 		batch.end();
 
 		hex.end();
@@ -164,10 +184,17 @@ class World {
 			gameState = GameStates.EXITING;
 		} else
 		if (menu.getButtonStart().has(x, y)) {
-			menu.getButtonExit().setx(10);
-			menu.getButtonExit().sety(10);
-			menu.getButtonExit().setr(30);
+			menu.getButtonExit().setx(Gdx.graphics.getWidth()-(hex_radius*2*0.87f+3));
+			menu.getButtonExit().sety(Gdx.graphics.getHeight()-(hex_radius+2));
+			menu.getButtonExit().setr(hex_radius);
+			snake.setInertia(menu.getLvl());
 			gameState = GameStates.PLAY;
+		} else
+		if (menu.getButtonUp().has(x, y)) {
+			menu.incLvl();
+		} else
+		if (menu.getButtonDown().has(x, y)) {
+			menu.decLvl();
 		}
 		break;
 
