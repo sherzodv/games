@@ -26,7 +26,7 @@ class Hexagon {
 	private Point c;
 
 	public Hexagon(int x, int y, float R, SpriteBatch batch, TextureRegion sprite) {
-		this.s = 2;
+		this.s = 2.2f;
 		this.R = R;
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
@@ -49,7 +49,7 @@ class Hexagon {
 	}
 
 	public Hexagon(float R, SpriteBatch batch, TextureRegion sprite) {
-		this.s = 2;
+		this.s = 2.2f;
 		this.R = R;
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
@@ -82,7 +82,7 @@ class Hexagon {
 	public void DrawHex(int x, int y) {
 		calcDots(x, y);
 		shape.begin(ShapeType.Line);
-		shape.setColor(0.0f, 1.0f, 0.0f, 0.0f);
+		shape.setColor(1.0f, 0.0f, 1.0f, 0.0f);
 
 		float[] V;
 		V = new float[] {
@@ -117,7 +117,7 @@ class Hexagon {
 	private void calcDots(int x, int y) {
 		/* Calculating coordinates of center of hexagon */
 		c.setx(x*s + x*d + (y%2 == 0 ? 0 : r));
-		c.sety(y*s + y*R*1.5f + R);
+		c.sety(y*s*0.87f + y*R*1.5f + R);
 
 		v[0].setx(c.getx() + r);
 		v[0].sety(c.gety() + R/2);
