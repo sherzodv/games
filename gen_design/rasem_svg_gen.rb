@@ -92,7 +92,7 @@ class Hex
 
 	def draw(img, x, y)
 		@img = img
-		img.polygon *calc(x, y, @radius), :stroke=>"grey", :fill=>"grey"
+		img.polygon *calc(x, y, @radius), :stroke=>"rgb(15, 15, 15)", :fill=>"rgb(15, 15, 15)"
 
 		radius = 0
 		# Центры дырок находятся на вершинах невидимых шестиугольников
