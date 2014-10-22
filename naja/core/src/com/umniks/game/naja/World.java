@@ -26,7 +26,6 @@ class World {
 	private Fruit		fruit;
 	private Joystick	joystick;
 	private BitmapFont	text;
-	private Dictionary	scoreBoard;
 	private GameStates	gameState;
 	private SpriteBatch	batch;
 	private Preferences	prefs;
@@ -34,6 +33,7 @@ class World {
 	private Texture		background;
 	private int			userScore;
 	private ShapeRenderer shape;
+	private boolean		firstlyDied;
 
 	private final int	W, H;
 	private final int	MenuW, MenuH;
@@ -48,6 +48,7 @@ class World {
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
 	public World(int w, int h) {
+		firstlyDied 	= true;
 		userScore	= 0;
 		W			= w;
 		H			= h;
@@ -63,7 +64,7 @@ class World {
 		fruit		= new Fruit(W/2, H/2);
 		batch		= new SpriteBatch();
 		snake		= new Snake(this, W/2, H/2);
-		prefs		= Gdx.app.getPreferences("MasterScore");
+		prefs		= Gdx.app.getPreferences("Scores");
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.MENU;
 		background	= new Texture(Gdx.files.internal("game_background.png"));
@@ -113,9 +114,55 @@ class World {
 		break;
 	} }
 
+	private void shiftScoreBoard(int scr) {
+		switch (scr) {
+			case 0:
+				prefs.putInteger("4", prefs.getInteger("3"));
+				prefs.putInteger("3", prefs.getInteger("2"));
+				prefs.putInteger("2", prefs.getInteger("1"));
+				prefs.putInteger("1", prefs.getInteger("0"));
+				break;
+			case 1:
+				prefs.putInteger("4", prefs.getInteger("3"));
+				prefs.putInteger("3", prefs.getInteger("2"));
+				prefs.putInteger("2", prefs.getInteger("1"));
+				break;
+			case 2:
+				prefs.putInteger("4", prefs.getInteger("3"));
+				prefs.putInteger("3", prefs.getInteger("2"));
+				break;
+			case 3:
+				prefs.putInteger("4", prefs.getInteger("3"));
+				break;
+			case 4:
+				break;
+		}
+	}
+
+	private void saveScore(int place, int scr) {
+		if (firstlyDied) {
+			shiftScoreBoard(place);
+			prefs.putInteger(""+place, scr);
+			firstlyDied = false;
+		}
+	}
+
 	public void draw() { switch(gameState) {
 	case MENU:
 		menu.draw();
+		if (!prefs.contains("0")) prefs.putInteger("0", 0);
+		if (!prefs.contains("1")) prefs.putInteger("1", 0);
+		if (!prefs.contains("2")) prefs.putInteger("2", 0);
+		if (!prefs.contains("3")) prefs.putInteger("3", 0);
+		if (!prefs.contains("4")) prefs.putInteger("4", 0);
+
+		batch.begin();
+			text.draw(batch, "1: " + prefs.getInteger("0"), 30, Gdx.graphics.getHeight() - 30);
+			text.draw(batch, "2: " + prefs.getInteger("1"), 30, Gdx.graphics.getHeight() - 60);
+			text.draw(batch, "3: " + prefs.getInteger("2"), 30, Gdx.graphics.getHeight() - 90);
+			text.draw(batch, "4: " + prefs.getInteger("3"), 30, Gdx.graphics.getHeight() - 120);
+			text.draw(batch, "5: " + prefs.getInteger("4"), 30, Gdx.graphics.getHeight() - 150);
+		batch.end();
 		break;
 
 	case EXITING:
@@ -146,15 +193,32 @@ class World {
 		fruit.draw(hex);
 		if (snake.isDead()) {
 			batch.begin();
-			if (userScore >= prefs.getInteger("MasterScore")) {
+
+			if (userScore >= prefs.getInteger("0")) {
+				text.draw(batch, "SNAKE GRANDMASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+				saveScore(0, userScore);
+			} else
+			if (userScore >= prefs.getInteger("1")) {
 				text.draw(batch, "SNAKE MASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
-				prefs.putInteger("MasterScore", this.snake.length());
-				prefs.flush();
+				saveScore(1, userScore);
+			} else
+			if (userScore >= prefs.getInteger("2")) {
+				text.draw(batch, "DIAMOND SNAKE!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+				saveScore(2, userScore);
+			} else
+			if (userScore >= prefs.getInteger("3")) {
+				text.draw(batch, "PLATINUM SNAKE!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+				saveScore(3, userScore);
+			} else
+			if (userScore >= prefs.getInteger("4")) {
+				text.draw(batch, "GOLD SNAKE!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
+				saveScore(4, userScore);
 			} else {
-				text.draw(batch, "NOT YET MASTER", Gdx.graphics.getWidth()/2-140, Gdx.graphics.getHeight()/2);
+				text.draw(batch, "GG!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 			}
+
 			batch.end();
-			userScore = 0;
+			prefs.flush();
 		} else {
 			snake.draw(hex);
 		}

@@ -97,7 +97,7 @@ class Snake extends Entity {
 
 	@Override
 	public boolean nextStep() {
-		if (!super.nextStep()) { return false; }
+		if (!super.nextStep() || isDead()) { return false; }
 
 		Part head = snake.get(0);
 
