@@ -243,6 +243,8 @@ class World {
 
 	public void enqueTouchDown(int x, int y) { switch (gameState) {
 	case MENU:
+		//prefs.clear();
+		//prefs.flush();
 		Gdx.app.log(" ", x+" "+y);
 		if (menu.getButtonExit().has(x, y)) {
 			gameState = GameStates.EXITING;
@@ -264,6 +266,11 @@ class World {
 
 	case PLAY:
 		if (menu.getButtonExit().has(x, y)) {
+			if (snake.isDead()) {
+				userScore = 0;
+				firstlyDied = false;
+				snake.reborn();
+			}
 			menu.getButtonExitDefault();
 			gameState = GameStates.MENU;
 		}

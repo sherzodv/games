@@ -113,6 +113,18 @@ class Hex
 			radius += @hole_s + @hole_height*2
 		end
 	end
+
+	def draw_border(img, x, y, i)
+		points = *calc(x, y, @radius*1.1)
+		case i
+		when 1; img.line *points[0], *points[1], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 2; img.line *points[1], *points[2], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 3; img.line *points[2], *points[3], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 4; img.line *points[3], *points[4], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 5; img.line *points[4], *points[5], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 6; img.line *points[5], *points[0], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		end
+	end
 end
 
 # Приближенное значение косинуса 30 градусов
@@ -120,14 +132,14 @@ Cos30 = 0.87
 
 # Расстояние между ближайшими точками двух соседних шестиугольников
 $s = 2
-$orien = 'Y'
+$orien = 'X'
 
 # Разрешение изображения
-$resX = 400
-$resY = 400
+$resX = 1280
+$resY = 700
 
 # Требуемое кол-во шестиугольников по горизонтали
-$hexX = 1
+$hexX = 24
 
 # Требуемое кол-во шестиугольников по вертикали
 $hexY = 1
@@ -167,16 +179,52 @@ def gen
 	$hexX -= 1
 
 	$hexY.times do
-		x = $s + (shift ? 2*$hex.height + $s/2: $hex.height);
+		x = $s + (shift ? 2*$hex.height + $s/2 : $hex.height);
 		$hexX += (shift ? -1: +1);
 		shift = !shift;
 
 		$hexX.times do
-			$hex.draw($img, x, y);
+			$hex.draw($img, x, y)
 			x += $s + 2 * $hex.height
 		end
 
 		y += $s*Cos30 + 1.5 * $hex.radius
+	end
+
+	# рисуем горизонтальные стороны рамки
+	x = $s + $hex.height;
+	$hexX.times do
+		$hex.draw_border($img, x, $hex.radius+$s, 1)
+		$hex.draw_border($img, x, $hex.radius+$s, 6)
+		$hex.draw_border($img, x + $hex.height, $resY-$s*4.5-$hex.radius, 3)
+		$hex.draw_border($img, x + $hex.height, $resY-$s*4.5-$hex.radius, 4)
+		x += $s + 2 * $hex.height
+	end
+	$hex.draw_border($img, x, $hex.radius+$s, 1)
+	$hex.draw_border($img, x, $hex.radius+$s, 6)
+
+	# рисуем вертикальные стороны рамки
+	y = $s + $hex.radius
+	shift = false
+	$hexY.times do
+		if shift then
+			$hex.draw_border($img, 2*($s+$hex.height), y, 5)
+		else
+			$hex.draw_border($img, ($s+$hex.height), y, 4)
+			$hex.draw_border($img, ($s+$hex.height), y, 5)
+			$hex.draw_border($img, ($s+$hex.height), y, 6)
+		end
+
+		if shift then
+			$hex.draw_border($img, $resX-2*($s+$hex.height), y, 2)
+		else
+			$hex.draw_border($img, $resX-($s+$hex.height), y, 1)
+			$hex.draw_border($img, $resX-($s+$hex.height), y, 2)
+			$hex.draw_border($img, $resX-($s+$hex.height), y, 3)
+		end
+
+		y += $s*Cos30 + 1.5 * $hex.radius
+		shift = !shift
 	end
 end
 

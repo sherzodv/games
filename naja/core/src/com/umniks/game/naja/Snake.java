@@ -221,5 +221,15 @@ class Snake extends Entity {
 	public int length() { return snake.size(); }
 
 	public boolean isDead() { return died; }
+
+	public void reborn() {
+		died = false;
+		dir = D.LEFT;
+		cycles = 0;
+		inertia = 10;
+
+		snake.clear();
+		bearAt(world.getW()/2, world.getH()/2);
+	}
 }
 
