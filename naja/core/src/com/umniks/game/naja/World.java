@@ -20,30 +20,24 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 class World {
-	private HexPack		hex;
-	private Snd			snd;
-	private Snake		snake;
-	private Fruit		fruit;
-	private Joystick	joystick;
-	private BitmapFont	text;
-	private GameStates	gameState;
-	private SpriteBatch	batch;
-	private Preferences	prefs;
-	private Menu		menu;
-	private Texture		background;
-	private int			userScore;
-	private ShapeRenderer shape;
-	private boolean		firstlyDied;
+	private HexPack			hex;
+	private Snd				snd;
+	private Snake			snake;
+	private Fruit			fruit;
+	private Joystick		joystick;
+	private BitmapFont		text;
+	private GameStates		gameState;
+	private SpriteBatch		batch;
+	private Preferences		prefs;
+	private Menu			menu;
+	private Texture			background;
+	private ShapeRenderer	shape;
 
-	private final int	W, H;
-	private final int	MenuW, MenuH;
-	private final int	startX, startY;
-	private final int	incX, incY;
-	private final int	decX, decY;
-	private final int	indX, indY;
-	private final int	muteX, muteY;
-
-	private final float hex_radius = 29.454022f;
+	private int				userScore;
+	private boolean			firstlyDied;
+	private final int		W, H;
+	private final int		MenuW, MenuH;
+	private final float		hex_radius = 29.454022f;
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
@@ -55,7 +49,7 @@ class World {
 		MenuW		= 12;
 		MenuH		= 7;
 		snd			= new Snd();
-		hex			= new HexPack(hex_radius);
+		hex			= new HexPack(hex_radius, sb);
 		shape 		= new ShapeRenderer();
 
 		Texture texture
@@ -69,22 +63,7 @@ class World {
 		gameState	= GameStates.MENU;
 		background	= new Texture(Gdx.files.internal("game_background.png"));
 
-		startX	= MenuW/2+4;
-		startY	= MenuH/6;
-
-		indX 	= startX-4;
-		indY 	= startY;
-
-		incX 	= indX-2;
-		incY 	= indY;
-
-		decX 	= indX+2;
-		decY 	= indY;
-
-		muteX 	= startX+3;
-		muteY 	= startY;
-
-		menu = new Menu();
+		menu = new Menu(sb);
 
 		text.setColor(Color.MAGENTA);
 	}
@@ -225,7 +204,9 @@ class World {
 		menu.getButtonExit().DrawRaw();
 
 		batch.begin();
-		text.draw(batch, "your score: "+userScore, 30, Gdx.graphics.getHeight()-5);
+		text.draw(batch, "your score: "+userScore,
+				30,
+				690);
 		batch.end();
 
 		hex.end();
@@ -246,12 +227,16 @@ class World {
 		//prefs.clear();
 		//prefs.flush();
 		Gdx.app.log(" ", x+" "+y);
+		Gdx.app.log(" ", Gdx.graphics.getWidth()+" "+Gdx.graphics.getHeight());
 		if (menu.getButtonExit().has(x, y)) {
 			gameState = GameStates.EXITING;
 		} else
 		if (menu.getButtonStart().has(x, y)) {
-			menu.getButtonExit().setx(Gdx.graphics.getWidth()-(hex_radius*2*0.87f+3));
-			menu.getButtonExit().sety(Gdx.graphics.getHeight()-(hex_radius+2));
+			menu.getButtonExit().setx(Gdx.graphics.getWidth()
+					- Gdx.graphics.getWidth()/30);
+
+			menu.getButtonExit().sety(Gdx.graphics.getHeight()
+					- Gdx.graphics.getHeight()/30);
 			menu.getButtonExit().setr(hex_radius);
 			snake.setInertia(menu.getLvl());
 			gameState = GameStates.PLAY;

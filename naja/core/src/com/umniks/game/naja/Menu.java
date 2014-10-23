@@ -42,18 +42,11 @@ class Menu {
 
 	private SpriteBatch batch;
 
-	public Menu() {
-		scrX = Gdx.graphics.getWidth();
-		scrY = Gdx.graphics.getHeight();
-		scrCX = scrX/2;
-		scrCY = scrY/2;
-		butY = scrY/6;
+	public Menu(SpriteBatch sb) {
+		recalcCoordinates();
+
 		Lvl = 3;
-
-		hexSide = (scrY*1)/10; /* hex's side length */
-		butI = hexSide/5;
-
-		batch			= new SpriteBatch();
+		batch			= sb;
 
 		Background		= new Texture(Gdx.files.internal("background.png"));
 		MenuAtlas		= new Texture(Gdx.files.internal("menu-atlas.png"));
@@ -70,6 +63,16 @@ class Menu {
 
 		ButtonStart		= new Hexagon(scrCX-4*hexSide-2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1437, 4, 160, 180));
 		ButtonExit		= new Hexagon(scrCX+4*hexSide+2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1848, 4, 160, 180));
+	}
+
+	public void recalcCoordinates() {
+		scrX = Gdx.graphics.getWidth();
+		scrY = Gdx.graphics.getHeight();
+		scrCX = scrX/2;
+		scrCY = scrY/2;
+		butY = scrY/6;
+		hexSide = (scrY*1)/10; /* hex's side length */
+		butI = hexSide/5;
 	}
 
 	public void incLvl() { if (++Lvl > 4) Lvl = 4; }

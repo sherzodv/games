@@ -32,8 +32,8 @@ public class Naja extends ApplicationAdapter {
 	Input input;
 	World world;
 
-	private static final int VIRTUAL_WIDTH = 1280;
-    private static final int VIRTUAL_HEIGHT = 720;
+	private static final int VIRTUAL_WIDTH = 640;
+    private static final int VIRTUAL_HEIGHT = 360;
     private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
 
     private Camera camera;
@@ -128,8 +128,7 @@ public class Naja extends ApplicationAdapter {
 	public void render() {
 		// update camera
         camera.update();
-        //camera.apply(Gdx.gl20);
-		//sb.setupMatrices();
+
         // set viewport
         Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
                           (int) viewport.width, (int) viewport.height);

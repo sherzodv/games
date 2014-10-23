@@ -36,9 +36,9 @@ class HexPack {
 
 	private Hexagon[]	Food;
 
-	public HexPack(float Radius) {
+	public HexPack(float Radius, SpriteBatch sb) {
 		shape			= new ShapeRenderer();
-		batch			= new SpriteBatch();
+		batch			= sb;
 
 		GameAtlas		= new Texture(Gdx.files.internal("naja-atlas.png"));
 		Food			= new Hexagon[8];
