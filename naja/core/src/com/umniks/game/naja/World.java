@@ -47,7 +47,7 @@ class World {
 
 	enum GameStates { PLAY, MENU, PAUSE, EXITING };
 
-	public World(int w, int h) {
+	public World(int w, int h, SpriteBatch sb) {
 		firstlyDied 	= true;
 		userScore	= 0;
 		W			= w;
@@ -62,7 +62,7 @@ class World {
 					= new Texture(Gdx.files.internal("myfont.png"));
 		text 		= new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
 		fruit		= new Fruit(W/2, H/2);
-		batch		= new SpriteBatch();
+		batch		= sb;
 		snake		= new Snake(this, W/2, H/2);
 		prefs		= Gdx.app.getPreferences("Scores");
 		joystick	= new Joystick(snake, W-4, 4);

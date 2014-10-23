@@ -117,12 +117,12 @@ class Hex
 	def draw_border(img, x, y, i)
 		points = *calc(x, y, @radius*1.1)
 		case i
-		when 1; img.line *points[0], *points[1], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
-		when 2; img.line *points[1], *points[2], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
-		when 3; img.line *points[2], *points[3], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
-		when 4; img.line *points[3], *points[4], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
-		when 5; img.line *points[4], *points[5], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
-		when 6; img.line *points[5], *points[0], :stroke_width=>4, :stroke=>"rgb(255, 0, 255)"
+		when 1; img.line *points[0], *points[1], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
+		when 2; img.line *points[1], *points[2], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
+		when 3; img.line *points[2], *points[3], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
+		when 4; img.line *points[3], *points[4], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
+		when 5; img.line *points[4], *points[5], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
+		when 6; img.line *points[5], *points[0], :stroke_width=>4, :stroke=>"rgb(30, 30, 30)"
 		end
 	end
 end
