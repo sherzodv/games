@@ -49,7 +49,7 @@ class Hexagon {
 	}
 
 	public Hexagon(float R, SpriteBatch batch, TextureRegion sprite) {
-		this.s = 2.2f;
+		this.s = 2.5f;
 		this.R = R;
 		this.r = (float) Math.cos(Math.PI / 6) * R;
 		this.D = 2*R;
@@ -115,7 +115,7 @@ class Hexagon {
 	private void calcDots(int x, int y) {
 		/* Calculating coordinates of center of hexagon */
 		c.setx(x*s + x*d + (y%2 == 0 ? 0 : r));
-		c.sety(y*s*0.87f + y*R*1.5f + R);
+		c.sety(y*s*0.80f + y*R*1.5f + R);
 
 		v[0].setx(c.getx() + r);
 		v[0].sety(c.gety() + R/2);

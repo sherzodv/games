@@ -177,6 +177,7 @@ def gen
 	shift = false
 	y = $s + $hex.radius
 	$hexX -= 1
+	#$hexX -= 2
 
 	$hexY.times do
 		x = $s + (shift ? 2*$hex.height + $s/2 : $hex.height);

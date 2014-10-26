@@ -233,7 +233,7 @@ class World {
 		} else
 		if (menu.getButtonStart().has(x, y)) {
 			menu.getButtonExit().setx(Gdx.graphics.getWidth()
-					- Gdx.graphics.getWidth()/30);
+					- 3*Gdx.graphics.getWidth()/30);
 
 			menu.getButtonExit().sety(Gdx.graphics.getHeight()
 					- Gdx.graphics.getHeight()/30);

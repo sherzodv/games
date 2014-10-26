@@ -82,7 +82,7 @@ public class Naja extends ApplicationAdapter {
 		sb = new SpriteBatch();
         camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 
-		world = new World(24, 14, sb);
+		world = new World(22, 14, sb);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);
@@ -120,7 +120,7 @@ public class Naja extends ApplicationAdapter {
         }
 
         float w = (float)VIRTUAL_WIDTH*scale;
-        float h = (float)VIRTUAL_HEIGHT*scale;
+        float h = (float)(VIRTUAL_HEIGHT)*scale;
         viewport = new Rectangle(crop.x, crop.y, w, h);
     }
 
