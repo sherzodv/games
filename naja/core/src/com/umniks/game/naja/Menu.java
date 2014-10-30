@@ -96,6 +96,7 @@ class Menu {
 		ButtonExit.sety(butY);
 		ButtonExit.setr(hexSide);
 	}
+
 	public Texture getBackground() { return Background; }
 	public Hexagon getButtonUp() { return ButtonUp; }
 	public Hexagon getButtonDown() { return ButtonDown; }

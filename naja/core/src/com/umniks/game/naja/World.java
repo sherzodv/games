@@ -236,8 +236,8 @@ class World {
 					- 3*Gdx.graphics.getWidth()/30);
 
 			menu.getButtonExit().sety(Gdx.graphics.getHeight()
-					- Gdx.graphics.getHeight()/30);
-			menu.getButtonExit().setr(hex_radius);
+					- Gdx.graphics.getHeight()/20);
+			menu.getButtonExit().setr(hex_radius*1.2f);
 			snake.setInertia(menu.getLvl());
 			gameState = GameStates.PLAY;
 		} else
@@ -250,7 +250,7 @@ class World {
 		break;
 
 	case PLAY:
-		if (menu.getButtonExit().has(x, y)) {
+		if (menu.getButtonExit().has(x, y) || snake.isDead()) {
 			if (snake.isDead()) {
 				userScore = 0;
 				firstlyDied = false;
@@ -283,5 +283,8 @@ class World {
 		joystick.handleTouchDrag(x, y);
 		break;
 	}}
+
+	public void saveState() {
+	}
 }
 

@@ -15,6 +15,7 @@ class Hexagon {
 	private float x, y; /* raw coordinates of center of hexagon */
 	private float S;	/* area of hexagon */
 	private float s;	/* distance between tow hexagons */
+	private float scale; /* If you want to change size of object */
 	private SpriteBatch batch;
 	private TextureRegion sprite;
 	private ShapeRenderer shape;
@@ -36,6 +37,7 @@ class Hexagon {
 		this.batch = batch;
 		this.sprite = sprite;
 		this.Epsilon = 0.01f;
+		this.scale = 1;
 
 		this.c = new Point();
 		this.c.setx(x);
@@ -48,6 +50,10 @@ class Hexagon {
 		shape = new ShapeRenderer();
 	}
 
+	public void scale() {
+		this.scale += 0.2f;
+	}
+
 	public Hexagon(float R, SpriteBatch batch, TextureRegion sprite) {
 		this.s = 2.5f;
 		this.R = R;
@@ -57,6 +63,7 @@ class Hexagon {
 		this.S = 3*R*r;
 		this.batch = batch;
 		this.sprite = sprite;
+		this.scale = 1;
 		this.v = new Point[6];
 		for (int i = 0; i < 6; ++i)
 			v[i] = new Point();
@@ -68,13 +75,13 @@ class Hexagon {
 
 	void DrawRaw() {
 		batch.begin();
-		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
+		batch.draw(sprite, c.getx()-r*scale, c.gety()-R*scale, d*scale, D*scale);
 		batch.end();
 	}
 
 	void DrawRaw(int x, int y) {
 		batch.begin();
-		batch.draw(sprite, x-r, y-R, d, D);
+		batch.draw(sprite, x-r*scale, y-R*scale, d*scale, D*scale);
 		batch.end();
 	}
 
@@ -96,7 +103,7 @@ class Hexagon {
 		//shape.polygon(V);
 		//shape.end();
 		batch.begin();
-		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
+		batch.draw(sprite, c.getx()-r*scale, c.gety()-R*scale, d*scale, D*scale);
 		batch.end();
 	}
 
@@ -107,7 +114,7 @@ class Hexagon {
 	public void DrawHex() {
 		calcDots((int)x, (int)y);
 		batch.begin();
-		batch.draw(sprite, c.getx()-r, c.gety()-R, d, D);
+		batch.draw(sprite, c.getx()-r*scale, c.gety()-R*scale, d*scale, D*scale);
 		batch.end();
 	}
 
