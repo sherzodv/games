@@ -63,7 +63,7 @@ class World {
 		gameState	= GameStates.MENU;
 		background	= new Texture(Gdx.files.internal("game_background.png"));
 
-		menu = new Menu(sb);
+		menu = new Menu(sb, prefs.getInteger("lvl"));
 
 		text.setColor(Color.MAGENTA);
 	}
@@ -243,9 +243,13 @@ class World {
 		} else
 		if (menu.getButtonUp().has(x, y)) {
 			menu.incLvl();
+			prefs.putInteger("lvl", menu.getLvl());
+			prefs.flush();
 		} else
 		if (menu.getButtonDown().has(x, y)) {
 			menu.decLvl();
+			prefs.putInteger("lvl", menu.getLvl());
+			prefs.flush();
 		}
 		break;
 

@@ -42,10 +42,10 @@ class Menu {
 
 	private SpriteBatch batch;
 
-	public Menu(SpriteBatch sb) {
+	public Menu(SpriteBatch sb, int lvl) {
 		recalcCoordinates();
 
-		Lvl = 3;
+		Lvl = lvl;
 		batch			= sb;
 
 		Background		= new Texture(Gdx.files.internal("background.png"));
