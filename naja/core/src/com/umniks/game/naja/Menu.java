@@ -20,14 +20,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 class Menu {
 	private int Lvl; /* Level of game: speed of naja */
-	private Texture MenuAtlas;
-	private Texture Background;
+	private Texture MenuAtlas,
+					Background,
+					HelpScreen;
 	private Hexagon		Tile,
 						ButtonUp,
 						SnakePart,
 						ButtonDown,
 						ButtonExit,
-						ButtonStart;
+						ButtonStart,
+						ButtonHelp,
+						ButtonSave;
 
 	private Hexagon[]	ButtonLevel;
 	/* size of screen int pixels and coordinates of center */
@@ -49,6 +52,7 @@ class Menu {
 		batch			= sb;
 
 		Background		= new Texture(Gdx.files.internal("background.png"));
+		HelpScreen		= new Texture(Gdx.files.internal("help.png"));
 		MenuAtlas		= new Texture(Gdx.files.internal("menu-atlas.png"));
 
 		ButtonLevel		= new Hexagon[5];
@@ -63,6 +67,8 @@ class Menu {
 
 		ButtonStart		= new Hexagon(scrCX-4*hexSide-2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1437, 4, 160, 180));
 		ButtonExit		= new Hexagon(scrCX+4*hexSide+2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1848, 4, 160, 180));
+		ButtonHelp		= new Hexagon(scrCX+6*hexSide+3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2053, 4, 160, 180));
+		ButtonSave		= new Hexagon(scrCX-6*hexSide-3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2258, 4, 160, 180));
 	}
 
 	public void recalcCoordinates() {
@@ -79,16 +85,20 @@ class Menu {
 	public void decLvl() { if (--Lvl < 0) Lvl = 0; }
 	public int getLvl() { return Lvl; }
 
-	public void draw() {
+	public void draw()
+	{
 		batch.begin();
 		batch.draw(Background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
 
-		ButtonUp.DrawRaw();
-		ButtonDown.DrawRaw();
-		ButtonExit.DrawRaw();
-		ButtonStart.DrawRaw();
-		ButtonLevel[Lvl].DrawRaw();
+
+		ButtonUp			.DrawRaw();
+		ButtonDown			.DrawRaw();
+		ButtonExit			.DrawRaw();
+		ButtonHelp			.DrawRaw();
+		ButtonSave			.DrawRaw();
+		ButtonStart			.DrawRaw();
+		ButtonLevel[Lvl]	.DrawRaw();
 	}
 
 	public void getButtonExitDefault() {
@@ -97,10 +107,13 @@ class Menu {
 		ButtonExit.setr(hexSide);
 	}
 
-	public Texture getBackground() { return Background; }
-	public Hexagon getButtonUp() { return ButtonUp; }
-	public Hexagon getButtonDown() { return ButtonDown; }
-	public Hexagon getButtonExit() { return ButtonExit; }
-	public Hexagon getButtonStart() { return ButtonStart; }
+	public Texture getHelpScreen()	{ return HelpScreen; }
+	public Hexagon getButtonUp()	{ return ButtonUp; }
+	public Texture getBackground()	{ return Background; }
+	public Hexagon getButtonDown()	{ return ButtonDown; }
+	public Hexagon getButtonExit()	{ return ButtonExit; }
+	public Hexagon getButtonHelp()	{ return ButtonHelp; }
+	public Hexagon getButtonSave()	{ return ButtonExit; }
+	public Hexagon getButtonStart()	{ return ButtonStart; }
 };
 

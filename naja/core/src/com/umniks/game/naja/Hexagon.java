@@ -163,16 +163,9 @@ class Hexagon {
 		v[5].sety(c.gety() + R);
 	}
 
-	private float Geron(float X1, float Y1, float X2, float Y2, float X3, float Y3) {
-		float a = (float) Math.sqrt( (X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2) );
-		float b = (float) Math.sqrt( (X2-X3)*(X2-X3) + (Y2-Y3)*(Y2-Y3) );
-		float c = (float) Math.sqrt( (X1-X3)*(X1-X3) + (Y1-Y3)*(Y1-Y3) );
-		float p = (a+b+c)/2f;
-		float s = (float) Math.sqrt( p*(p-a)*(p-b)*(p-c) );
-
-		return s;
-		/* FIXME: you can use this formula for counting S, but it works not so good
-		 * Math.abs((X2-X1)*(Y3-Y1)-(X3-X1)*(Y2-Y1));*/
+	private float GetTriangleArea(float x1, float y1, float x2, float y2, float x3, float y3)
+	{
+		return Math.abs(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2f;
 	}
 
 	Point GetCoord(int x, int y) {
@@ -190,12 +183,12 @@ class Hexagon {
 				calcDots(a+i, b+j);
 
 				if (Math.abs(
-					Geron(x, y, v[0].getx(), v[0].gety(), v[1].getx(), v[1].gety()) +
-					Geron(x, y, v[1].getx(), v[1].gety(), v[2].getx(), v[2].gety()) +
-					Geron(x, y, v[2].getx(), v[2].gety(), v[3].getx(), v[3].gety()) +
-					Geron(x, y, v[3].getx(), v[3].gety(), v[4].getx(), v[4].gety()) +
-					Geron(x, y, v[4].getx(), v[4].gety(), v[5].getx(), v[5].gety()) +
-					Geron(x, y, v[5].getx(), v[5].gety(), v[0].getx(), v[0].gety()) -
+					GetTriangleArea(x, y, v[0].getx(), v[0].gety(), v[1].getx(), v[1].gety()) +
+					GetTriangleArea(x, y, v[1].getx(), v[1].gety(), v[2].getx(), v[2].gety()) +
+					GetTriangleArea(x, y, v[2].getx(), v[2].gety(), v[3].getx(), v[3].gety()) +
+					GetTriangleArea(x, y, v[3].getx(), v[3].gety(), v[4].getx(), v[4].gety()) +
+					GetTriangleArea(x, y, v[4].getx(), v[4].gety(), v[5].getx(), v[5].gety()) +
+					GetTriangleArea(x, y, v[5].getx(), v[5].gety(), v[0].getx(), v[0].gety()) -
 					this.S) < this.Epsilon) {
 					h.setx(a+i);
 					h.sety(b+j);
@@ -205,16 +198,17 @@ class Hexagon {
 		return h;
 	}
 
-	boolean has(int x, int y) {
+	boolean has(int x, int y)
+	{
 		rawCalcDots((int)this.x, (int)this.y);
 
 		if (Math.abs(
-		Geron(x, y, v[0].getx(), v[0].gety(), v[1].getx(), v[1].gety()) +
-		Geron(x, y, v[1].getx(), v[1].gety(), v[2].getx(), v[2].gety()) +
-		Geron(x, y, v[2].getx(), v[2].gety(), v[3].getx(), v[3].gety()) +
-		Geron(x, y, v[3].getx(), v[3].gety(), v[4].getx(), v[4].gety()) +
-		Geron(x, y, v[4].getx(), v[4].gety(), v[5].getx(), v[5].gety()) +
-		Geron(x, y, v[5].getx(), v[5].gety(), v[0].getx(), v[0].gety()) -
+		GetTriangleArea(x, y, v[0].getx(), v[0].gety(), v[1].getx(), v[1].gety()) +
+		GetTriangleArea(x, y, v[1].getx(), v[1].gety(), v[2].getx(), v[2].gety()) +
+		GetTriangleArea(x, y, v[2].getx(), v[2].gety(), v[3].getx(), v[3].gety()) +
+		GetTriangleArea(x, y, v[3].getx(), v[3].gety(), v[4].getx(), v[4].gety()) +
+		GetTriangleArea(x, y, v[4].getx(), v[4].gety(), v[5].getx(), v[5].gety()) +
+		GetTriangleArea(x, y, v[5].getx(), v[5].gety(), v[0].getx(), v[0].gety()) -
 		this.S) < this.Epsilon)
 			return true;
 		else

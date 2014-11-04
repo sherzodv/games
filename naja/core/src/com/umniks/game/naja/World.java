@@ -39,7 +39,7 @@ class World {
 	private final int		MenuW, MenuH;
 	private final float		hex_radius = 29.454022f;
 
-	enum GameStates { PLAY, MENU, PAUSE, EXITING };
+	enum GameStates { PLAY, MENU, HELP, PAUSE, EXITING };
 
 	public World(int w, int h, SpriteBatch sb) {
 		firstlyDied 	= true;
@@ -93,7 +93,8 @@ class World {
 		break;
 	} }
 
-	private void shiftScoreBoard(int scr) {
+	private void shiftScoreBoard(int scr)
+	{
 		switch (scr) {
 			case 0:
 				prefs.putInteger("4", prefs.getInteger("3"));
@@ -118,7 +119,8 @@ class World {
 		}
 	}
 
-	private void saveScore(int place, int scr) {
+	private void saveScore(int place, int scr)
+	{
 		if (firstlyDied) {
 			shiftScoreBoard(place);
 			prefs.putInteger(""+place, scr);
@@ -126,7 +128,8 @@ class World {
 		}
 	}
 
-	public void draw() { switch(gameState) {
+	public void draw() { switch(gameState)
+	{
 	case MENU:
 		menu.draw();
 		if (!prefs.contains("0")) prefs.putInteger("0", 0);
@@ -157,14 +160,16 @@ class World {
 		batch.end();
 		break;
 
+	case HELP:
+		batch.begin();
+		batch.draw(menu.getHelpScreen(),
+				0, Gdx.graphics.getHeight()/16,
+				Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/8);
+		batch.end();
+	break;
+
 	case PLAY: case PAUSE:
 		hex.start();
-
-		//for (int x = 0; x < W; ++x)
-		//for (int y = 0; y < H; ++y) {
-			//if ((y%2 == 0) && (x == 0));
-			//else hex.drawTile(x, y);
-		//}
 		batch.begin();
 		batch.draw(background, 0, 0, background.getWidth(), background.getHeight());
 		batch.end();
@@ -204,9 +209,7 @@ class World {
 		menu.getButtonExit().DrawRaw();
 
 		batch.begin();
-		text.draw(batch, "your score: "+userScore,
-				30,
-				690);
+		text.draw(batch, "your score: "+userScore, 30, 690);
 		batch.end();
 
 		hex.end();
@@ -214,24 +217,26 @@ class World {
 		break;
 	}}
 
-	public void enqueKeyDown(int keyCode) {
+	public void enqueKeyDown(int keyCode)
+	{
 		snake.enqueKeyDown(keyCode);
 	}
 
-	public void enqueKeyUp(int keyCode) {
+	public void enqueKeyUp(int keyCode)
+	{
 		snake.enqueKeyUp(keyCode);
 	}
 
-	public void enqueTouchDown(int x, int y) { switch (gameState) {
+	public void enqueTouchDown(int x, int y) { switch (gameState)
+	{
 	case MENU:
-		//prefs.clear();
-		//prefs.flush();
-		Gdx.app.log(" ", x+" "+y);
-		Gdx.app.log(" ", Gdx.graphics.getWidth()+" "+Gdx.graphics.getHeight());
-		if (menu.getButtonExit().has(x, y)) {
+		Gdx.app.log("", x+" "+y);
+		if (menu.getButtonExit().has(x, y))
+		{
 			gameState = GameStates.EXITING;
 		} else
-		if (menu.getButtonStart().has(x, y)) {
+		if (menu.getButtonStart().has(x, y))
+		{
 			menu.getButtonExit().setx(Gdx.graphics.getWidth()
 					- 3*Gdx.graphics.getWidth()/30);
 
@@ -241,21 +246,33 @@ class World {
 			snake.setInertia(menu.getLvl());
 			gameState = GameStates.PLAY;
 		} else
-		if (menu.getButtonUp().has(x, y)) {
+		if (menu.getButtonUp().has(x, y))
+		{
 			menu.incLvl();
 			prefs.putInteger("lvl", menu.getLvl());
 			prefs.flush();
 		} else
-		if (menu.getButtonDown().has(x, y)) {
+		if (menu.getButtonDown().has(x, y))
+		{
 			menu.decLvl();
 			prefs.putInteger("lvl", menu.getLvl());
 			prefs.flush();
 		}
-		break;
+		if (menu.getButtonHelp().has(x, y))
+		{
+			gameState = GameStates.HELP;
+		}
+	break;
+
+	case HELP:
+		gameState = GameStates.MENU;
+	break;
 
 	case PLAY:
-		if (menu.getButtonExit().has(x, y) || snake.isDead()) {
-			if (snake.isDead()) {
+		if (menu.getButtonExit().has(x, y) || snake.isDead())
+		{
+			if (snake.isDead())
+			{
 				userScore = 0;
 				firstlyDied = false;
 				snake.reborn();
@@ -265,10 +282,11 @@ class World {
 		}
 		joystick.handleTouchDown(x, y);
 
-		break;
+	break;
 	}}
 
-	public void enqueTouchUp(int x, int y) { switch (gameState) {
+	public void enqueTouchUp(int x, int y) { switch (gameState)
+	{
 	case MENU:
 		break;
 
@@ -278,7 +296,8 @@ class World {
 		break;
 	}}
 
-	public void enqueTouchDrag(int x, int y) { switch (gameState) {
+	public void enqueTouchDrag(int x, int y) { switch (gameState)
+	{
 	case MENU:
 		break;
 
@@ -288,7 +307,8 @@ class World {
 		break;
 	}}
 
-	public void saveState() {
+	public void saveState()
+	{
 	}
 }
 
