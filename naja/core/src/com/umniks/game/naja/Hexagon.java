@@ -33,6 +33,8 @@ class Hexagon {
 		this.D = 2*R;
 		this.d = 2*r;
 		this.S = 3*R*r;
+		this.x = x;
+		this.y = y;
 
 		this.batch = batch;
 		this.sprite = sprite;
@@ -88,20 +90,6 @@ class Hexagon {
 	/* Drawing by hex coordinates */
 	public void DrawHex(int x, int y) {
 		calcDots(x, y);
-		//shape.begin(ShapeType.Line);
-		//shape.setColor(1.0f, 0.0f, 1.0f, 0.0f);
-
-		//float[] V;
-		//V = new float[] {
-			//v[0].getx(), v[0].gety(),
-			//v[1].getx(), v[1].gety(),
-			//v[2].getx(), v[2].gety(),
-			//v[3].getx(), v[3].gety(),
-			//v[4].getx(), v[4].gety(),
-			//v[5].getx(), v[5].gety()
-		//};
-		//shape.polygon(V);
-		//shape.end();
 		batch.begin();
 		batch.draw(sprite, c.getx()-r*scale, c.gety()-R*scale, d*scale, D*scale);
 		batch.end();

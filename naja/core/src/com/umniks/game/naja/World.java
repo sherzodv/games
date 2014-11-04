@@ -163,8 +163,8 @@ class World {
 	case HELP:
 		batch.begin();
 		batch.draw(menu.getHelpScreen(),
-				0, Gdx.graphics.getHeight()/16,
-				Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/8);
+				0, Gdx.graphics.getHeight()/22,
+				Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/11);
 		batch.end();
 	break;
 
@@ -257,7 +257,7 @@ class World {
 			menu.decLvl();
 			prefs.putInteger("lvl", menu.getLvl());
 			prefs.flush();
-		}
+		} else
 		if (menu.getButtonHelp().has(x, y))
 		{
 			gameState = GameStates.HELP;

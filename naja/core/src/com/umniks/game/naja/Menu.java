@@ -67,8 +67,9 @@ class Menu {
 
 		ButtonStart		= new Hexagon(scrCX-4*hexSide-2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1437, 4, 160, 180));
 		ButtonExit		= new Hexagon(scrCX+4*hexSide+2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1848, 4, 160, 180));
-		ButtonHelp		= new Hexagon(scrCX+6*hexSide+3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2053, 4, 160, 180));
-		ButtonSave		= new Hexagon(scrCX-6*hexSide-3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2258, 4, 160, 180));
+
+		ButtonHelp		= new Hexagon(scrCX-6*hexSide-3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2053, 4, 160, 180));
+		ButtonSave		= new Hexagon(scrCX+6*hexSide+3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2258, 4, 160, 180));
 	}
 
 	public void recalcCoordinates() {
@@ -78,7 +79,7 @@ class Menu {
 		scrCY = scrY/2;
 		butY = scrY/6;
 		hexSide = (scrY*1)/10; /* hex's side length */
-		butI = hexSide/5;
+		butI = scrY/100;
 	}
 
 	public void incLvl() { if (++Lvl > 4) Lvl = 4; }
@@ -90,7 +91,6 @@ class Menu {
 		batch.begin();
 		batch.draw(Background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
-
 
 		ButtonUp			.DrawRaw();
 		ButtonDown			.DrawRaw();
