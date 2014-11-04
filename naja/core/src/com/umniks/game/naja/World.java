@@ -19,7 +19,8 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-class World {
+class World
+{
 	private HexPack			hex;
 	private Snd				snd;
 	private Snake			snake;
@@ -41,9 +42,9 @@ class World {
 
 	enum GameStates { PLAY, MENU, HELP, PAUSE, EXITING };
 
-	public World(int w, int h, SpriteBatch sb) {
-		firstlyDied 	= true;
-		userScore	= 0;
+	public World(int w, int h, SpriteBatch sb)
+	{
+		firstlyDied = true;
 		W			= w;
 		H			= h;
 		MenuW		= 12;
@@ -57,13 +58,15 @@ class World {
 		text 		= new BitmapFont(Gdx.files.internal("myfont.fnt"), new TextureRegion(texture), false);
 		fruit		= new Fruit(W/2, H/2);
 		batch		= sb;
-		snake		= new Snake(this, W/2, H/2);
-		prefs		= Gdx.app.getPreferences("Scores");
+		prefs		= Gdx.app.getPreferences("Game");
+		snake		= new Snake(this, prefs, W/2, H/2);
 		joystick	= new Joystick(snake, W-4, 4);
 		gameState	= GameStates.MENU;
 		background	= new Texture(Gdx.files.internal("game_background.png"));
 
 		menu = new Menu(sb, prefs.getInteger("lvl"));
+
+		userScore	= prefs.getInteger("score");
 
 		text.setColor(Color.MAGENTA);
 	}
@@ -71,7 +74,8 @@ class World {
 	int getW() { return W; }
 	int getH() { return H; }
 
-	public void nextStep() { switch (gameState) {
+	public void nextStep() { switch (gameState)
+	{
 	case MENU:
 		break;
 
@@ -148,16 +152,16 @@ class World {
 		break;
 
 	case EXITING:
-		Timer.schedule(new Task() { @Override public void run() { Gdx.app.exit(); } }, 2.0f);
+		prefs.putInteger("score", userScore);
+		snake.saveItself(prefs);
+
+		Timer.schedule(new Task() { @Override public void run() { Gdx.app.exit(); } }, 0.1f);
 
 		shape.begin(ShapeType.Filled);
 		shape.setColor(0.0f, 0.0f, 0.0f, 0.0f);
 		shape.rect(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		shape.end();
 
-		batch.begin();
-		text.draw(batch, "BYE BYE!", Gdx.graphics.getWidth()/2-50, Gdx.graphics.getHeight()/2);
-		batch.end();
 		break;
 
 	case HELP:
@@ -178,6 +182,7 @@ class World {
 		if (snake.isDead()) {
 			batch.begin();
 
+			prefs.putInteger("score", 0);
 			if (userScore >= prefs.getInteger("0")) {
 				text.draw(batch, "SNAKE GRANDMASTER!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
 				saveScore(0, userScore);
@@ -209,7 +214,7 @@ class World {
 		menu.getButtonExit().DrawRaw();
 
 		batch.begin();
-		text.draw(batch, "your score: "+userScore, 30, 690);
+		text.draw(batch, "your score: "+userScore, 30, 700);
 		batch.end();
 
 		hex.end();
@@ -307,8 +312,5 @@ class World {
 		break;
 	}}
 
-	public void saveState()
-	{
-	}
 }
 

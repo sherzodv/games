@@ -18,6 +18,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.files.FileHandle;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.GL20;
@@ -28,7 +30,8 @@ import com.badlogic.gdx.graphics.glutils.ImmediateModeRenderer20;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public class Naja extends ApplicationAdapter {
+public class Naja extends ApplicationAdapter
+{
 	Input input;
 	World world;
 
@@ -40,7 +43,8 @@ public class Naja extends ApplicationAdapter {
     private Rectangle viewport;
     private SpriteBatch sb;
 
-	class Input extends InputAdapter {
+	class Input extends InputAdapter
+	{
 		@Override
 		public boolean keyDown(int keyCode) {
 			world.enqueKeyDown(keyCode);
@@ -73,12 +77,14 @@ public class Naja extends ApplicationAdapter {
 		}
 	}
 
-	private void nextStep() {
+	private void nextStep()
+	{
 		world.nextStep();
 	}
 
 	@Override
-	public void create() {
+	public void create()
+	{
 		sb = new SpriteBatch();
         camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 
@@ -125,7 +131,8 @@ public class Naja extends ApplicationAdapter {
     }
 
 	@Override
-	public void render() {
+	public void render()
+	{
 		// update camera
         camera.update();
 
