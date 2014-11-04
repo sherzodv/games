@@ -51,7 +51,7 @@ class HexPack {
 		Food[6]			= new Hexagon(Radius, batch, new TextureRegion(GameAtlas, 2153, 9, 238, 266));
 		Food[7]			= new Hexagon(Radius, batch, new TextureRegion(GameAtlas, 2460, 9, 238, 266));
 		for (int i = 0; i <= 7; ++i)
-			Food[i].scale();
+			Food[i].scaleUp();
 		SnakePart		= new Hexagon(Radius, batch, new TextureRegion(GameAtlas, 13, 10, 231, 261));
 		Tile			= new Hexagon(Radius, batch, new TextureRegion(GameAtlas, 338-spaceTile, 30-spaceTile, 212+spaceTile, 245+spaceTile));
 	}

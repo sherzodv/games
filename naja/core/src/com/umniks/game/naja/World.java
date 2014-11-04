@@ -143,11 +143,11 @@ class World
 		if (!prefs.contains("4")) prefs.putInteger("4", 0);
 
 		batch.begin();
-			text.draw(batch, "1: " + prefs.getInteger("0"), 30, Gdx.graphics.getHeight() - 30);
-			text.draw(batch, "2: " + prefs.getInteger("1"), 30, Gdx.graphics.getHeight() - 60);
-			text.draw(batch, "3: " + prefs.getInteger("2"), 30, Gdx.graphics.getHeight() - 90);
-			text.draw(batch, "4: " + prefs.getInteger("3"), 30, Gdx.graphics.getHeight() - 120);
-			text.draw(batch, "5: " + prefs.getInteger("4"), 30, Gdx.graphics.getHeight() - 150);
+			text.draw(batch, "1: " + prefs.getInteger("0"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 30);
+			text.draw(batch, "2: " + prefs.getInteger("1"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 60);
+			text.draw(batch, "3: " + prefs.getInteger("2"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 90);
+			text.draw(batch, "4: " + prefs.getInteger("3"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 120);
+			text.draw(batch, "5: " + prefs.getInteger("4"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 150);
 		batch.end();
 		break;
 
@@ -167,8 +167,8 @@ class World
 	case HELP:
 		batch.begin();
 		batch.draw(menu.getHelpScreen(),
-				0, Gdx.graphics.getHeight()/22,
-				Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-Gdx.graphics.getHeight()/11);
+				0, 0,
+				Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
 	break;
 
@@ -247,7 +247,11 @@ class World
 
 			menu.getButtonExit().sety(Gdx.graphics.getHeight()
 					- Gdx.graphics.getHeight()/20);
-			menu.getButtonExit().setr(hex_radius*1.2f);
+
+			menu.getButtonExit().setr(hex_radius*2f);
+			menu.getButtonExit().scaleDown();
+			menu.getButtonExit().scaleDown();
+
 			snake.setInertia(menu.getLvl());
 			gameState = GameStates.PLAY;
 		} else
@@ -279,13 +283,13 @@ class World
 			if (snake.isDead())
 			{
 				userScore = 0;
-				firstlyDied = false;
+				firstlyDied = true;
 				snake.reborn();
 			}
 			menu.getButtonExitDefault();
 			gameState = GameStates.MENU;
-		}
-		joystick.handleTouchDown(x, y);
+		} else
+			joystick.handleTouchDown(x, y);
 
 	break;
 	}}

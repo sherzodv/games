@@ -38,8 +38,9 @@ class Snake extends Entity
 	private void bearAt(int x, int y)
 	{
 		snake = new LinkedList<Part>();
-		for (int i = 0; i < 1; ++i)
-			snake.add(new Part(x, y, Type.BODY, D.UP));
+		snake.add(new Part(x, y, Type.BODY, D.LEFT));
+		for (int i = 0; i < 5; ++i)
+			grow();
 	}
 
 	@Override
@@ -256,10 +257,10 @@ class Snake extends Entity
 		died = false;
 		cycles = 0;
 		inertia = 10;
-		snake.get(0).setd(D.LEFT);
 
 		snake.clear();
 		bearAt(world.getW()/2, world.getH()/2);
+		snake.get(0).setd(D.LEFT);
 	}
 
 	public boolean loadItself(Preferences p)

@@ -69,7 +69,7 @@ class Menu
 		ButtonStart		= new Hexagon(scrCX-4*hexSide-2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1437, 4, 160, 180));
 		ButtonExit		= new Hexagon(scrCX+4*hexSide+2*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 1848, 4, 160, 180));
 
-		ButtonHelp		= new Hexagon(scrCX-6*hexSide-3*butI, butY, hexSide, batch, new TextureRegion(MenuAtlas, 2053, 4, 160, 180));
+		ButtonHelp		= new Hexagon(hexSide, scrY-hexSide, hexSide, batch, new TextureRegion(MenuAtlas, 2053, 4, 160, 180));
 	}
 
 	public void recalcCoordinates()
@@ -103,6 +103,7 @@ class Menu
 
 	public void getButtonExitDefault()
 	{
+		ButtonExit.setScale();
 		ButtonExit.setx(scrCX+4*hexSide+2*butI);
 		ButtonExit.sety(butY);
 		ButtonExit.setr(hexSide);

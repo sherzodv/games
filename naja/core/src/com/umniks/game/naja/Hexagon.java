@@ -52,8 +52,17 @@ class Hexagon {
 		shape = new ShapeRenderer();
 	}
 
-	public void scale() {
+	public void setScale()
+	{
+		this.scale = 1f;
+	}
+
+	public void scaleUp() {
 		this.scale += 0.2f;
+	}
+
+	public void scaleDown() {
+		this.scale -= 0.2f;
 	}
 
 	public Hexagon(float R, SpriteBatch batch, TextureRegion sprite) {
