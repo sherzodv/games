@@ -32,6 +32,14 @@ class Snake extends Entity
 		}
 	}
 
+	public boolean has(int x, int y)
+	{
+		for (Part part: snake)
+			if (part.x == x && part.y == y)
+				return true;
+		return false;
+	}
+
 	private World world;
 	private List<Part> snake;
 

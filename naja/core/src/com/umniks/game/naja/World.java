@@ -91,7 +91,8 @@ class World
 		if (snake.headx() == fruit.getx()
 		&&	snake.heady() == fruit.gety()) {
 			userScore += (menu.getLvl()+1);
-			fruit.reborn(W, H);
+			while (snake.has(fruit.getx(), fruit.gety()))
+				fruit.reborn(W, H);
 			snake.grow();
 		}
 		break;
