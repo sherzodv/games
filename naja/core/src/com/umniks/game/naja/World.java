@@ -204,7 +204,7 @@ class World
 				text.draw(batch, "GOLD SNAKE!", Gdx.graphics.getWidth()/2-170, Gdx.graphics.getHeight()/2);
 				saveScore(4, userScore);
 			} else {
-				text.draw(batch, "GG!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+				text.draw(batch, "Your score: "+userScore, Gdx.graphics.getWidth()/2-100, Gdx.graphics.getHeight()/2);
 			}
 
 			batch.end();

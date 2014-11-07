@@ -47,7 +47,7 @@ class Snake extends Entity
 	{
 		snake = new LinkedList<Part>();
 		snake.add(new Part(x, y, Type.BODY, D.LEFT));
-		for (int i = 0; i < 5; ++i)
+		for (int i = 0; i < 3; ++i)
 			grow();
 	}
 
