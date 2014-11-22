@@ -13,6 +13,10 @@ android {
 
         instrumentTest.setRoot('tests')
     }
+
+	dependencies {
+		compile 'com.google.android.gms:play-services:6.1.11'
+	}
 }
 
 // needed to add JNI shared libraries to APK when compiling on CLI

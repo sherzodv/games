@@ -34,6 +34,7 @@ public class Naja extends ApplicationAdapter
 {
 	Input input;
 	World world;
+	IAds ads;
 
 	private static final int VIRTUAL_WIDTH = 640;
     private static final int VIRTUAL_HEIGHT = 360;
@@ -88,7 +89,7 @@ public class Naja extends ApplicationAdapter
 		sb = new SpriteBatch();
         camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 
-		world = new World(22, 14, sb);
+		world = new World(22, 14, sb, ads);
 
 		input = this.new Input();
 		Gdx.input.setInputProcessor(input);
@@ -145,6 +146,10 @@ public class Naja extends ApplicationAdapter
 
 		// draw everything
 		world.draw();
+	}
+
+	public Naja(IAds ads) {
+		this.ads = ads;
 	}
 }
 

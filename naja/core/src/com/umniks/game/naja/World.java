@@ -21,6 +21,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 class World
 {
+	IAds ads;
+
 	private HexPack			hex;
 	private Snd				snd;
 	private Snake			snake;
@@ -42,8 +44,9 @@ class World
 
 	enum GameStates { PLAY, MENU, HELP, PAUSE, EXITING };
 
-	public World(int w, int h, SpriteBatch sb)
+	public World(int w, int h, SpriteBatch sb, IAds ads)
 	{
+		this.ads = ads;
 		firstlyDied = true;
 		W			= w;
 		H			= h;
@@ -219,6 +222,8 @@ class World
 		batch.end();
 
 		hex.end();
+
+		ads.showAds();
 
 		break;
 	}}
