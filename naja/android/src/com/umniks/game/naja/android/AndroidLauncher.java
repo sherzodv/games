@@ -62,7 +62,7 @@ public class AndroidLauncher extends AndroidApplication implements IAds {
 
 		setContentView(layout);
 		startAdvertising(admobView);
-		
+
 		interstitialAd = new InterstitialAd(this);
 		interstitialAd.setAdUnitId(AD_UNIT_ID_INTERSTITIAL);
 		interstitialAd.setAdListener(new AdListener() {

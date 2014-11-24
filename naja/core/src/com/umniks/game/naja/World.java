@@ -179,7 +179,7 @@ class World
 	case PLAY: case PAUSE:
 		hex.start();
 		batch.begin();
-		batch.draw(background, 0, 0, background.getWidth(), background.getHeight());
+		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
 
 		fruit.draw(hex);

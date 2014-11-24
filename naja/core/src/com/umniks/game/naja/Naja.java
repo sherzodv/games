@@ -36,12 +36,11 @@ public class Naja extends ApplicationAdapter
 	World world;
 	IAds ads;
 
-	private static final int VIRTUAL_WIDTH = 640;
-    private static final int VIRTUAL_HEIGHT = 360;
-    private static final float ASPECT_RATIO = (float)VIRTUAL_WIDTH/(float)VIRTUAL_HEIGHT;
+	//private static final int Gdx.graphics.getWidth() = 640;
+    //private static final int Gdx.graphics.getHeight() = 360;
 
     private Camera camera;
-    private Rectangle viewport;
+    private Viewport viewport;
     private SpriteBatch sb;
 
 	class Input extends InputAdapter
@@ -87,8 +86,14 @@ public class Naja extends ApplicationAdapter
 	public void create()
 	{
 		sb = new SpriteBatch();
-        camera = new OrthographicCamera(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+		camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
+		sb.setProjectionMatrix(camera.combined);
+		camera.update();
+
+		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 		world = new World(22, 14, sb, ads);
 
 		input = this.new Input();
@@ -107,28 +112,11 @@ public class Naja extends ApplicationAdapter
 	@Override
     public void resize(int width, int height)
     {
-        // calculate new viewport
-        float aspectRatio = (float)width/(float)height;
-        float scale = 1f;
-        Vector2 crop = new Vector2(0f, 0f);
-        if(aspectRatio > ASPECT_RATIO)
-        {
-            scale = (float)height/(float)VIRTUAL_HEIGHT;
-            crop.x = (width - VIRTUAL_WIDTH*scale)/2f;
-        }
-        else if(aspectRatio < ASPECT_RATIO)
-        {
-            scale = (float)width/(float)VIRTUAL_WIDTH;
-            crop.y = (height - VIRTUAL_HEIGHT*scale)/2f;
-        }
-        else
-        {
-            scale = (float)width/(float)VIRTUAL_WIDTH;
-        }
-
-        float w = (float)VIRTUAL_WIDTH*scale;
-        float h = (float)(VIRTUAL_HEIGHT)*scale;
-        viewport = new Rectangle(crop.x, crop.y, w, h);
+		camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
+		sb.setProjectionMatrix(camera.combined);
+		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+		viewport.update(width, height);
+		camera.update();
     }
 
 	@Override
@@ -136,10 +124,6 @@ public class Naja extends ApplicationAdapter
 	{
 		// update camera
         camera.update();
-
-        // set viewport
-        Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
-                          (int) viewport.width, (int) viewport.height);
 
         // clear previous frame
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
