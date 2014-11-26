@@ -147,11 +147,11 @@ class World
 		if (!prefs.contains("4")) prefs.putInteger("4", 0);
 
 		batch.begin();
-			text.draw(batch, "1: " + prefs.getInteger("0"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 30);
-			text.draw(batch, "2: " + prefs.getInteger("1"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 60);
-			text.draw(batch, "3: " + prefs.getInteger("2"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 90);
-			text.draw(batch, "4: " + prefs.getInteger("3"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 120);
-			text.draw(batch, "5: " + prefs.getInteger("4"), Gdx.graphics.getWidth()-130, Gdx.graphics.getHeight() - 150);
+			text.draw(batch, "1: " + prefs.getInteger("0"), Gdx.graphics.getWidth()*9/10, Gdx.graphics.getHeight() - 30);
+			text.draw(batch, "2: " + prefs.getInteger("1"), Gdx.graphics.getWidth()*9/10, Gdx.graphics.getHeight() - 60);
+			text.draw(batch, "3: " + prefs.getInteger("2"), Gdx.graphics.getWidth()*9/10, Gdx.graphics.getHeight() - 90);
+			text.draw(batch, "4: " + prefs.getInteger("3"), Gdx.graphics.getWidth()*9/10, Gdx.graphics.getHeight() - 120);
+			text.draw(batch, "5: " + prefs.getInteger("4"), Gdx.graphics.getWidth()*9/10, Gdx.graphics.getHeight() - 150);
 		batch.end();
 		break;
 
@@ -184,6 +184,8 @@ class World
 
 		fruit.draw(hex);
 		if (snake.isDead()) {
+			ads.showAds();
+
 			batch.begin();
 
 			prefs.putInteger("score", 0);
@@ -222,8 +224,6 @@ class World
 		batch.end();
 
 		hex.end();
-
-		ads.showAds();
 
 		break;
 	}}
